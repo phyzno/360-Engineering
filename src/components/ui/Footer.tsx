@@ -1,0 +1,172 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+
+// Social media SVG icons
+// ... (rest remains same)
+const Instagram = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const Facebook = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+const Linkedin = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect width="4" height="12" x="2" y="9"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+
+export default function Footer() {
+  return (
+    <footer className="relative bg-black pt-6 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Floating Bento Card Container */}
+      <div className="bg-[#101e0f]/95 backdrop-blur-xl border border-[#c9a84c]/35 rounded-[2rem] lg:rounded-[2.5rem] pt-16 pb-10 px-6 sm:px-10 lg:px-16 mx-auto max-w-[1400px] shadow-[0_20px_60px_rgba(0,0,0,0.7),0_0_50px_rgba(201,168,76,0.12)] relative overflow-hidden">
+        
+        {/* Subtle Ambient Gold Radial Glow */}
+        <div 
+          className="absolute -top-24 right-1/4 w-96 h-96 bg-[#c9a84c]/10 rounded-full blur-3xl pointer-events-none" 
+          aria-hidden="true" 
+        />
+
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 relative z-10">
+          
+          {/* Brand Info */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-6 group">
+              <Image 
+                src="/df-logo.png" 
+                alt="DF Interiors" 
+                width={80} 
+                height={80} 
+                className="object-contain transition-transform duration-300 group-hover:scale-105" 
+              />
+            </Link>
+            <p className="text-[#9ba89e] mb-8 max-w-sm text-sm sm:text-base leading-relaxed">
+              We transform Your Vision Into Beautifully Crafted Spaces.
+            </p>
+            <div className="flex gap-4">
+              <a 
+                href="#" 
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
+              >
+                <Instagram size={18} />
+              </a>
+              <a 
+                href="#" 
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
+              >
+                <Facebook size={18} />
+              </a>
+              <a 
+                href="#" 
+                aria-label="LinkedIn"
+                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div>
+            <h3 className="font-heading text-xl text-[#f5f0e8] mb-6 tracking-wide">Navigation</h3>
+            <ul className="space-y-3.5">
+              {[
+                { name: "Home", href: "/" },
+                { name: "About Us", href: "/about" },
+                { name: "Our Services", href: "/services" },
+                { name: "Portfolio", href: "/portfolio" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    href={link.href} 
+                    className="text-[#9ba89e] hover:text-[#c9a84c] transition-colors flex items-center gap-1.5 group w-fit text-sm sm:text-base"
+                  >
+                    {link.name}
+                    <ArrowUpRight 
+                      size={14} 
+                      className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-200 text-[#c9a84c]" 
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Details */}
+          <div>
+            <h3 className="font-heading text-xl text-[#f5f0e8] mb-6 tracking-wide">Contact Us</h3>
+            <ul className="space-y-4 text-sm sm:text-base text-[#9ba89e]">
+              <li>
+                <p className="mb-1 text-[#f5f0e8] font-medium">Headquarters</p>
+                <p className="leading-relaxed">Kuwait</p>
+              </li>
+              <li>
+                <p className="mb-1 text-[#f5f0e8] font-medium">Inquiries</p>
+                <a href="mailto:info@df-interiors.net" className="hover:text-[#c9a84c] transition-colors block mb-2">
+                  info@df-interiors.net
+                </a>
+                <a href="tel:+96594479000" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +(965) 94479000
+                </a>
+                <a href="tel:+96550118191" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +(965) 50118191
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter Subscription */}
+          <div>
+            <h3 className="font-heading text-xl text-[#f5f0e8] mb-6 tracking-wide">Newsletter</h3>
+            <p className="text-[#9ba89e] mb-4 text-sm sm:text-base leading-relaxed">
+              Subscribe to receive design insights and studio updates.
+            </p>
+            <form className="relative" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="w-full bg-[#0a1409]/80 border border-[#243a19] rounded-lg py-3 px-4 text-[#f5f0e8] placeholder:text-[#6a9e72] focus:outline-none focus:border-[#c9a84c] transition-all duration-200 text-sm"
+                required
+              />
+              <button 
+                type="submit" 
+                className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[#c9a84c]/15 hover:bg-[#c9a84c] text-[#c9a84c] hover:text-black rounded-md transition-all duration-200 font-semibold text-xs tracking-wider uppercase"
+              >
+                Join
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright & Legal */}
+        <div className="pt-8 border-t border-[#243a19]/80 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-[#6a9e72] relative z-10">
+          <p>&copy; {new Date().getFullYear()} DF Interiors Kuwait. All rights reserved.</p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-[#c9a84c] transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-[#c9a84c] transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
