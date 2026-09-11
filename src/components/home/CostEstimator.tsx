@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { 
   Building, 
   Home, 
@@ -26,6 +26,47 @@ export default function CostEstimator() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [estimatedCost, setEstimatedCost] = useState({ min: 0, max: 0 });
 
+  // 3D Tilt Setup
+  const cardRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    let clientX, clientY;
+    if ('touches' in e) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else {
+      clientX = e.clientX;
+      clientY = e.clientY;
+    }
+
+    const mouseX = clientX - rect.left;
+    const mouseY = clientY - rect.top;
+    
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
 
@@ -43,16 +84,16 @@ export default function CostEstimator() {
     if (!areaSize || typeof areaSize === "string") return;
 
     let basePrice = 0;
-    if (propertyType === "Apartment") basePrice = 1500;
-    else if (propertyType === "Duplex") basePrice = 2000;
-    else if (propertyType === "Office") basePrice = 1800;
+    // Base prices in KWD (Dummy logic)
+    if (propertyType === "Apartment") basePrice = 15;
+    else if (propertyType === "Duplex") basePrice = 25;
+    else if (propertyType === "Office") basePrice = 20;
 
     let multiplier = 1;
     if (finishingType === "Premium") multiplier = 1.5;
     else if (finishingType === "Ultra-Luxury") multiplier = 2.5;
 
     const total = areaSize * basePrice * multiplier;
-    // Provide a range: -10% to +10%
     setEstimatedCost({
       min: Math.round(total * 0.9),
       max: Math.round(total * 1.1),
@@ -92,10 +133,10 @@ export default function CostEstimator() {
   };
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-IN', {
+    return new Intl.NumberFormat('en-KW', {
       style: 'currency',
-      currency: 'BDT',
-      maximumSignificantDigits: 3
+      currency: 'KWD',
+      maximumFractionDigits: 0
     }).format(value);
   };
 
@@ -117,26 +158,47 @@ export default function CostEstimator() {
   };
 
   return (
-    <section className="py-24 bg-neutral-50 dark:bg-neutral-900 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="estimator" className="section-padding bg-[var(--color-forest-900)] relative overflow-hidden perspective-[2000px]">
+      {/* Decorative noise/ambience */}
+      <div className="absolute inset-0 noise z-0"></div>
+
+      <div className="container-wide relative z-10 perspective-[2000px]">
         <SectionHeading 
           title="Cost Estimator"
           subtitle="Get a rough estimate for your interior design project in seconds."
           centered
         />
 
-        <div className="max-w-3xl mx-auto mt-12 bg-white dark:bg-neutral-800 rounded-3xl shadow-xl overflow-hidden border border-neutral-200 dark:border-neutral-700">
+        <motion.div 
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onTouchMove={handleMouseMove}
+          onTouchEnd={handleMouseLeave}
+          style={{
+            rotateX,
+            rotateY,
+            transformStyle: "preserve-3d",
+            backgroundImage: "linear-gradient(to bottom right, rgba(20, 28, 15, 0.85), rgba(10, 15, 8, 0.95)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1600')",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
+          className="max-w-3xl mx-auto mt-12 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.8),0_0_50px_rgba(201,168,76,0.15),inset_0_2px_1px_rgba(255,255,255,0.08),inset_0_-4px_1px_rgba(0,0,0,0.4)] border border-[rgba(201,168,76,0.25)] overflow-hidden transition-shadow duration-300 hover:shadow-[0_40px_70px_rgba(0,0,0,0.9),0_0_60px_rgba(201,168,76,0.25),inset_0_2px_1px_rgba(255,255,255,0.15),inset_0_-4px_1px_rgba(0,0,0,0.5)] cursor-default backdrop-blur-xl relative"
+        >
+          {/* Decorative glare for 3D effect */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none"></div>
+
           {/* Progress Bar */}
-          <div className="bg-neutral-100 dark:bg-neutral-700/50 h-2 w-full">
+          <div className="bg-black/40 h-2 w-full shadow-[inset_0_1px_3px_rgba(0,0,0,0.8)] relative z-10" style={{ transform: "translateZ(1px)" }}>
             <motion.div 
-              className="h-full bg-emerald-600 dark:bg-emerald-500"
+              className="h-full bg-[var(--color-gold-500)] shadow-[0_0_15px_var(--color-gold-500)]"
               initial={{ width: "20%" }}
               animate={{ width: `${(step / 5) * 100}%` }}
               transition={{ duration: 0.5 }}
             />
           </div>
 
-          <div className="p-8 md:p-12 min-h-[400px] flex flex-col justify-center">
+          <div className="p-8 md:p-12 min-h-[400px] flex flex-col justify-center relative z-10" style={{ transform: "translateZ(20px)" }}>
             <AnimatePresence mode="wait" custom={1}>
               {/* STEP 1: PROPERTY TYPE */}
               {step === 1 && (
@@ -150,7 +212,7 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-bold text-center text-neutral-900 dark:text-white mb-8">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-8 drop-shadow-md">
                     What type of property are you designing?
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -159,18 +221,22 @@ export default function CostEstimator() {
                       { id: "Duplex", icon: Home, label: "Duplex" },
                       { id: "Office", icon: Briefcase, label: "Office" },
                     ].map((item) => (
-                      <button
+                      <motion.button
+                        whileHover={{ y: -4, scale: 1.02 }}
+                        whileTap={{ y: 0, scale: 0.98 }}
                         key={item.id}
                         onClick={() => handlePropertySelect(item.id as PropertyType)}
-                        className={`p-6 rounded-2xl border-2 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:shadow-md ${
+                        className={`p-6 rounded-2xl border transition-colors duration-300 flex flex-col items-center justify-center gap-4 relative overflow-hidden ${
                           propertyType === item.id 
-                            ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400" 
-                            : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-emerald-300 dark:hover:border-emerald-700 text-neutral-700 dark:text-neutral-300"
+                            ? "border-[var(--color-gold-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-gold-500)]/20 to-[var(--color-gold-500)]/5 text-[var(--color-gold-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
+                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-gold-300)] hover:border-b-[var(--color-gold-300)] text-[var(--color-cream-100)] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
                         }`}
                       >
-                        <item.icon className="w-10 h-10" />
-                        <span className="font-semibold text-lg">{item.label}</span>
-                      </button>
+                        {/* Highlight line for 3D card edge */}
+                        <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/[0.05]"></div>
+                        <item.icon className="w-10 h-10 drop-shadow-lg" />
+                        <span className="font-semibold text-lg tracking-wide drop-shadow-md">{item.label}</span>
+                      </motion.button>
                     ))}
                   </div>
                 </motion.div>
@@ -188,14 +254,14 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6 max-w-md mx-auto w-full"
                 >
-                  <h3 className="text-2xl font-bold text-center text-neutral-900 dark:text-white mb-2">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-2">
                     What is the total area size?
                   </h3>
-                  <p className="text-center text-neutral-500 dark:text-neutral-400 mb-8">
+                  <p className="text-center text-[var(--color-cream-500)] mb-8 text-sm">
                     Enter the space in square feet (Sq Ft).
                   </p>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <div className="relative">
                       <input
                         type="number"
@@ -203,19 +269,19 @@ export default function CostEstimator() {
                         value={areaSize}
                         onChange={(e) => setAreaSize(e.target.value ? Number(e.target.value) : "")}
                         placeholder="e.g. 1500"
-                        className="w-full text-center text-3xl font-bold py-4 px-6 border-2 border-neutral-200 dark:border-neutral-700 rounded-2xl bg-neutral-50 dark:bg-neutral-900 focus:outline-none focus:border-emerald-500 transition-colors"
+                        className="input-field rounded-2xl text-center text-2xl md:text-3xl font-heading font-semibold py-4 pr-16 md:pr-20 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-shadow hover:shadow-[0_4px_25px_rgba(201,168,76,0.15)] focus:shadow-[0_4px_25px_rgba(201,168,76,0.25)]"
                       />
-                      <span className="absolute right-6 top-1/2 -translate-y-1/2 text-neutral-400 font-medium">
+                      <span className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-[var(--color-cream-700)] font-medium text-sm md:text-base">
                         Sq Ft
                       </span>
                     </div>
 
-                    <div className="flex gap-2 flex-wrap justify-center mt-4">
+                    <div className="flex gap-2 md:gap-3 flex-wrap justify-center mt-4">
                       {[1000, 1500, 2000, 3000].map((size) => (
                         <button
                           key={size}
                           onClick={() => setAreaSize(size)}
-                          className="px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-sm font-medium transition-colors"
+                          className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-[rgba(201,168,76,0.3)] hover:border-[var(--color-gold-500)] hover:text-[var(--color-gold-500)] hover:shadow-[0_4px_15px_rgba(201,168,76,0.2)] text-xs md:text-sm font-medium transition-all text-[var(--color-cream-300)] shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
                         >
                           {size} Sq Ft
                         </button>
@@ -223,16 +289,16 @@ export default function CostEstimator() {
                     </div>
                   </div>
 
-                  <div className="flex justify-between pt-8">
-                    <button onClick={prevStep} className="flex items-center text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <div className="flex flex-col-reverse sm:flex-row justify-between pt-8 items-center gap-4 sm:gap-0">
+                    <button onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                       <ArrowLeft className="w-4 h-4 mr-2" /> Back
                     </button>
                     <button 
                       onClick={nextStep}
                       disabled={!areaSize || areaSize < 100}
-                      className="flex items-center bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="btn-primary rounded-full disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto justify-center text-center"
                     >
-                      Next <ArrowRight className="w-4 h-4 ml-2" />
+                      <span>Next</span> <ArrowRight className="w-4 h-4 ml-1 relative z-10" />
                     </button>
                   </div>
                 </motion.div>
@@ -250,7 +316,7 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-bold text-center text-neutral-900 dark:text-white mb-8">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-8 drop-shadow-md">
                     Select your preferred finishing
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -259,22 +325,26 @@ export default function CostEstimator() {
                       { id: "Premium", label: "Premium", desc: "High-end materials, custom carpentry, mood lighting." },
                       { id: "Ultra-Luxury", label: "Ultra-Luxury", desc: "Imported materials, smart home integration, bespoke design." },
                     ].map((item) => (
-                      <button
+                      <motion.button
+                        whileHover={{ y: -4, scale: 1.02 }}
+                        whileTap={{ y: 0, scale: 0.98 }}
                         key={item.id}
                         onClick={() => handleFinishingSelect(item.id as FinishingType)}
-                        className={`p-6 text-left rounded-2xl border-2 transition-all duration-300 hover:shadow-md ${
+                        className={`p-6 text-left rounded-2xl border transition-colors duration-300 flex flex-col gap-2 relative overflow-hidden ${
                           finishingType === item.id 
-                            ? "border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-100" 
-                            : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:border-emerald-300 dark:hover:border-emerald-700"
+                            ? "border-[var(--color-gold-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-gold-500)]/20 to-[var(--color-gold-500)]/5 text-[var(--color-gold-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
+                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-gold-300)] hover:border-b-[var(--color-gold-300)] text-[var(--color-cream-100)] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
                         }`}
                       >
-                        <h4 className="font-bold text-lg mb-2">{item.label}</h4>
-                        <p className="text-sm text-neutral-500 dark:text-neutral-400">{item.desc}</p>
-                      </button>
+                        {/* Highlight line for 3D card edge */}
+                        <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/[0.05]"></div>
+                        <h4 className={`font-semibold text-lg tracking-wide drop-shadow-md ${finishingType === item.id ? "text-[var(--color-gold-500)]" : "text-[var(--color-cream-100)]"}`}>{item.label}</h4>
+                        <p className={`text-sm leading-relaxed ${finishingType === item.id ? "text-[var(--color-gold-300)]" : "text-[var(--color-cream-500)]"}`}>{item.desc}</p>
+                      </motion.button>
                     ))}
                   </div>
-                  <div className="flex justify-start pt-4">
-                    <button onClick={prevStep} className="flex items-center text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                  <div className="flex flex-col sm:flex-row justify-start pt-6">
+                    <button onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                       <ArrowLeft className="w-4 h-4 mr-2" /> Back
                     </button>
                   </div>
@@ -294,18 +364,18 @@ export default function CostEstimator() {
                   className="max-w-md mx-auto w-full"
                 >
                   <div className="text-center mb-8">
-                    <Calculator className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
+                    <Calculator className="w-12 h-12 text-[var(--color-gold-500)] mx-auto mb-4" />
+                    <h3 className="text-2xl font-heading font-medium text-[var(--color-cream-100)]">
                       Your estimate is ready!
                     </h3>
-                    <p className="text-neutral-500 dark:text-neutral-400 mt-2">
+                    <p className="text-[var(--color-cream-500)] mt-2 text-sm">
                       Enter your details to reveal the estimated cost instantly.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
                         Full Name
                       </label>
                       <input
@@ -313,12 +383,12 @@ export default function CostEstimator() {
                         required
                         value={leadData.name}
                         onChange={(e) => setLeadData({...leadData, name: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="input-field rounded-xl"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
                         Phone Number
                       </label>
                       <input
@@ -326,12 +396,12 @@ export default function CostEstimator() {
                         required
                         value={leadData.phone}
                         onChange={(e) => setLeadData({...leadData, phone: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="input-field rounded-xl"
                         placeholder="+880 1XXX XXXXXX"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
                         Email Address
                       </label>
                       <input
@@ -339,24 +409,24 @@ export default function CostEstimator() {
                         required
                         value={leadData.email}
                         onChange={(e) => setLeadData({...leadData, email: e.target.value})}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="input-field rounded-xl"
                         placeholder="john@example.com"
                       />
                     </div>
 
-                    <div className="flex justify-between items-center pt-6">
-                      <button type="button" onClick={prevStep} className="flex items-center text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                    <div className="flex flex-col-reverse sm:flex-row justify-between items-center pt-6 gap-4 sm:gap-0">
+                      <button type="button" onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </button>
                       <button 
                         type="submit"
                         disabled={isSubmitting || !leadData.name || !leadData.phone || !leadData.email}
-                        className="flex items-center bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-medium transition-colors disabled:opacity-50"
+                        className="btn-primary rounded-full disabled:opacity-50 w-full sm:w-auto justify-center"
                       >
                         {isSubmitting ? (
-                          <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Processing...</>
+                          <><Loader2 className="w-5 h-5 mr-2 animate-spin relative z-10" /> <span className="relative z-10">Processing...</span></>
                         ) : (
-                          <>Reveal Estimate <ArrowRight className="w-5 h-5 ml-2" /></>
+                          <><span className="relative z-10">Reveal Estimate</span> <ArrowRight className="w-5 h-5 ml-2 relative z-10" /></>
                         )}
                       </button>
                     </div>
@@ -380,23 +450,26 @@ export default function CostEstimator() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
-                    className="w-20 h-20 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-6"
+                    className="w-20 h-20 bg-[var(--color-gold-500)]/10 border border-[rgba(201,168,76,0.3)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(201,168,76,0.15)]"
                   >
-                    <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
+                    <CheckCircle2 className="w-10 h-10 text-[var(--color-gold-500)]" />
                   </motion.div>
 
-                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+                  <h3 className="text-2xl font-heading font-medium text-[var(--color-cream-100)] mb-2">
                     Estimated Cost Range
                   </h3>
-                  <p className="text-neutral-500 dark:text-neutral-400 mb-8">
+                  <p className="text-[var(--color-cream-500)] mb-8 text-sm">
                     Based on your requirements ({areaSize} sq ft, {finishingType} {propertyType})
                   </p>
 
-                  <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-3xl p-8 mb-8">
-                    <p className="text-4xl md:text-5xl font-extrabold text-emerald-600 dark:text-emerald-400">
-                      {formatCurrency(estimatedCost.min)} <span className="text-2xl text-neutral-400 font-medium mx-2">-</span> {formatCurrency(estimatedCost.max)}
+                  <div className="bg-black/20 border border-[rgba(201,168,76,0.15)] rounded-3xl p-8 mb-8 relative overflow-hidden">
+                    {/* Decorative gold glow */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[var(--color-gold-500)]/10 blur-[50px] rounded-full pointer-events-none"></div>
+                    
+                    <p className="text-3xl md:text-5xl font-heading font-bold text-gold-gradient relative z-10">
+                      {formatCurrency(estimatedCost.min)} <span className="text-2xl text-[var(--color-cream-700)] font-medium mx-2">-</span> {formatCurrency(estimatedCost.max)}
                     </p>
-                    <p className="text-sm text-neutral-500 mt-4">
+                    <p className="text-xs text-[var(--color-cream-700)] mt-6 relative z-10 max-w-sm mx-auto">
                       *This is a rough estimate. Actual costs may vary based on site conditions, specific materials chosen, and custom design elements.
                     </p>
                   </div>
@@ -410,22 +483,22 @@ export default function CostEstimator() {
                         setFinishingType("");
                         setLeadData({name: "", phone: "", email: ""});
                       }}
-                      className="px-6 py-3 rounded-full border border-neutral-300 dark:border-neutral-600 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+                      className="btn-outline rounded-full"
                     >
                       Start Over
                     </button>
                     <a 
                       href="/contact"
-                      className="px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors"
+                      className="btn-primary rounded-full"
                     >
-                      Book Free Consultation
+                      <span>Book Consultation</span>
                     </a>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -50,6 +50,7 @@ const navLinks = [
     ]
   },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/#estimator", label: "Estimate Cost" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -111,7 +112,7 @@ export default function Navbar() {
               priority
             />
             <h1 className="font-heading text-2xl md:text-3xl font-medium tracking-widest whitespace-nowrap text-[#f5f0e8] group-hover:text-[#e8c8c8] group-hover:drop-shadow-[0_0_10px_rgba(232,200,200,0.4)] transition-all duration-300">
-              DF Interiors<span className="text-[#b07b7b] group-hover:text-[#e8c8c8] transition-colors duration-300">.</span>
+              DF Interiors<span className="text-[#d49c9c] group-hover:text-[#e8c8c8] transition-colors duration-300">.</span>
             </h1>
           </Link>
 
@@ -200,6 +201,17 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => {
+                    if (link.href.startsWith("/#") && pathname === "/") {
+                      e.preventDefault();
+                      const targetId = link.href.split("#")[1];
+                      const element = document.getElementById(targetId);
+                      if (element) {
+                        const y = element.getBoundingClientRect().top + window.scrollY - 100; // Offset for navbar
+                        window.scrollTo({ top: y, behavior: "smooth" });
+                      }
+                    }
+                  }}
                   className={`text-sm tracking-widest uppercase transition-colors duration-300 relative ${
                     isActive
                       ? "text-[#c9a84c]"
@@ -271,7 +283,20 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      if (link.href.startsWith("/#") && pathname === "/") {
+                        e.preventDefault();
+                        const targetId = link.href.split("#")[1];
+                        setTimeout(() => {
+                          const element = document.getElementById(targetId);
+                          if (element) {
+                            const y = element.getBoundingClientRect().top + window.scrollY - 100;
+                            window.scrollTo({ top: y, behavior: "smooth" });
+                          }
+                        }, 300); // Wait for menu to close
+                      }
+                    }}
                     className={`font-heading text-3xl sm:text-4xl ${
                       pathname === link.href || pathname.startsWith(link.href + "/")
                         ? "text-[#c9a84c]"
