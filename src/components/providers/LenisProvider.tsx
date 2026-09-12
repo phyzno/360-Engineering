@@ -21,6 +21,9 @@ export default function LenisProvider({
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
+    
+    // Expose to window for global access (e.g. Navbar smooth scroll)
+    (window as any).lenis = lenisRef.current;
 
     let animationFrameId: number;
 

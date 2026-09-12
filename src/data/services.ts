@@ -28,7 +28,7 @@ export const servicesData: ServiceDetails[] = [
     category: "commercial",
     title: "Beauty Salon Design",
     subtitle: "Luxurious environments that elevate the client experience",
-    heroImage: "https://images.unsplash.com/photo-1521590832167-7bfc1748b565?q=80&w=2070&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=400&auto=format&fit=crop",
     description: "We design premium beauty salons that balance aesthetic elegance with functional efficiency. Our approach focuses on creating an oasis of relaxation for clients while ensuring practical workspaces for professionals, incorporating optimal lighting, durable luxury materials, and seamless spatial flow.",
     features: [
       { title: "Specialized Lighting Design", description: "Flattering, color-accurate lighting essential for hair and makeup services." },

@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
     ],
     // Serve images in modern formats for best performance
     formats: ["image/avif", "image/webp"],
-    qualities: [25, 50, 75, 100],
+    qualities: [25, 50, 75, 85, 90, 100],
   },
 };
 

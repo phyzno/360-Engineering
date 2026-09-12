@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { projects, Project } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 
 const categories = ["All", "Residential", "Commercial", "Renovation"];
 

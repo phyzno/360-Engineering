@@ -12,8 +12,8 @@ export const projects = [
       clientReq: "A seamless connection between the indoors and the lush garden outside, focusing on natural light and minimalistic elegance.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop", // placeholder
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop", // placeholder
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png", // placeholder
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png", // placeholder
       final: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -28,7 +28,7 @@ export const projects = [
     title: "Urban Loft",
     category: "Residential",
     subcategory: "Bedroom",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=400&auto=format&fit=crop",
     overview: {
       location: "Salmiya, Kuwait",
       sqft: "2,200 sq ft",
@@ -36,9 +36,9 @@ export const projects = [
       clientReq: "Industrial chic with cozy elements, maximizing open space while retaining private zones.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Exposed Brick", description: "Original walls treated and sealed." },
@@ -59,8 +59,8 @@ export const projects = [
       clientReq: "A calm, nature-inspired environment for a boutique coffee shop.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -74,7 +74,7 @@ export const projects = [
     title: "Minimalist Haven",
     category: "Renovation",
     subcategory: "Kitchen",
-    image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=400&auto=format&fit=crop",
     overview: {
       location: "Hawally, Kuwait",
       sqft: "3,000 sq ft",
@@ -82,9 +82,9 @@ export const projects = [
       clientReq: "Complete overhaul of a 90s apartment into a modern, clutter-free sanctuary.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "White Oak", description: "Flooring and hidden storage panels." },
@@ -105,8 +105,8 @@ export const projects = [
       clientReq: "A modern, biophilic office space that promotes employee well-being and collaboration.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -127,8 +127,8 @@ export const projects = [
       clientReq: "An upscale dining experience with moody lighting and premium textures.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -149,35 +149,13 @@ export const projects = [
       clientReq: "Transforming an outdated bathroom into a spa-like retreat.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
       { name: "Travertine Stone", description: "Floor and wall tiles." },
       { name: "Brushed Nickel", description: "Plumbing fixtures." }
-    ]
-  },
-  {
-    slug: "heritage-revival",
-    title: "Heritage Revival",
-    category: "Renovation",
-    subcategory: "Living",
-    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Farwaniya, Kuwait",
-      sqft: "1,200 sq ft",
-      timeline: "4 Months",
-      clientReq: "Restoring the original charm of a mid-century home while introducing modern comforts.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Reclaimed Wood", description: "Ceiling beams and flooring." },
-      { name: "Vintage Brass", description: "Lighting and hardware." }
     ]
   },
   {
@@ -193,8 +171,8 @@ export const projects = [
       clientReq: "A luxurious and contemporary penthouse with panoramic city views.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -215,8 +193,8 @@ export const projects = [
       clientReq: "A minimalist retail space designed to highlight the high-end merchandise.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [
@@ -226,33 +204,11 @@ export const projects = [
   }
 ,
   {
-    slug: "luminary-loft",
-    title: "Luminary Loft",
-    category: "Residential",
-    subcategory: "Living",
-    image: "https://images.unsplash.com/photo-1600210492486-71d054a162d3?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Salwa, Kuwait",
-      sqft: "2,000 sq ft",
-      timeline: "5 Months",
-      clientReq: "A bright and airy loft space.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1600210492486-71d054a162d3?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
     slug: "velvet-lounge",
     title: "Velvet Lounge",
     category: "Commercial",
     subcategory: "Lounge",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1779219505918-970ca739ac78?w=400&auto=format&fit=crop",
     overview: {
       location: "Al Zahra, Kuwait",
       sqft: "3,200 sq ft",
@@ -260,9 +216,9 @@ export const projects = [
       clientReq: "An exclusive VIP lounge.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1779219505918-970ca739ac78?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -274,7 +230,7 @@ export const projects = [
     title: "Azure Villa",
     category: "Residential",
     subcategory: "Villa",
-    image: "https://images.unsplash.com/photo-1598928506311-c55dd1438965?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fit=crop",
     overview: {
       location: "Sharq, Kuwait",
       sqft: "8,000 sq ft",
@@ -282,31 +238,9 @@ export const projects = [
       clientReq: "A modern villa with luxury touches.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1598928506311-c55dd1438965?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "rustic-charm",
-    title: "Rustic Charm",
-    category: "Renovation",
-    subcategory: "Kitchen",
-    image: "https://images.unsplash.com/photo-1505691938895-1758d7bef511?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Al Qurain, Kuwait",
-      sqft: "400 sq ft",
-      timeline: "2 Months",
-      clientReq: "A warm, rustic kitchen update.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1505691938895-1758d7bef511?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -318,7 +252,7 @@ export const projects = [
     title: "Nova Studio",
     category: "Commercial",
     subcategory: "Studio",
-    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?w=400&auto=format&fit=crop",
     overview: {
       location: "Jabriya, Kuwait",
       sqft: "1,500 sq ft",
@@ -326,31 +260,9 @@ export const projects = [
       clientReq: "A creative workspace for designers.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "opulent-suite",
-    title: "Opulent Suite",
-    category: "Residential",
-    subcategory: "Bedroom",
-    image: "https://images.unsplash.com/photo-1491336477066-ce1c676d78aa?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Mishref, Kuwait",
-      sqft: "600 sq ft",
-      timeline: "1 Month",
-      clientReq: "A master bedroom fit for royalty.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1491336477066-ce1c676d78aa?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -362,7 +274,7 @@ export const projects = [
     title: "Eco Retreat",
     category: "Residential",
     subcategory: "Patio",
-    image: "https://images.unsplash.com/photo-1501183638710-841b581c00fa?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1621506821957-1b50ab7787a4?w=400&auto=format&fit=crop",
     overview: {
       location: "The Avenues, Kuwait",
       sqft: "1,200 sq ft",
@@ -370,9 +282,9 @@ export const projects = [
       clientReq: "A sustainable outdoor living space.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1501183638710-841b581c00fa?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1621506821957-1b50ab7787a4?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -384,7 +296,7 @@ export const projects = [
     title: "Grand Foyer",
     category: "Renovation",
     subcategory: "Entrance",
-    image: "https://images.unsplash.com/photo-1502005097973-6a706b4dc5cf?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1768096865523-ca23d8811107?w=400&auto=format&fit=crop",
     overview: {
       location: "Mahboula, Kuwait",
       sqft: "800 sq ft",
@@ -392,97 +304,9 @@ export const projects = [
       clientReq: "A dramatic and welcoming entrance.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1502005097973-6a706b4dc5cf?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "minimal-hq",
-    title: "Minimal HQ",
-    category: "Commercial",
-    subcategory: "Office",
-    image: "https://images.unsplash.com/photo-1497366811353-685644d84b9e?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Kuwait City, Kuwait",
-      sqft: "10,000 sq ft",
-      timeline: "8 Months",
-      clientReq: "A sleek, minimalist corporate office.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1497366811353-685644d84b9e?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "serene-spa",
-    title: "Serene Spa",
-    category: "Commercial",
-    subcategory: "Wellness",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Salmiya, Kuwait",
-      sqft: "4,500 sq ft",
-      timeline: "6 Months",
-      clientReq: "A calming environment for relaxation.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "culinary-art",
-    title: "Culinary Art",
-    category: "Renovation",
-    subcategory: "Kitchen",
-    image: "https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Shuwaikh, Kuwait",
-      sqft: "350 sq ft",
-      timeline: "2 Months",
-      clientReq: "A chef's dream kitchen upgrade.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "vintage-cafe",
-    title: "Vintage Café",
-    category: "Commercial",
-    subcategory: "Café",
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Hawally, Kuwait",
-      sqft: "1,200 sq ft",
-      timeline: "3 Months",
-      clientReq: "A cozy café with vintage aesthetics.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1768096865523-ca23d8811107?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -494,7 +318,7 @@ export const projects = [
     title: "Horizon Deck",
     category: "Residential",
     subcategory: "Balcony",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1591944438730-23dbc9076a9a?w=400&auto=format&fit=crop",
     overview: {
       location: "Al Asimah, Kuwait",
       sqft: "500 sq ft",
@@ -502,141 +326,9 @@ export const projects = [
       clientReq: "A panoramic outdoor seating area.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "luna-boutique",
-    title: "Luna Boutique",
-    category: "Commercial",
-    subcategory: "Retail",
-    image: "https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Messila, Kuwait",
-      sqft: "2,000 sq ft",
-      timeline: "4 Months",
-      clientReq: "A chic fashion retail space.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "urban-oasis",
-    title: "Urban Oasis",
-    category: "Residential",
-    subcategory: "Living",
-    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd64de95?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Ahmadi, Kuwait",
-      sqft: "2,500 sq ft",
-      timeline: "5 Months",
-      clientReq: "A lush, indoor-plant filled living area.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1600607688969-a5bfcd64de95?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "prism-gallery",
-    title: "Prism Gallery",
-    category: "Commercial",
-    subcategory: "Gallery",
-    image: "https://images.unsplash.com/photo-1618219908412-a29a1b9461d3?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Farwaniya, Kuwait",
-      sqft: "5,000 sq ft",
-      timeline: "7 Months",
-      clientReq: "An open, light-filled art exhibition space.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1618219908412-a29a1b9461d3?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "solstice-dining",
-    title: "Solstice Dining",
-    category: "Residential",
-    subcategory: "Dining",
-    image: "https://images.unsplash.com/photo-1618220179420-f365d9eb1760?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Wafra, Kuwait",
-      sqft: "450 sq ft",
-      timeline: "2 Months",
-      clientReq: "An elegant space for family gatherings.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1618220179420-f365d9eb1760?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "apex-boardroom",
-    title: "Apex Boardroom",
-    category: "Commercial",
-    subcategory: "Office",
-    image: "https://images.unsplash.com/photo-1618220048455-ee5b99a9a3b6?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Abdali, Kuwait",
-      sqft: "800 sq ft",
-      timeline: "2 Months",
-      clientReq: "A state-of-the-art meeting room.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1618220048455-ee5b99a9a3b6?q=80&w=1200&auto=format&fit=crop",
-    },
-    materials: [
-      { name: "Premium Material", description: "High-end finish tailored for the space." },
-      { name: "Custom Fixtures", description: "Exclusive hardware and lighting." }
-    ]
-  },
-  {
-    slug: "harmony-house",
-    title: "Harmony House",
-    category: "Residential",
-    subcategory: "Living",
-    image: "https://images.unsplash.com/photo-1598928636135-d146006fa4ae?q=80&w=1200&auto=format&fit=crop",
-    overview: {
-      location: "Salwa, Kuwait",
-      sqft: "1,800 sq ft",
-      timeline: "4 Months",
-      clientReq: "A balanced and peaceful family home.",
-    },
-    blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
-      final: "https://images.unsplash.com/photo-1598928636135-d146006fa4ae?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
+      final: "https://images.unsplash.com/photo-1591944438730-23dbc9076a9a?w=400&auto=format&fit=crop",
     },
     materials: [
       { name: "Premium Material", description: "High-end finish tailored for the space." },
@@ -656,8 +348,8 @@ export const projects = [
       clientReq: "A traditional home library and study.",
     },
     blueprint: {
-      plan2d: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-      render3d: "https://images.unsplash.com/photo-1600566753086-00f18efc2294?q=80&w=1200&auto=format&fit=crop",
+      plan2d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223307/43a16c02-f9e6-4a05-b777-bd5e5d855e0a.png",
+      render3d: "https://res.cloudinary.com/djr5ztmep/image/upload/v1789223627/a4b604b9-23d5-48d4-bd56-16b278be3b0e.png",
       final: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=1200&auto=format&fit=crop",
     },
     materials: [

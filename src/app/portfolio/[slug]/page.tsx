@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MapPin, Maximize, Clock } from "lucide-react";
 import PageTransition from "@/components/ui/PageTransition";
 import { projects } from "@/data/projects";
 
@@ -56,31 +56,59 @@ export default async function ProjectPage({ params }: PageProps) {
       </section>
 
       {/* Project Overview */}
-      <section className="section-padding bg-[#0f1a0a]">
+      <section className="section-padding bg-[var(--color-forest-900)]">
         <div className="container-wide">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <h2 className="font-heading text-3xl text-[#f5f0e8] mb-6">Project Overview</h2>
-              <p className="text-[#d4c5ae] text-lg leading-relaxed">
-                {project.overview.clientReq}
-              </p>
-            </div>
-            <div className="bg-[#162411] p-8 rounded-lg border border-[#243a19]">
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-[#9ba89e] text-sm uppercase tracking-wider mb-1">Location</h4>
-                  <p className="text-[#f5f0e8] font-medium">{project.overview.location}</p>
+          <div className="max-w-4xl">
+            <h2 className="font-heading text-3xl md:text-4xl text-[var(--color-cream-100)] mb-6">Project Overview</h2>
+            <p className="text-[var(--color-cream-300)] text-lg leading-relaxed mb-12">
+              {project.overview.clientReq}
+            </p>
+          </div>
+          
+          {/* Centered Horizontal Stats with Gold Dividers */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 pt-10 mt-6 border-t border-[rgba(201,168,76,0.15)] w-full">
+            
+            {/* Location */}
+            <div className="group flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto">
+              <div className="flex items-center gap-3 mb-2 justify-center md:justify-start">
+                <div className="p-2 rounded-full bg-[var(--color-gold-500)]/10 text-[var(--color-gold-500)] transition-colors group-hover:bg-[var(--color-gold-500)]/20">
+                  <MapPin size={18} strokeWidth={1.5} />
                 </div>
-                <div>
-                  <h4 className="text-[#9ba89e] text-sm uppercase tracking-wider mb-1">Square Footage</h4>
-                  <p className="text-[#f5f0e8] font-medium">{project.overview.sqft}</p>
-                </div>
-                <div>
-                  <h4 className="text-[#9ba89e] text-sm uppercase tracking-wider mb-1">Timeline</h4>
-                  <p className="text-[#f5f0e8] font-medium">{project.overview.timeline}</p>
-                </div>
+                <h4 className="text-[var(--color-cream-700)] text-xs uppercase tracking-[0.15em] font-semibold">Location</h4>
               </div>
+              <p className="text-[var(--color-cream-100)] text-lg font-medium md:pl-12">{project.overview.location}</p>
             </div>
+            
+            {/* Divider 1 */}
+            <div className="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-[var(--color-gold-500)]/40 to-transparent"></div>
+            <div className="block md:hidden h-px w-3/4 mx-auto bg-gradient-to-r from-transparent via-[var(--color-gold-500)]/40 to-transparent"></div>
+            
+            {/* Area */}
+            <div className="group flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto">
+              <div className="flex items-center gap-3 mb-2 justify-center md:justify-start">
+                <div className="p-2 rounded-full bg-[var(--color-gold-500)]/10 text-[var(--color-gold-500)] transition-colors group-hover:bg-[var(--color-gold-500)]/20">
+                  <Maximize size={18} strokeWidth={1.5} />
+                </div>
+                <h4 className="text-[var(--color-cream-700)] text-xs uppercase tracking-[0.15em] font-semibold">Area</h4>
+              </div>
+              <p className="text-[var(--color-cream-100)] text-lg font-medium md:pl-12">{project.overview.sqft}</p>
+            </div>
+            
+            {/* Divider 2 */}
+            <div className="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-[var(--color-gold-500)]/40 to-transparent"></div>
+            <div className="block md:hidden h-px w-3/4 mx-auto bg-gradient-to-r from-transparent via-[var(--color-gold-500)]/40 to-transparent"></div>
+            
+            {/* Timeline */}
+            <div className="group flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto">
+              <div className="flex items-center gap-3 mb-2 justify-center md:justify-start">
+                <div className="p-2 rounded-full bg-[var(--color-gold-500)]/10 text-[var(--color-gold-500)] transition-colors group-hover:bg-[var(--color-gold-500)]/20">
+                  <Clock size={18} strokeWidth={1.5} />
+                </div>
+                <h4 className="text-[var(--color-cream-700)] text-xs uppercase tracking-[0.15em] font-semibold">Timeline</h4>
+              </div>
+              <p className="text-[var(--color-cream-100)] text-lg font-medium md:pl-12">{project.overview.timeline}</p>
+            </div>
+            
           </div>
         </div>
       </section>

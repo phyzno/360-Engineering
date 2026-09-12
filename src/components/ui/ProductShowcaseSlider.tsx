@@ -104,14 +104,14 @@ export default function ProductShowcaseSlider({ items }: ProductShowcaseSliderPr
                 key={activeVariant.colorName}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="font-heading text-xs md:text-sm tracking-[0.2em] text-[#0a1206] uppercase bg-white/90 backdrop-blur px-4 py-2 rounded-md shadow-sm border border-black/5"
+                className="font-heading text-[10px] md:text-sm tracking-[0.2em] text-[#0a1206] font-bold uppercase drop-shadow-md"
               >
                 {activeVariant.colorName}
               </motion.p>
             </div>
             
             <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
-              <h3 className="font-heading text-xs md:text-sm tracking-widest text-[#0a1206]/80 uppercase bg-white/90 backdrop-blur px-4 py-2 rounded-md shadow-sm border border-black/5">
+              <h3 className="font-heading text-[10px] md:text-sm tracking-widest text-[#0a1206] font-bold uppercase drop-shadow-md text-right max-w-[200px] md:max-w-none">
                 {currentItem.name}
               </h3>
             </div>
