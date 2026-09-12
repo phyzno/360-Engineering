@@ -7,7 +7,24 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
-const navLinks = [
+interface SubSubItem {
+  href: string;
+  label: string;
+}
+
+interface SubItem {
+  href: string;
+  label: string;
+  subSubItems?: SubSubItem[];
+}
+
+interface NavItem {
+  href: string;
+  label: string;
+  subItems?: SubItem[];
+}
+
+const navLinks: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { 
@@ -47,6 +64,18 @@ const navLinks = [
           { href: "/services/renovation/office", label: "Office Renovation" },
         ]
       },
+    ]
+  },
+  { 
+    href: "/products", 
+    label: "Products",
+    subItems: [
+      { href: "/products/curtains", label: "Curtains" },
+      { href: "/products/sofa", label: "Sofa" },
+      { href: "/products/tiles", label: "Tiles" },
+      { href: "/products/rugs", label: "Rugs & Carpets" },
+      { href: "/products/lighting", label: "Premium Lighting" },
+      { href: "/products/wallpaper", label: "Wallpapers" },
     ]
   },
   { href: "/portfolio", label: "Portfolio" },
@@ -102,18 +131,20 @@ export default function Navbar() {
         }`}
       >
         <div className="container-wide flex items-center justify-between">
-          <Link href="/" className="group relative z-50 flex items-center gap-3">
+          <Link 
+            href="/" 
+            className="group relative z-50 flex items-center" 
+            aria-label="DF Interiors"
+          >
             <Image 
               src="/df-logo.png" 
               alt="DF Interiors" 
-              width={52} 
-              height={52} 
-              className="object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105" 
+              width={80} 
+              height={80} 
+              className="w-14 h-14 sm:w-16 sm:h-16 md:w-[72px] md:h-[72px] lg:w-[76px] lg:h-[76px] object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105" 
               priority
             />
-            <h1 className="font-heading text-2xl md:text-3xl font-medium tracking-widest whitespace-nowrap text-[#f5f0e8] group-hover:text-[#e8c8c8] group-hover:drop-shadow-[0_0_10px_rgba(232,200,200,0.4)] transition-all duration-300">
-              DF Interiors<span className="text-[#d49c9c] group-hover:text-[#e8c8c8] transition-colors duration-300">.</span>
-            </h1>
+            <span className="sr-only">DF Interiors</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -122,6 +153,7 @@ export default function Navbar() {
               const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
               
               if (link.subItems) {
+                const subItems = link.subItems;
                 return (
                   <div key={link.href} className="relative group/navItem py-2">
                     <Link
@@ -153,7 +185,7 @@ export default function Navbar() {
                     {/* First Level Dropdown */}
                     <div className={`absolute top-full left-0 mt-0 w-56 opacity-0 invisible group-hover/navItem:opacity-100 group-hover/navItem:visible transition-all duration-300 translate-y-2 group-hover/navItem:translate-y-0 z-50 pt-4 ${activeDropdown === link.label ? '!opacity-100 !visible !translate-y-0' : ''}`}>
                       <div className="bg-[#1a2912]/95 backdrop-blur-xl border border-[#c9a84c]/20 shadow-xl rounded-md flex flex-col">
-                        {link.subItems.map((sub, idx) => (
+                        {subItems.map((sub, idx) => (
                           <div key={idx} className="relative group/subItem">
                             <Link
                               href={sub.href}
@@ -166,8 +198,8 @@ export default function Navbar() {
                                 }
                               }}
                               className={`px-5 py-4 text-sm tracking-widest uppercase text-[#f5f0e8] hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors flex items-center justify-between ${
-                                idx !== link.subItems.length - 1 ? "border-b border-[#c9a84c]/10" : ""
-                              } ${idx === 0 ? "rounded-t-md" : ""} ${idx === link.subItems.length - 1 ? "rounded-b-md" : ""}`}
+                                idx !== subItems.length - 1 ? "border-b border-[#c9a84c]/10" : ""
+                              } ${idx === 0 ? "rounded-t-md" : ""} ${idx === subItems.length - 1 ? "rounded-b-md" : ""}`}
                             >
                               {sub.label}
                               {sub.subSubItems && <ChevronRight size={14} />}
@@ -175,7 +207,7 @@ export default function Navbar() {
                             
                             {/* Second Level Dropdown */}
                             {sub.subSubItems && (
-                              <div className={`absolute top-0 right-full mr-0 w-64 opacity-0 invisible group-hover/subItem:opacity-100 group-hover/subItem:visible transition-all duration-300 translate-x-2 group-hover/subItem:translate-x-0 z-50 pr-1 ${activeSubDropdown === sub.label ? '!opacity-100 !visible !translate-x-0' : ''}`}>
+                              <div className={`absolute top-0 left-full ml-0 w-64 opacity-0 invisible group-hover/subItem:opacity-100 group-hover/subItem:visible transition-all duration-300 -translate-x-2 group-hover/subItem:translate-x-0 z-50 pl-1 ${activeSubDropdown === sub.label ? '!opacity-100 !visible !translate-x-0' : ''}`}>
                                 <div className="bg-[#1a2912]/95 backdrop-blur-xl border border-[#c9a84c]/20 shadow-xl rounded-md overflow-hidden flex flex-col">
                                   {sub.subSubItems.map((subSub, subIdx) => (
                                     <Link

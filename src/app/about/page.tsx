@@ -50,7 +50,7 @@ export default function AboutPage() {
             </div>
             <div className="order-1 md:order-2 relative h-[500px] w-full img-overlay">
               <Image
-                src="https://images.unsplash.com/photo-1599427303058-f04cbca47afc?q=80&w=1000&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1706689656095-168768dc20a5?q=80&w=880&auto=format&fit=crop"
                 alt="Our design studio"
                 fill
                 className="object-cover"

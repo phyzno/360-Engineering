@@ -9,6 +9,7 @@ import Workflow from "@/components/home/Workflow";
 import Testimonials from "@/components/home/Testimonials";
 import CtaBanner from "@/components/home/CtaBanner";
 import PageTransition from "@/components/ui/PageTransition";
+import FeaturedProduct from "@/components/home/FeaturedProduct";
 
 export default function Home() {
   return (
@@ -27,6 +28,9 @@ export default function Home() {
       
       {/* Services Overview */}
       <ServicesPreview />
+      
+      {/* Featured Product */}
+      <FeaturedProduct />
       
       {/* Portfolio Highlight */}
       <PortfolioShowcase />
