@@ -59,21 +59,27 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://www.instagram.com/df.interiors.kw" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
               >
                 <Instagram size={18} />
               </a>
               <a 
-                href="#" 
+                href="https://www.facebook.com" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
               >
                 <Facebook size={18} />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com" 
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
               >
