@@ -127,25 +127,24 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "py-1 bg-[#0a1206]/30 backdrop-blur-xl border-b border-[#c9a84c]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
-            : "py-2 bg-transparent"
+            ? "py-5 bg-[#0a1206]/30 backdrop-blur-xl border-b border-[#c9a84c]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+            : "py-6 bg-transparent"
         }`}
       >
         <div className="container-wide flex items-center justify-between">
           <Link 
             href="/" 
-            className="group relative z-50 flex items-center" 
-            aria-label="DF Interiors"
+            className="group relative z-50 flex flex-col items-center justify-center w-max -mt-5 md:-mt-8 -mb-2" 
+            aria-label="Arch Concept"
           >
-            <Image 
-              src="/df-logo.png" 
-              alt="DF Interiors" 
-              width={120} 
-              height={120} 
-              className="w-20 h-20 sm:w-24 sm:h-24 md:w-[96px] md:h-[96px] lg:w-[110px] lg:h-[110px] object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105" 
-              priority
-            />
-            <span className="sr-only">DF Interiors</span>
+            <div className="w-[100px] h-[100px] md:w-[120px] md:h-[120px] relative z-10">
+              <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="120px" priority />
+            </div>
+            <div className="w-[60px] md:w-[72px] flex justify-between items-center -mt-7 md:-mt-8 relative z-20">
+              <span className="font-heading text-[7px] md:text-[9px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
+                <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[2px] md:w-[3px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

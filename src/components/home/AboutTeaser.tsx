@@ -22,7 +22,7 @@ export default function AboutTeaser() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop"
-                alt="DF Interiors Design Studio"
+                alt="Arch Concept Design Studio"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -47,14 +47,13 @@ export default function AboutTeaser() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-[#d4c5ae] mb-6 text-lg">
-                At DF Interiors, we believe that true luxury lies in the delicate balance 
+                At Arch Concept, one of Bangladesh's premier interior design firms, we believe that true luxury lies in the delicate balance 
                 between bold architectural lines and the organic, calming presence of nature.
               </p>
               <p className="text-[#9ba89e] mb-10 leading-relaxed">
                 Founded on the principle that our environments deeply impact our well-being, 
-                our studio specializes in creating bespoke interiors that feel both expansive 
-                and intimately grounding. Using sustainable materials, earthy palettes, 
-                and masterful lighting, we transform ordinary rooms into sanctuaries.
+                our Dhaka-based studio specializes in creating bespoke interiors for residential and commercial spaces across the country. Using premium materials, contextual design, 
+                and masterful lighting, we transform ordinary spaces into extraordinary sanctuaries.
               </p>
               
               <Link href="/about" className="btn-outline">

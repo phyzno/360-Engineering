@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @source "../";
 /* ============================================
-   DF Interiors — DESIGN SYSTEM
+   Arch Concept — DESIGN SYSTEM
    Forest Luxury Color Palette
    ============================================ */
 
 @theme {
-  /* DF Interiors Color Palette (Mapped to existing variables for compatibility) */
+  /* Arch Concept Color Palette (Mapped to existing variables for compatibility) */
   --color-forest-950: #000000;
   --color-forest-900: #0a0a0a;
 

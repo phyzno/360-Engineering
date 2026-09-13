@@ -4,7 +4,7 @@ import PageTransition from "@/components/ui/PageTransition";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Products | DF Interiors",
+  title: "Products | Arch Concept",
   description: "Explore our premium selection of interior products including curtains, sofas, and tiles.",
 };
 

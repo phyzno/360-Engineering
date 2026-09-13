@@ -6,7 +6,7 @@ export const projects = [
     subcategory: "Living",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Kuwait City, Kuwait",
+      location: "Dhaka, Bangladesh",
       sqft: "4,500 sq ft",
       timeline: "8 Months",
       clientReq: "A seamless connection between the indoors and the lush garden outside, focusing on natural light and minimalistic elegance.",
@@ -30,7 +30,7 @@ export const projects = [
     subcategory: "Bedroom",
     image: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=400&auto=format&fit=crop",
     overview: {
-      location: "Salmiya, Kuwait",
+      location: "Gulshan, Bangladesh",
       sqft: "2,200 sq ft",
       timeline: "5 Months",
       clientReq: "Industrial chic with cozy elements, maximizing open space while retaining private zones.",
@@ -53,7 +53,7 @@ export const projects = [
     subcategory: "Café",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Shuwaikh, Kuwait",
+      location: "Banani, Bangladesh",
       sqft: "1,800 sq ft",
       timeline: "4 Months",
       clientReq: "A calm, nature-inspired environment for a boutique coffee shop.",
@@ -76,7 +76,7 @@ export const projects = [
     subcategory: "Kitchen",
     image: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=400&auto=format&fit=crop",
     overview: {
-      location: "Hawally, Kuwait",
+      location: "Dhanmondi, Bangladesh",
       sqft: "3,000 sq ft",
       timeline: "6 Months",
       clientReq: "Complete overhaul of a 90s apartment into a modern, clutter-free sanctuary.",
@@ -99,7 +99,7 @@ export const projects = [
     subcategory: "Office",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Al Asimah, Kuwait",
+      location: "Uttara, Bangladesh",
       sqft: "5,000 sq ft",
       timeline: "7 Months",
       clientReq: "A modern, biophilic office space that promotes employee well-being and collaboration.",
@@ -121,7 +121,7 @@ export const projects = [
     subcategory: "Restaurant",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Messila, Kuwait",
+      location: "Baridhara, Bangladesh",
       sqft: "3,500 sq ft",
       timeline: "6 Months",
       clientReq: "An upscale dining experience with moody lighting and premium textures.",
@@ -143,7 +143,7 @@ export const projects = [
     subcategory: "Bathroom",
     image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Ahmadi, Kuwait",
+      location: "Chittagong, Bangladesh",
       sqft: "250 sq ft",
       timeline: "2 Months",
       clientReq: "Transforming an outdated bathroom into a spa-like retreat.",
@@ -165,7 +165,7 @@ export const projects = [
     subcategory: "Apartment",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Wafra, Kuwait",
+      location: "Sylhet, Bangladesh",
       sqft: "6,000 sq ft",
       timeline: "10 Months",
       clientReq: "A luxurious and contemporary penthouse with panoramic city views.",
@@ -187,7 +187,7 @@ export const projects = [
     subcategory: "Retail",
     image: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Abdali, Kuwait",
+      location: "Rajshahi, Bangladesh",
       sqft: "1,500 sq ft",
       timeline: "3 Months",
       clientReq: "A minimalist retail space designed to highlight the high-end merchandise.",
@@ -210,7 +210,7 @@ export const projects = [
     subcategory: "Lounge",
     image: "https://images.unsplash.com/photo-1779219505918-970ca739ac78?w=400&auto=format&fit=crop",
     overview: {
-      location: "Al Zahra, Kuwait",
+      location: "Bashundhara, Bangladesh",
       sqft: "3,200 sq ft",
       timeline: "4 Months",
       clientReq: "An exclusive VIP lounge.",
@@ -232,7 +232,7 @@ export const projects = [
     subcategory: "Villa",
     image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fit=crop",
     overview: {
-      location: "Sharq, Kuwait",
+      location: "Motijheel, Bangladesh",
       sqft: "8,000 sq ft",
       timeline: "12 Months",
       clientReq: "A modern villa with luxury touches.",
@@ -254,7 +254,7 @@ export const projects = [
     subcategory: "Studio",
     image: "https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?w=400&auto=format&fit=crop",
     overview: {
-      location: "Jabriya, Kuwait",
+      location: "Mirpur, Bangladesh",
       sqft: "1,500 sq ft",
       timeline: "3 Months",
       clientReq: "A creative workspace for designers.",
@@ -276,7 +276,7 @@ export const projects = [
     subcategory: "Patio",
     image: "https://images.unsplash.com/photo-1621506821957-1b50ab7787a4?w=400&auto=format&fit=crop",
     overview: {
-      location: "The Avenues, Kuwait",
+      location: "Jamuna Future Park, Bangladesh",
       sqft: "1,200 sq ft",
       timeline: "4 Months",
       clientReq: "A sustainable outdoor living space.",
@@ -298,7 +298,7 @@ export const projects = [
     subcategory: "Entrance",
     image: "https://images.unsplash.com/photo-1768096865523-ca23d8811107?w=400&auto=format&fit=crop",
     overview: {
-      location: "Mahboula, Kuwait",
+      location: "Mohakhali, Bangladesh",
       sqft: "800 sq ft",
       timeline: "2 Months",
       clientReq: "A dramatic and welcoming entrance.",
@@ -320,7 +320,7 @@ export const projects = [
     subcategory: "Balcony",
     image: "https://images.unsplash.com/photo-1591944438730-23dbc9076a9a?w=400&auto=format&fit=crop",
     overview: {
-      location: "Al Asimah, Kuwait",
+      location: "Uttara, Bangladesh",
       sqft: "500 sq ft",
       timeline: "1 Month",
       clientReq: "A panoramic outdoor seating area.",
@@ -342,7 +342,7 @@ export const projects = [
     subcategory: "Study",
     image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=1200&auto=format&fit=crop",
     overview: {
-      location: "Al Zahra, Kuwait",
+      location: "Bashundhara, Bangladesh",
       sqft: "300 sq ft",
       timeline: "1 Month",
       clientReq: "A traditional home library and study.",

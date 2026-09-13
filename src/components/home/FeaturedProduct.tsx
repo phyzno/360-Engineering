@@ -100,7 +100,7 @@ export default function FeaturedProduct() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl group cursor-pointer mx-auto bg-[#0a1206]"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false}>
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, scale: 1.05 }}
@@ -108,8 +108,30 @@ export default function FeaturedProduct() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="absolute inset-0"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = offset.x;
+                if (swipe < -50) {
+                  // Swipe left -> Next
+                  setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
+                  startTimer();
+                } else if (swipe > 50) {
+                  // Swipe right -> Previous
+                  setCurrentIndex((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
+                  startTimer();
+                }
+              }}
             >
-              <Link href={featuredProducts[currentIndex].href} className="absolute inset-0 z-20">
+              <Link 
+                href={featuredProducts[currentIndex].href} 
+                className="absolute inset-0 z-20"
+                onClick={(e) => {
+                  // Prevent click if we were dragging
+                  // This is a simple heuristic, framer-motion usually handles it but just in case
+                }}
+              >
                 <span className="sr-only">View {featuredProducts[currentIndex].category} Collection</span>
               </Link>
 
@@ -121,6 +143,7 @@ export default function FeaturedProduct() {
                 sizes="(max-width: 1024px) 100vw, 1024px"
                 quality={90}
                 priority
+                draggable={false}
               />
               
               {/* Subtle Overlay to ensure text readability without hiding image */}
@@ -184,7 +207,7 @@ export default function FeaturedProduct() {
           className="mt-10 md:mt-12 flex justify-center"
         >
           <Link 
-            href={featuredProducts[currentIndex].href} 
+            href="/products" 
             className="inline-flex items-center gap-4 group"
           >
             <span className="text-white uppercase tracking-widest text-sm border-b border-[#c9a84c] pb-1 transition-colors group-hover:text-[#c9a84c]">

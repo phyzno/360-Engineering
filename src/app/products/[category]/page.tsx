@@ -346,7 +346,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   }
 
   return {
-    title: `${productData.title} | DF Interiors`,
+    title: `${productData.title} | Arch Concept`,
     description: productData.description,
   };
 }

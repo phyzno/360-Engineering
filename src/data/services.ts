@@ -185,7 +185,7 @@ export const servicesData: ServiceDetails[] = [
     clients: [
       { name: "EcoPark Campus", type: "Corporate Tech Park" },
       { name: "The Promenade", type: "Retail Plaza" },
-      { name: "DF Interiors Terrace", type: "Restaurant Exterior" }
+      { name: "Arch Concept Terrace", type: "Restaurant Exterior" }
     ],
     galleryImages: [
       "https://images.unsplash.com/photo-1558904541-efa843a96f0f?q=80&w=2070&auto=format&fit=crop",

@@ -59,7 +59,7 @@ export default function ContactForm() {
         </div>
         <h3 className="font-heading text-3xl text-[#f5f0e8] mb-4">Message Received</h3>
         <p className="text-[#9ba89e] max-w-md mx-auto mb-8">
-          Thank you for reaching out to DF Interiors. We have received your inquiry and our team will get back to you within 24-48 business hours.
+          Thank you for reaching out to Arch Concept. We have received your inquiry and our team will get back to you within 24-48 business hours.
         </p>
         <button 
           onClick={() => setStatus("idle")}
@@ -106,7 +106,7 @@ export default function ContactForm() {
             id="phone" 
             name="phone" 
             className="input-field" 
-            placeholder="+965 XXXX XXXX"
+            placeholder="+880 1XXX XXXXXX"
           />
         </div>
         <div>
@@ -137,10 +137,10 @@ export default function ContactForm() {
           className="input-field appearance-none"
         >
           <option value="" disabled>Select a range...</option>
-          <option value="KD 3,000 - KD 7,500">KD 3,000 – KD 7,500</option>
-          <option value="KD 7,500 - KD 15,000">KD 7,500 – KD 15,000</option>
-          <option value="KD 15,000 - KD 30,000">KD 15,000 – KD 30,000</option>
-          <option value="KD 30,000+">KD 30,000+</option>
+          <option value="BDT 10,00,000 - BDT 25,00,000">KD 3,000 – KD 7,500</option>
+          <option value="BDT 25,00,000 - BDT 50,00,000">KD 7,500 – KD 15,000</option>
+          <option value="BDT 50,00,000 - BDT 1,00,00,000">KD 15,000 – KD 30,000</option>
+          <option value="BDT 1,00,00,000+">BDT 1,00,00,000+</option>
         </select>
       </div>
 

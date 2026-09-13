@@ -4,7 +4,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata = {
   title: "About Us",
-  description: "Learn about DF Interiors, our philosophy, and the award-winning team behind our luxury design studio.",
+  description: "Learn about Arch Concept, our philosophy, and the award-winning team behind our luxury design studio.",
 };
 
 export default function AboutPage() {
@@ -21,9 +21,9 @@ export default function AboutPage() {
           />
         </div>
         <div className="container-wide relative z-10 text-center max-w-4xl mx-auto">
-          <SectionHeading title="Our Story" subtitle="About DF Interiors" centered />
+          <SectionHeading title="Our Story" subtitle="About Arch Concept" centered />
           <p className="text-[#d4c5ae] text-lg leading-relaxed">
-            Founded in 2012, DF Interiors was born from a simple belief: 
+            Founded in 2012, Arch Concept was born from a simple belief: 
             our spaces shape our lives. We set out to create environments that 
             not only look beautiful but feel deeply restorative.
           </p>
@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div className="container-wide">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
-              <h3 className="font-heading text-3xl text-[#f5f0e8] mb-6">The DF Interiors Philosophy</h3>
+              <h3 className="font-heading text-3xl text-[#f5f0e8] mb-6">The Arch Concept Philosophy</h3>
               <p className="text-[#9ba89e] mb-6">
                 We draw our inspiration directly from nature. The subtle gradient of a forest canopy, 
                 the stark texture of natural stone, the warmth of aged timber—these are the elements 

@@ -25,35 +25,35 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://df-interiors.net"),
+  metadataBase: new URL("https://archconceptbd.com"),
   title: {
-    default: "DF Interiors | Interior Design & Fit-Out Company in Kuwait",
-    template: "%s | DF Interiors Kuwait",
+    default: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
+    template: "%s | Arch Concept",
   },
   description:
-    "DF Interiors is a leading interior design & fit-out company in Kuwait, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+    "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   keywords: [
-    "Interior design in kuwait",
-    "Interior Design & Fit-out Company in Kuwait",
+    "Interior design in Bangladesh",
+    "Interior Design & Fit-out Company in Bangladesh",
     "architectural design",
     "turnkey solutions",
     "residential interiors",
     "commercial interiors"
   ],
-  authors: [{ name: "DF Interiors" }],
+  authors: [{ name: "Arch Concept" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://df-interiors.net",
-    siteName: "DF Interiors",
-    title: "DF Interiors | Interior Design & Fit-Out Company in Kuwait",
+    url: "https://archconceptbd.com",
+    siteName: "Arch Concept",
+    title: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
     description:
-      "DF Interiors is a leading interior design & fit-out company in Kuwait, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+      "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DF Interiors | Interior Design & Fit-Out Company in Kuwait",
-    description: "DF Interiors is a leading interior design & fit-out company in Kuwait, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+    title: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
+    description: "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   },
 };
 

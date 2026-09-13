@@ -94,21 +94,22 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6 group">
-              <Image 
-                src="/df-logo.png" 
-                alt="DF Interiors" 
-                width={80} 
-                height={80} 
-                className="object-contain transition-transform duration-300 group-hover:scale-105" 
-              />
+            <Link href="/" className="inline-flex flex-col items-center justify-center mb-6 group w-max">
+              <div className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] relative z-10">
+                <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="160px" />
+              </div>
+              <div className="w-[72px] md:w-[96px] flex justify-between items-center -mt-8 md:-mt-11 relative z-20">
+                <span className="font-heading text-[9px] md:text-[12px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
+                  <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[3px] md:w-[4px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
+                </span>
+              </div>
             </Link>
             <p className="text-[#9ba89e] mb-8 max-w-sm text-sm sm:text-base leading-relaxed">
               We transform Your Vision Into Beautifully Crafted Spaces.
             </p>
             <div className="flex gap-4">
               <a 
-                href="https://www.instagram.com/df.interiors.kw" 
+                href="https://www.instagram.com/archconceptbd" 
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -151,18 +152,18 @@ export default function Footer() {
             <ul className="space-y-4 text-sm sm:text-base text-[#9ba89e]">
               <li>
                 <p className="mb-1 text-[#f5f0e8] font-medium">Headquarters</p>
-                <p className="leading-relaxed">Kuwait</p>
+                <p className="leading-relaxed">Bangladesh</p>
               </li>
               <li>
                 <p className="mb-1 text-[#f5f0e8] font-medium">Inquiries</p>
-                <a href="mailto:info@df-interiors.net" className="hover:text-[#c9a84c] transition-colors block mb-2">
-                  info@df-interiors.net
+                <a href="mailto:info@archconceptbd.com" className="hover:text-[#c9a84c] transition-colors block mb-2">
+                  info@archconceptbd.com
                 </a>
-                <a href="tel:+96594479000" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
-                  +(965) 94479000
+                <a href="tel:+8801712345678" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +880 1712 345678
                 </a>
-                <a href="tel:+96550118191" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
-                  +(965) 50118191
+                <a href="tel:+8801912345678" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +880 1912 345678
                 </a>
               </li>
             </ul>
@@ -180,7 +181,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Legal */}
         <div className="pt-8 border-t border-[#243a19]/80 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-[#6a9e72] relative z-10">
-          <p>&copy; {new Date().getFullYear()} DF Interiors Kuwait. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Arch Concept. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[#c9a84c] transition-colors">
               Privacy Policy

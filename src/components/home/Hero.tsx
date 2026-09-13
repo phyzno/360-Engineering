@@ -16,9 +16,9 @@ export default function Hero() {
           <source src="https://www.pexels.com/download/video/7578547/" type="video/mp4" />
         </video>
         {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-[#0a1206]/20 mix-blend-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206]/80 via-[#0a1206]/20 to-transparent opacity-70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1206]/50 via-transparent to-[#0a1206]/50 opacity-40" />
+        <div className="absolute inset-0 bg-[#0a1206]/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206] via-[#0a1206]/30 to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1206]/80 via-transparent to-[#0a1206]/80 opacity-60" />
       </div>
 
       {/* Floating Badge */}
@@ -54,7 +54,7 @@ export default function Hero() {
             <p
               className="text-white/60 text-lg max-w-md font-light leading-relaxed animate-fade-in delay-1500"
             >
-              From conceptual architecture to luxury turnkey fit-outs, we design environments that seamlessly blend functionality with timeless aesthetics.
+              From conceptual architecture to premium turnkey interior solutions across Bangladesh, we design environments that seamlessly blend functionality with timeless aesthetics tailored to your lifestyle.
             </p>
             
             <div

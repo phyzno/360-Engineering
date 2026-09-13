@@ -85,10 +85,10 @@ export default function CostEstimator() {
     if (!areaSize || typeof areaSize === "string") return;
 
     let basePrice = 0;
-    // Base prices in KWD (Dummy logic)
-    if (propertyType === "Apartment") basePrice = 15;
-    else if (propertyType === "Duplex") basePrice = 25;
-    else if (propertyType === "Office") basePrice = 20;
+    // Base prices in BDT (Dummy logic)
+    if (propertyType === "Apartment") basePrice = 1500;
+    else if (propertyType === "Duplex") basePrice = 2500;
+    else if (propertyType === "Office") basePrice = 2000;
 
     let multiplier = 1;
     if (finishingType === "Premium") multiplier = 1.5;
@@ -139,7 +139,7 @@ export default function CostEstimator() {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-KW', {
       style: 'currency',
-      currency: 'KWD',
+      currency: 'BDT',
       maximumFractionDigits: 0
     }).format(value);
   };
@@ -401,7 +401,7 @@ export default function CostEstimator() {
                         value={leadData.phone}
                         onChange={(e) => setLeadData({...leadData, phone: e.target.value})}
                         className="input-field rounded-xl"
-                        placeholder="+965 XXXX XXXX"
+                        placeholder="+880 1XXX XXXXXX"
                       />
                     </div>
                     <div>

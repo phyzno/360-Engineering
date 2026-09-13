@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import PageTransition from "@/components/ui/PageTransition";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | DF Interiors",
-  description: "Privacy policy and data protection guidelines for DF Interiors.",
+  title: "Privacy Policy | Arch Concept",
+  description: "Privacy policy and data protection guidelines for Arch Concept.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
           </p>
           
           <p>
-            At DF Interiors, we respect your privacy and are committed to protecting your personal data. 
+            At Arch Concept, we respect your privacy and are committed to protecting your personal data. 
             This Privacy Policy will inform you as to how we look after your personal data when you visit our website 
             (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.
           </p>
@@ -63,9 +63,9 @@ export default function PrivacyPolicyPage() {
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
             <p>
-              Email: <a href="mailto:info@df-interiors.net" className="text-[#c9a84c] hover:text-[#e2cb8a] transition-colors">info@df-interiors.net</a><br />
-              Phone: +965 5011 8191<br />
-              Address: Kuwait City, Kuwait
+              Email: <a href="mailto:info@archconceptbd.com" className="text-[#c9a84c] hover:text-[#e2cb8a] transition-colors">info@archconceptbd.com</a><br />
+              Phone: +880 1912 345678<br />
+              Address: Dhaka, Bangladesh
             </p>
           </section>
         </div>
