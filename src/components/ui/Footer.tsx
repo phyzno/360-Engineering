@@ -95,10 +95,10 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex flex-col items-center justify-center mb-6 group w-max">
-              <div className="w-[120px] h-[120px] md:w-[160px] md:h-[160px] relative z-10">
-                <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="160px" />
+              <div className="w-[72px] h-[72px] md:w-[96px] md:h-[96px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(201,168,76,0.4)] group-active:scale-95">
+                <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="96px" />
               </div>
-              <div className="w-[72px] md:w-[96px] flex justify-between items-center -mt-8 md:-mt-11 relative z-20">
+              <div className="w-[72px] md:w-[96px] flex justify-between items-center mt-2 relative z-20">
                 <span className="font-heading text-[9px] md:text-[12px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
                   <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[3px] md:w-[4px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
                 </span>

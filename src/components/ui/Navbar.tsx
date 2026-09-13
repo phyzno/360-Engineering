@@ -127,20 +127,20 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "py-5 bg-[#0a1206]/30 backdrop-blur-xl border-b border-[#c9a84c]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
-            : "py-6 bg-transparent"
+            ? "py-3 bg-[#0a1206]/30 backdrop-blur-xl border-b border-[#c9a84c]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+            : "py-4 bg-transparent"
         }`}
       >
         <div className="container-wide flex items-center justify-between">
           <Link 
             href="/" 
-            className="group relative z-50 flex flex-col items-center justify-center w-max -mt-5 md:-mt-8 -mb-2" 
+            className="group relative z-50 flex flex-col items-center justify-center w-max" 
             aria-label="Arch Concept"
           >
-            <div className="w-[100px] h-[100px] md:w-[120px] md:h-[120px] relative z-10">
-              <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="120px" priority />
+            <div className="w-[60px] h-[60px] md:w-[72px] md:h-[72px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95">
+              <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="72px" priority />
             </div>
-            <div className="w-[60px] md:w-[72px] flex justify-between items-center -mt-7 md:-mt-8 relative z-20">
+            <div className="w-[60px] md:w-[72px] flex justify-between items-center mt-1.5 relative z-20">
               <span className="font-heading text-[7px] md:text-[9px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
                 <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[2px] md:w-[3px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
               </span>
