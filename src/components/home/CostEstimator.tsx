@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { 
   Building, 
@@ -100,9 +101,12 @@ export default function CostEstimator() {
     });
   };
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMsg("");
 
     calculateEstimate();
 
@@ -122,11 +126,11 @@ export default function CostEstimator() {
       if (response.ok) {
         nextStep(); // Go to results
       } else {
-        alert("Something went wrong. Please try again.");
+        setErrorMsg("Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error(error);
-      alert("Failed to submit.");
+      setErrorMsg("Failed to submit. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
@@ -397,7 +401,7 @@ export default function CostEstimator() {
                         value={leadData.phone}
                         onChange={(e) => setLeadData({...leadData, phone: e.target.value})}
                         className="input-field rounded-xl"
-                        placeholder="+880 1XXX XXXXXX"
+                        placeholder="+965 XXXX XXXX"
                       />
                     </div>
                     <div>
@@ -413,6 +417,12 @@ export default function CostEstimator() {
                         placeholder="john@example.com"
                       />
                     </div>
+
+                    {errorMsg && (
+                      <div className="text-red-400 text-sm text-center py-2">
+                        {errorMsg}
+                      </div>
+                    )}
 
                     <div className="flex flex-col-reverse sm:flex-row justify-between items-center pt-6 gap-4 sm:gap-0">
                       <button type="button" onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
@@ -487,12 +497,12 @@ export default function CostEstimator() {
                     >
                       Start Over
                     </button>
-                    <a 
+                    <Link 
                       href="/contact"
                       className="btn-primary rounded-full"
                     >
                       <span>Book Consultation</span>
-                    </a>
+                    </Link>
                   </div>
                 </motion.div>
               )}

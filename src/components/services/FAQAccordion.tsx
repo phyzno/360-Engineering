@@ -24,6 +24,8 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
           >
             <button
               onClick={() => toggleAccordion(index)}
+              aria-expanded={isOpen}
+              aria-controls={`faq-answer-${index}`}
               className="w-full py-6 md:py-8 px-4 md:px-6 flex items-center gap-4 md:gap-6 text-left group"
             >
               <span className="text-[#c9a84c] font-serif text-xl w-6 md:w-8 flex-shrink-0 opacity-70">
@@ -42,6 +44,7 @@ export default function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
             <AnimatePresence>
               {isOpen && (
                 <motion.div
+                  id={`faq-answer-${index}`}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import PageTransition from "@/components/ui/PageTransition";
 
 export const metadata: Metadata = {
   title: "Terms of Service | DF Interiors",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
+    <PageTransition>
     <div className="hero-padding min-h-screen">
       <div className="container-wide max-w-4xl mx-auto">
         <h1 className="font-heading text-h1 text-[#f5f0e8] mb-12">
@@ -15,7 +17,7 @@ export default function TermsOfServicePage() {
         
         <div className="space-y-8 text-[#9ba89e] text-lg leading-relaxed">
           <p>
-            Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            Last updated: September 13, 2025
           </p>
           
           <p>
@@ -84,5 +86,6 @@ export default function TermsOfServicePage() {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 }

@@ -1,25 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#0a1206] text-[#f5f0e8]">
-      {/* Dynamic Background Image */}
+      {/* Dynamic Background Video */}
       <div className="absolute inset-0 z-0 h-[120%] -top-[10%] w-full animate-fade-in delay-300">
-        <Image
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
-          alt="Luxury Architecture"
-          fill
-          priority
-          className="object-cover object-center" 
-          quality={100}
-          sizes="100vw"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          <source src="https://www.pexels.com/download/video/7578547/" type="video/mp4" />
+        </video>
         {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-[#0a1206]/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206] via-[#0a1206]/30 to-transparent opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1206]/80 via-transparent to-[#0a1206]/80 opacity-60" />
+        <div className="absolute inset-0 bg-[#0a1206]/20 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206]/80 via-[#0a1206]/20 to-transparent opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1206]/50 via-transparent to-[#0a1206]/50 opacity-40" />
       </div>
 
       {/* Floating Badge */}
@@ -42,17 +41,11 @@ export default function Hero() {
             Redefining Spaces
           </p>
           
-          <div className="overflow-hidden py-2">
-            <h1
-              className="text-display mb-2 leading-[0.9] animate-fade-in-up delay-1000"
-            >
-              Curating <span className="italic font-light text-white/60">Modern</span>
-            </h1>
-          </div>
           <div className="overflow-hidden py-2 mb-10">
             <h1
               className="text-display leading-[0.9] animate-fade-in-up delay-1000"
             >
+              <span className="block mb-2">Curating <span className="italic font-light text-white/60">Modern</span></span>
               <span className="text-gold-gradient">Masterpieces</span>
             </h1>
           </div>

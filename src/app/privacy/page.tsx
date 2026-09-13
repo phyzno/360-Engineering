@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import PageTransition from "@/components/ui/PageTransition";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | DF Interiors",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
+    <PageTransition>
     <div className="hero-padding min-h-screen">
       <div className="container-wide max-w-4xl mx-auto">
         <h1 className="font-heading text-h1 text-[#f5f0e8] mb-12">
@@ -15,7 +17,7 @@ export default function PrivacyPolicyPage() {
         
         <div className="space-y-8 text-[#9ba89e] text-lg leading-relaxed">
           <p>
-            Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            Last updated: September 13, 2025
           </p>
           
           <p>
@@ -63,11 +65,12 @@ export default function PrivacyPolicyPage() {
             <p>
               Email: <a href="mailto:info@df-interiors.net" className="text-[#c9a84c] hover:text-[#e2cb8a] transition-colors">info@df-interiors.net</a><br />
               Phone: +965 5011 8191<br />
-              Address: 123 Forest Avenue, Suite 400, New York, NY 10012
+              Address: Kuwait City, Kuwait
             </p>
           </section>
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 }

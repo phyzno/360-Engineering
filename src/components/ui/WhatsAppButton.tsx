@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "96550118191"; // DF Interiors Kuwait WhatsApp
+  const phoneNumber = "+96550118191"; // DF Interiors Kuwait WhatsApp (international format with +)
   const message = encodeURIComponent("Hello, I'm interested in your interior design services.");
   const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

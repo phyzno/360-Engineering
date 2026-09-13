@@ -1,9 +1,11 @@
 import { Building2, Home, Hammer, Clock, ShieldCheck, Sparkles, TrendingUp, Users, HeartHandshake } from "lucide-react";
 
+import { ElementType } from "react";
+
 export type Benefit = {
   title: string;
   description: string;
-  icon: any; // Using any for simplicity with Lucide icons
+  icon: ElementType;
   image?: string;
 };
 

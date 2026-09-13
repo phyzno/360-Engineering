@@ -30,7 +30,9 @@ export function VirtualTour({
         className="absolute inset-0 w-full h-full border-0"
         allowFullScreen
         allow="xr-spatial-tracking"
+        sandbox="allow-scripts allow-same-origin allow-forms"
         onLoad={() => setIsLoading(false)}
+        onError={() => setIsLoading(false)}
       />
     </div>
   );

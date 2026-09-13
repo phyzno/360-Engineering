@@ -1,9 +1,20 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Initialize Resend with the API key from environment variables
-// It will fall back to a mock/empty string if not provided in build time
-const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key');
+// Escape user-supplied strings before inserting into HTML to prevent XSS
+function htmlEscape(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// Initialize Resend — will be undefined if env var is missing; checked before use below
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 export async function POST(request: Request) {
   try {
@@ -18,10 +29,10 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if API key is configured (meaning it's not the dummy key)
-    if (!process.env.RESEND_API_KEY) {
+    // Check if API key is configured
+    if (!resend || !process.env.RESEND_API_KEY) {
       console.warn("RESEND_API_KEY is not configured. Email would have been:", body);
-      // If we're in development or missing the key, simulate success to allow UI testing
+      // If missing the key, simulate success to allow UI testing
       return NextResponse.json({ 
         success: true, 
         note: "Simulated success (Missing RESEND_API_KEY)" 
@@ -29,24 +40,32 @@ export async function POST(request: Request) {
     }
 
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-    const toEmail = process.env.RESEND_TO_EMAIL || email; // Send to admin, fallback to user's email for testing
+    const toEmail = process.env.RESEND_TO_EMAIL || email;
+
+    // Sanitize all user-supplied values before injecting into HTML
+    const safeName = htmlEscape(String(name));
+    const safeEmail = htmlEscape(String(email));
+    const safePhone = phone ? htmlEscape(String(phone)) : 'Not provided';
+    const safeInterest = htmlEscape(String(interest));
+    const safeBudget = budget ? htmlEscape(String(budget)) : 'Not specified';
+    const safeMessage = htmlEscape(String(message)).replace(/\n/g, '<br/>');
 
     const data = await resend.emails.send({
       from: `DF Interiors <${fromEmail}>`,
       to: [toEmail],
-      subject: `New Inquiry: ${interest} - from ${name}`,
+      subject: `New Inquiry: ${safeInterest} - from ${safeName}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #1a2912;">
           <h2 style="color: #2d5016; border-bottom: 1px solid #c9a84c; padding-bottom: 10px;">New Project Inquiry</h2>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Name:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${name}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Email:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${email}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Phone:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${phone || 'Not provided'}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Interest:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${interest}</td></tr>
-            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Budget:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${budget || 'Not specified'}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Name:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${safeName}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Email:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${safeEmail}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Phone:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${safePhone}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Interest:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${safeInterest}</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;"><strong>Budget:</strong></td><td style="padding: 10px 0; border-bottom: 1px solid #edf6ee;">${safeBudget}</td></tr>
           </table>
           <h3 style="margin-top: 30px; color: #4a7c59;">Message Details:</h3>
-          <p style="background: #f5f0e8; padding: 15px; border-radius: 4px; line-height: 1.6;">${message.replace(/\n/g, '<br/>')}</p>
+          <p style="background: #f5f0e8; padding: 15px; border-radius: 4px; line-height: 1.6;">${safeMessage}</p>
         </div>
       `,
     });

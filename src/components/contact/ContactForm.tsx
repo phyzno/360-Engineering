@@ -106,7 +106,7 @@ export default function ContactForm() {
             id="phone" 
             name="phone" 
             className="input-field" 
-            placeholder="+1 (555) 000-0000"
+            placeholder="+965 XXXX XXXX"
           />
         </div>
         <div>
@@ -137,10 +137,10 @@ export default function ContactForm() {
           className="input-field appearance-none"
         >
           <option value="" disabled>Select a range...</option>
-          <option value="$10k - $25k">$10k - $25k</option>
-          <option value="$25k - $50k">$25k - $50k</option>
-          <option value="$50k - $100k">$50k - $100k</option>
-          <option value="$100k+">$100k+</option>
+          <option value="KD 3,000 - KD 7,500">KD 3,000 – KD 7,500</option>
+          <option value="KD 7,500 - KD 15,000">KD 7,500 – KD 15,000</option>
+          <option value="KD 15,000 - KD 30,000">KD 15,000 – KD 30,000</option>
+          <option value="KD 30,000+">KD 30,000+</option>
         </select>
       </div>
 
@@ -166,7 +166,7 @@ export default function ContactForm() {
       <button 
         type="submit" 
         disabled={isSubmitting}
-        className="btn-primary w-full justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+        className="group btn-primary w-full justify-center disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {isSubmitting ? (
           <>

@@ -44,8 +44,7 @@ export default function ContactPage() {
                     <Phone size={24} className="text-[#c9a84c] shrink-0" />
                     <span>+(965) 94479000</span>
                   </a>
-                  <a href="tel:+96550118191" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit">
-                    <Phone size={24} className="text-[#c9a84c] shrink-0 opacity-0" /> {/* Hidden icon for alignment */}
+                  <a href="tel:+96550118191" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit pl-10">
                     <span>+(965) 50118191</span>
                   </a>
                 </div>
@@ -80,6 +79,7 @@ export default function ContactPage() {
           allowFullScreen 
           loading="lazy" 
           referrerPolicy="no-referrer-when-downgrade"
+          sandbox="allow-scripts allow-same-origin allow-popups"
           title="DF Interiors Studio Location"
         />
       </section>

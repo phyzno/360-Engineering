@@ -339,9 +339,6 @@ const productCategories = {
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
-  if (category === "porda") {
-    redirect("/products/curtains");
-  }
   const productData = productCategories[category as keyof typeof productCategories];
   
   if (!productData) {
@@ -389,8 +386,7 @@ export default async function ProductCategoryPage({ params }: { params: Promise<
       </section>
 
       {/* Product Showcase Slider */}
-      {/* @ts-ignore - showcaseItems might be undefined on some categories, but the slider handles empty arrays */}
-      <ProductShowcaseSlider items={productData.showcaseItems || []} />
+      <ProductShowcaseSlider items={productData.showcaseItems ?? []} />
 
       {/* Main Content */}
       <section className="section-padding bg-[#0a1206]">

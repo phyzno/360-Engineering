@@ -6,32 +6,15 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-const projects = [
-  {
-    id: 1,
-    title: "The Glass Pavilion",
-    category: "Residential Architecture",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop",
-    year: "2026",
-    parallaxSpeed: 0.2
-  },
-  {
-    id: 2,
-    title: "Oasis Boutique Hotel",
-    category: "Commercial & Hospitality",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1600&auto=format&fit=crop",
-    year: "2025",
-    parallaxSpeed: 0.1
-  },
-  {
-    id: 3,
-    title: "Minimalist Haven",
-    category: "Interior Fit-out",
-    image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?q=80&w=1600&auto=format&fit=crop",
-    year: "2024",
-    parallaxSpeed: 0.15
-  },
-];
+import { projects as allProjects } from "@/data/projects";
+
+// Pick the first 3 projects from the real data for the showcase
+const projects = allProjects.slice(0, 3).map((p, i) => ({
+  ...p,
+  parallaxSpeed: [0.2, 0.1, 0.15][i],
+  year: p.overview?.location ? "2025" : "2024",
+}));
+
 
 export default function PortfolioShowcase() {
   const containerRef = useRef(null);
@@ -81,7 +64,7 @@ export default function PortfolioShowcase() {
 
         <div className="flex flex-col gap-24 md:gap-40">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
       </div>
@@ -89,7 +72,7 @@ export default function PortfolioShowcase() {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0], index: number }) {
+function ProjectCard({ project, index }: { project: (typeof projects)[0], index: number }) {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -126,7 +109,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           transition={{ duration: 0.8 }}
           className="flex items-center gap-4 text-white/50 text-sm tracking-widest uppercase mb-6"
         >
-          <span>{project.id.toString().padStart(2, '0')}</span>
+          <span>{(index + 1).toString().padStart(2, '0')}</span>
           <span className="w-6 h-[1px] bg-white/20" />
           <span>{project.year}</span>
         </motion.div>
@@ -157,7 +140,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <Link href={`/portfolio`} className="group inline-flex items-center gap-4 text-white/80 hover:text-[#c9a84c] active:text-[#c9a84c] transition-colors">
+          <Link href={`/portfolio/${project.slug}`} className="group inline-flex items-center gap-4 text-white/80 hover:text-[#c9a84c] active:text-[#c9a84c] transition-colors">
             <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#c9a84c] group-active:border-[#c9a84c] flex items-center justify-center transition-colors">
               <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-active:translate-x-0.5 group-active:-translate-y-0.5 transition-transform" />
             </div>

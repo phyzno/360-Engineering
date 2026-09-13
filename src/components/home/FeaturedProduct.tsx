@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -58,12 +58,22 @@ const featuredProducts = [
 
 export default function FeaturedProduct() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
+  // Start or restart the auto-rotation interval
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
     }, 4000);
-    return () => clearInterval(timer);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -90,7 +100,7 @@ export default function FeaturedProduct() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl group cursor-pointer mx-auto bg-[#0a1206]"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, scale: 1.05 }}
@@ -151,6 +161,7 @@ export default function FeaturedProduct() {
                   e.preventDefault();
                   e.stopPropagation();
                   setCurrentIndex(idx);
+                  startTimer(); // Reset auto-rotation timer on manual selection
                 }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   currentIndex === idx 

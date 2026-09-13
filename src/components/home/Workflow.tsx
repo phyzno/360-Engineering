@@ -241,7 +241,7 @@ export default function Workflow() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: false, amount: 0.2 }}
-                      className="bg-gradient-to-br from-[#ffffff] to-[#f5f0e8] p-8 md:p-10 rounded-[24px] shadow-[0_20px_50px_rgba(201,168,76,0.9)] transition-all duration-500 relative group hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(201,168,76,0.15)] cursor-default"
+                      className="bg-gradient-to-br from-[#ffffff] to-[#f5f0e8] p-8 md:p-10 rounded-[24px] shadow-[0_20px_50px_rgba(201,168,76,0.09)] transition-all duration-500 relative group hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(201,168,76,0.15)] cursor-default"
                     >
                       {/* Beautiful Decorative Frame */}
                       <div className="absolute inset-3 border border-[#d4c5ae]/40 rounded-[16px] pointer-events-none transition-colors duration-500 group-hover:border-[#c9a84c]/40">

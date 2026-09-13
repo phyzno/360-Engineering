@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
@@ -27,6 +28,54 @@ const Linkedin = ({ size = 24 }: { size?: number }) => (
     <circle cx="4" cy="4" r="2"/>
   </svg>
 );
+
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <form className="relative" onSubmit={handleSubmit}>
+      <input 
+        type="email" 
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        disabled={status === "loading" || status === "success"}
+        placeholder="Your email address" 
+        className="w-full bg-[#0a1409]/80 border border-[#243a19] rounded-lg py-3 px-4 text-[#f5f0e8] placeholder:text-[#6a9e72] focus:outline-none focus:border-[#c9a84c] transition-all duration-200 text-sm disabled:opacity-50"
+        required
+      />
+      <button 
+        type="submit" 
+        disabled={status === "loading" || status === "success"}
+        className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[#c9a84c]/15 hover:bg-[#c9a84c] text-[#c9a84c] hover:text-black rounded-md transition-all duration-200 font-semibold text-xs tracking-wider uppercase disabled:opacity-50"
+      >
+        {status === "loading" ? "..." : status === "success" ? "Done" : "Join"}
+      </button>
+      {status === "error" && (
+        <p className="text-red-400 text-xs mt-2 absolute -bottom-5 left-0">Error subscribing. Try again.</p>
+      )}
+    </form>
+  );
+}
 
 export default function Footer() {
   return (
@@ -66,24 +115,6 @@ export default function Footer() {
                 className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
               >
                 <Instagram size={18} />
-              </a>
-              <a 
-                href="https://www.facebook.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
-              >
-                <Facebook size={18} />
-              </a>
-              <a 
-                href="https://www.linkedin.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
-              >
-                <Linkedin size={18} />
               </a>
             </div>
           </div>
@@ -143,20 +174,7 @@ export default function Footer() {
             <p className="text-[#9ba89e] mb-4 text-sm sm:text-base leading-relaxed">
               Subscribe to receive design insights and studio updates.
             </p>
-            <form className="relative" onSubmit={(e) => e.preventDefault()}>
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="w-full bg-[#0a1409]/80 border border-[#243a19] rounded-lg py-3 px-4 text-[#f5f0e8] placeholder:text-[#6a9e72] focus:outline-none focus:border-[#c9a84c] transition-all duration-200 text-sm"
-                required
-              />
-              <button 
-                type="submit" 
-                className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-[#c9a84c]/15 hover:bg-[#c9a84c] text-[#c9a84c] hover:text-black rounded-md transition-all duration-200 font-semibold text-xs tracking-wider uppercase"
-              >
-                Join
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
 

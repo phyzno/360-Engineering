@@ -128,9 +128,11 @@ export default function CustomCursor() {
     <>
       <canvas
         ref={canvasRef}
+        aria-hidden="true"
         className="fixed inset-0 pointer-events-none z-[9998]"
       />
       <div
+        aria-hidden="true"
         className={`cursor-dot ${isHovering ? "hovering" : ""}`}
         style={{ left: `${position.x}px`, top: `${position.y}px` }}
       />

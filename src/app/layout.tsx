@@ -7,6 +7,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import LenisProvider from "@/components/providers/LenisProvider";
 import TouchHoverFix from "@/components/ui/TouchHoverFix";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { AnimatePresence } from "framer-motion";
 
 // Self-hosted via next/font — zero render blocking, zero CLS
 const cormorant = Cormorant_Garamond({
@@ -24,6 +25,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://df-interiors.net"),
   title: {
     default: "DF Interiors | Interior Design & Fit-Out Company in Kuwait",
     template: "%s | DF Interiors Kuwait",
@@ -76,7 +78,9 @@ export default function RootLayout({
           <TouchHoverFix />
           <CustomCursor />
           <Navbar />
-          <main>{children}</main>
+          <AnimatePresence mode="wait">
+            <main>{children}</main>
+          </AnimatePresence>
           <Footer />
           <WhatsAppButton />
         </LenisProvider>
