@@ -7,14 +7,14 @@ import SectionHeading from "../ui/SectionHeading";
 const testimonials = [
   {
     id: 1,
-    quote: "Arch Concept didn't just redesign our home; they reimagined how we live. The attention to detail and connection to natural elements is unparalleled.",
+    quote: "360 Engineering and Consultancy didn't just redesign our home; they reimagined how we live. The attention to detail and connection to natural elements is unparalleled.",
     author: "Sarah & James Sterling",
     role: "Residential Clients",
     initial: "S"
   },
   {
     id: 2,
-    quote: "Working with the Arch Concept team was a seamless experience. They understood our brand vision perfectly and translated it into a breathtaking commercial space.",
+    quote: "Working with the 360 Engineering and Consultancy team was a seamless experience. They understood our brand vision perfectly and translated it into a breathtaking commercial space.",
     author: "Elena Rodriguez",
     role: "Founder, Oasis Boutique",
     initial: "E"

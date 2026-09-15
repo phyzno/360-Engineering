@@ -94,22 +94,24 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex flex-col items-center justify-center mb-6 group w-max">
-              <div className="w-[72px] h-[72px] md:w-[96px] md:h-[96px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(201,168,76,0.4)] group-active:scale-95">
-                <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="96px" />
+            <Link href="/" className="inline-flex flex-col items-center mb-6 group w-max">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-[48px] h-[48px] md:w-[60px] md:h-[60px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(201,168,76,0.4)] group-active:scale-95">
+                  <Image src="/logo-360.png" alt="360 Engineering and Consultancy Logo" fill className="object-contain" sizes="60px" />
+                </div>
+                <span className="font-heading text-4xl md:text-5xl font-bold leading-none tracking-wider text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors mt-1">360</span>
               </div>
-              <div className="w-[72px] md:w-[96px] flex justify-between items-center mt-2 relative z-20">
-                <span className="font-heading text-[9px] md:text-[12px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
-                  <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[3px] md:w-[4px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
-                </span>
+              <div className="flex flex-col mt-2 items-center text-center text-[8.5px] md:text-[10.5px] font-semibold tracking-[0.25em] uppercase leading-tight text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors">
+                <span>Engineering</span>
+                <span>& Consultancy</span>
               </div>
             </Link>
             <p className="text-[#9ba89e] mb-8 max-w-sm text-sm sm:text-base leading-relaxed">
-              We transform Your Vision Into Beautifully Crafted Spaces.
+              Your Satisfaction Our Destination.
             </p>
             <div className="flex gap-4">
               <a 
-                href="https://www.instagram.com/archconceptbd" 
+                href="https://www.instagram.com/group360bd" 
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -156,14 +158,14 @@ export default function Footer() {
               </li>
               <li>
                 <p className="mb-1 text-[#f5f0e8] font-medium">Inquiries</p>
-                <a href="mailto:info@archconceptbd.com" className="hover:text-[#c9a84c] transition-colors block mb-2">
-                  info@archconceptbd.com
+                <a href="mailto:group360bd@gmail.com" className="hover:text-[#c9a84c] transition-colors block mb-2">
+                  group360bd@gmail.com
                 </a>
-                <a href="tel:+8801712345678" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
-                  +880 1712 345678
+                <a href="tel:+8801410360247" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +8801410360247
                 </a>
-                <a href="tel:+8801912345678" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
-                  +880 1912 345678
+                <a href="tel:+8801335224360" className="hover:text-[#c9a84c] transition-colors block mt-0.5">
+                  +8801335224360
                 </a>
               </li>
             </ul>
@@ -181,7 +183,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Legal */}
         <div className="pt-8 border-t border-[#243a19]/80 flex flex-col md:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-[#6a9e72] relative z-10">
-          <p>&copy; {new Date().getFullYear()} Arch Concept. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} 360 Engineering and Consultancy. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[#c9a84c] transition-colors">
               Privacy Policy

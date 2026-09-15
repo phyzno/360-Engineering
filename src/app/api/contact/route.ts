@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     const safeMessage = htmlEscape(String(message)).replace(/\n/g, '<br/>');
 
     const data = await resend.emails.send({
-      from: `Arch Concept <${fromEmail}>`,
+      from: `360 Engineering and Consultancy <${fromEmail}>`,
       to: [toEmail],
       subject: `New Inquiry: ${safeInterest} - from ${safeName}`,
       html: `

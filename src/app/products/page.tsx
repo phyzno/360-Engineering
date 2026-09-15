@@ -4,7 +4,7 @@ import PageTransition from "@/components/ui/PageTransition";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Products | Arch Concept",
+  title: "Products | 360 Engineering and Consultancy",
   description: "Explore our premium selection of interior products including curtains, sofas, and tiles.",
 };
 

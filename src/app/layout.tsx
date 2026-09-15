@@ -25,13 +25,13 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://archconceptbd.com"),
+  metadataBase: new URL("https://group360bd.com"),
   title: {
-    default: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
-    template: "%s | Arch Concept",
+    default: "360 Engineering and Consultancy | Interior Design & Fit-Out Company in Bangladesh",
+    template: "%s | 360 Engineering and Consultancy",
   },
   description:
-    "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+    "360 Engineering and Consultancy is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   keywords: [
     "Interior design in Bangladesh",
     "Interior Design & Fit-out Company in Bangladesh",
@@ -40,20 +40,20 @@ export const metadata: Metadata = {
     "residential interiors",
     "commercial interiors"
   ],
-  authors: [{ name: "Arch Concept" }],
+  authors: [{ name: "360 Engineering and Consultancy" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://archconceptbd.com",
-    siteName: "Arch Concept",
-    title: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
+    url: "https://group360bd.com",
+    siteName: "360 Engineering and Consultancy",
+    title: "360 Engineering and Consultancy | Interior Design & Fit-Out Company in Bangladesh",
     description:
-      "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+      "360 Engineering and Consultancy is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arch Concept | Interior Design & Fit-Out Company in Bangladesh",
-    description: "Arch Concept is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
+    title: "360 Engineering and Consultancy | Interior Design & Fit-Out Company in Bangladesh",
+    description: "360 Engineering and Consultancy is a leading interior design & fit-out company in Bangladesh, offering architectural design, turnkey solutions, and premium residential & commercial interiors.",
   },
 };
 

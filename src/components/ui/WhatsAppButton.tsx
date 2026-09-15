@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "+8801613325752"; // Arch Concept WhatsApp (international format with +)
+  const phoneNumber = "+8801613325752"; // 360 Engineering and Consultancy WhatsApp (international format with +)
   const message = encodeURIComponent("Hello, I'm interested in your interior design services.");
   const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

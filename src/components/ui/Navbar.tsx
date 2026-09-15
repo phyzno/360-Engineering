@@ -134,16 +134,18 @@ export default function Navbar() {
         <div className="container-wide flex items-center justify-between">
           <Link 
             href="/" 
-            className="group relative z-50 flex flex-col items-center justify-center w-max" 
-            aria-label="Arch Concept"
+            className="group relative z-50 flex flex-col items-center w-max" 
+            aria-label="360 Engineering and Consultancy"
           >
-            <div className="w-[60px] h-[60px] md:w-[72px] md:h-[72px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95">
-              <Image src="/logo.png" alt="Arch Concept Logo" fill className="object-contain" sizes="72px" priority />
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95">
+                <Image src="/logo-360.png" alt="360 Engineering and Consultancy Logo" fill className="object-contain" sizes="48px" priority />
+              </div>
+              <span className="font-heading text-3xl md:text-4xl font-bold leading-none tracking-wider text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors mt-1">360</span>
             </div>
-            <div className="w-[60px] md:w-[72px] flex justify-between items-center mt-1.5 relative z-20">
-              <span className="font-heading text-[7px] md:text-[9px] font-bold text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors uppercase w-full flex justify-between">
-                <span>A</span><span>R</span><span>C</span><span>H</span><span className="w-[2px] md:w-[3px]"></span><span>C</span><span>O</span><span>N</span><span>C</span><span>E</span><span>P</span><span>T</span>
-              </span>
+            <div className="flex flex-col mt-1.5 items-center text-center text-[7.5px] md:text-[9.5px] font-semibold tracking-[0.25em] uppercase leading-tight text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors">
+              <span>Engineering</span>
+              <span>& Consultancy</span>
             </div>
           </Link>
 

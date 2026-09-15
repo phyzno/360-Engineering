@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @source "../";
 /* ============================================
-   Arch Concept — DESIGN SYSTEM
+   360 Engineering and Consultancy — DESIGN SYSTEM
    Forest Luxury Color Palette
    ============================================ */
 
 @theme {
-  /* Arch Concept Color Palette (Mapped to existing variables for compatibility) */
+  /* 360 Engineering and Consultancy Color Palette (Mapped to existing variables for compatibility) */
   --color-forest-950: #000000;
   --color-forest-900: #0a0a0a;
 

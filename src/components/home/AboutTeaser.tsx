@@ -22,7 +22,7 @@ export default function AboutTeaser() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop"
-                alt="Arch Concept Design Studio"
+                alt="360 Engineering and Consultancy Design Studio"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -47,7 +47,7 @@ export default function AboutTeaser() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-[#d4c5ae] mb-6 text-lg">
-                At Arch Concept, one of Bangladesh's premier interior design firms, we believe that true luxury lies in the delicate balance 
+                At 360 Engineering and Consultancy, one of Bangladesh's premier interior design firms, we believe that true luxury lies in the delicate balance 
                 between bold architectural lines and the organic, calming presence of nature.
               </p>
               <p className="text-[#9ba89e] mb-10 leading-relaxed">

@@ -59,7 +59,7 @@ export default function ContactForm() {
         </div>
         <h3 className="font-heading text-3xl text-[#f5f0e8] mb-4">Message Received</h3>
         <p className="text-[#9ba89e] max-w-md mx-auto mb-8">
-          Thank you for reaching out to Arch Concept. We have received your inquiry and our team will get back to you within 24-48 business hours.
+          Thank you for reaching out to 360 Engineering and Consultancy. We have received your inquiry and our team will get back to you within 24-48 business hours.
         </p>
         <button 
           onClick={() => setStatus("idle")}

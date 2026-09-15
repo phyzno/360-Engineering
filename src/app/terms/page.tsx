@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import PageTransition from "@/components/ui/PageTransition";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Arch Concept",
-  description: "Terms and conditions for using Arch Concept services and website.",
+  title: "Terms of Service | 360 Engineering and Consultancy",
+  description: "Terms and conditions for using 360 Engineering and Consultancy services and website.",
 };
 
 export default function TermsOfServicePage() {
@@ -22,7 +22,7 @@ export default function TermsOfServicePage() {
           
           <p>
             Please read these Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) carefully before using the 
-            archconceptbd.com website (the &quot;Service&quot;) operated by Arch Concept (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).
+            group360bd@gmail.com website (the &quot;Service&quot;) operated by 360 Engineering and Consultancy (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).
           </p>
           
           <p>
@@ -34,20 +34,20 @@ export default function TermsOfServicePage() {
             <h2 className="font-heading text-h3 text-[#c9a84c] mb-6">1. Intellectual Property</h2>
             <p>
               The Service and its original content, features and functionality are and will remain the exclusive property of 
-              Arch Concept and its licensors. The Service is protected by copyright, trademark, and other laws of both 
+              360 Engineering and Consultancy and its licensors. The Service is protected by copyright, trademark, and other laws of both 
               the United States and foreign countries. Our trademarks and trade dress may not be used in connection with any 
-              product or service without the prior written consent of Arch Concept.
+              product or service without the prior written consent of 360 Engineering and Consultancy.
             </p>
           </section>
 
           <section className="mt-12">
             <h2 className="font-heading text-h3 text-[#c9a84c] mb-6">2. Links To Other Web Sites</h2>
             <p className="mb-4">
-              Our Service may contain links to third-party web sites or services that are not owned or controlled by Arch Concept.
+              Our Service may contain links to third-party web sites or services that are not owned or controlled by 360 Engineering and Consultancy.
             </p>
             <p>
-              Arch Concept has no control over, and assumes no responsibility for, the content, privacy policies, or practices of 
-              any third party web sites or services. You further acknowledge and agree that Arch Concept shall not be responsible 
+              360 Engineering and Consultancy has no control over, and assumes no responsibility for, the content, privacy policies, or practices of 
+              any third party web sites or services. You further acknowledge and agree that 360 Engineering and Consultancy shall not be responsible 
               or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use 
               of or reliance on any such content, goods or services available on or through any such web sites or services.
             </p>
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
           <section className="mt-12">
             <h2 className="font-heading text-h3 text-[#c9a84c] mb-6">4. Limitation Of Liability</h2>
             <p>
-              In no event shall Arch Concept, nor its directors, employees, partners, agents, suppliers, or affiliates, 
+              In no event shall 360 Engineering and Consultancy, nor its directors, employees, partners, agents, suppliers, or affiliates, 
               be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, 
               loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or 
               inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any 

@@ -5,7 +5,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export const metadata = {
   title: "Contact Us",
-  description: "Get in touch with Arch Concept. Book a consultation for your residential or commercial interior design project.",
+  description: "Get in touch with 360 Engineering and Consultancy. Book a consultation for your residential or commercial interior design project.",
 };
 
 export default function ContactPage() {
@@ -36,16 +36,16 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-heading text-2xl text-[#f5f0e8] mb-6 border-b border-[#243a19] pb-4">Contact</h3>
                 <div className="space-y-4">
-                  <a href="mailto:info@archconceptbd.com" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit">
+                  <a href="mailto:group360bd@gmail.com" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit">
                     <Mail size={24} className="text-[#c9a84c] shrink-0" />
-                    <span>info@archconceptbd.com</span>
+                    <span>group360bd@gmail.com</span>
                   </a>
-                  <a href="tel:+8801712345678" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit">
+                  <a href="tel:+8801410360247" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit">
                     <Phone size={24} className="text-[#c9a84c] shrink-0" />
-                    <span>+880 1712 345678</span>
+                    <span>+8801410360247</span>
                   </a>
-                  <a href="tel:+8801912345678" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit pl-10">
-                    <span>+880 1912 345678</span>
+                  <a href="tel:+8801335224360" className="flex items-center gap-4 text-[#9ba89e] hover:text-[#c9a84c] transition-colors group w-fit pl-10">
+                    <span>+8801335224360</span>
                   </a>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
           loading="lazy" 
           referrerPolicy="no-referrer-when-downgrade"
           sandbox="allow-scripts allow-same-origin allow-popups"
-          title="Arch Concept Studio Location"
+          title="360 Engineering and Consultancy Studio Location"
         />
       </section>
     </PageTransition>

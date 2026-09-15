@@ -36,12 +36,12 @@ export async function POST(request: Request) {
     }
 
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
-    const toEmail = process.env.RESEND_TO_EMAIL || 'admin@archconceptbd.com'; // Usually send to admin to notify of new sub
+    const toEmail = process.env.RESEND_TO_EMAIL || 'admin@group360bd@gmail.com'; // Usually send to admin to notify of new sub
 
     const safeEmail = htmlEscape(String(email));
 
     const data = await resend.emails.send({
-      from: `Arch Concept <${fromEmail}>`,
+      from: `360 Engineering and Consultancy <${fromEmail}>`,
       to: [toEmail],
       subject: `New Newsletter Subscriber: ${safeEmail}`,
       html: `
