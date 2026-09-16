@@ -56,7 +56,7 @@ export function ComparisonSlider({
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-square md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-xl md:rounded-2xl touch-none group bg-[#0a1206]"
+      className="relative w-full aspect-square md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-xl md:rounded-2xl touch-pan-y group bg-[#0a1206]"
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0">
