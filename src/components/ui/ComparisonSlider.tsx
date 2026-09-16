@@ -74,7 +74,7 @@ export function ComparisonSlider({
 
       {/* Before Image (Foreground, clipped) */}
       <motion.div
-        className="absolute inset-0 overflow-hidden"
+        className="absolute inset-0 overflow-hidden z-20"
         style={{ clipPath }}
       >
         <Image
@@ -91,7 +91,7 @@ export function ComparisonSlider({
 
       {/* Drag Handle */}
       <motion.div
-        className="absolute top-0 bottom-0 w-[2px] bg-[#c9a84c] cursor-ew-resize z-20 flex items-center justify-center shadow-[0_0_12px_rgba(201,168,76,0.6)]"
+        className="absolute top-0 bottom-0 w-[2px] bg-[#c9a84c] cursor-ew-resize z-30 flex items-center justify-center shadow-[0_0_12px_rgba(201,168,76,0.6)]"
         style={{ x }}
         drag="x"
         dragConstraints={containerRef}

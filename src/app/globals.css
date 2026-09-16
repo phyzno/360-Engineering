@@ -95,7 +95,7 @@ body {
 
 .text-display {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(2.5rem, 8vw, 7rem);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -232,7 +232,7 @@ body {
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: 1rem;
 }
 
 @media (min-width: 768px) {

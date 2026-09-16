@@ -111,6 +111,15 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a 
+                href="https://www.facebook.com/360engineeringNconsultancy" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-full border border-[#243a19] bg-white/5 flex items-center justify-center text-[#f5f0e8] hover:border-[#c9a84c] hover:text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all duration-300"
+              >
+                <Facebook size={18} />
+              </a>
+              <a 
                 href="https://www.instagram.com/group360bd" 
                 target="_blank"
                 rel="noopener noreferrer"
