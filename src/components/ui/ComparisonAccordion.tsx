@@ -77,8 +77,8 @@ export function ComparisonAccordion() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className={`relative rounded-2xl md:rounded-3xl border transition-all duration-300 overflow-hidden shadow-2xl ${
                   isExpanded
-                    ? "bg-[#1a2912]/90 border-[#c9a84c]/40 ring-1 ring-[#c9a84c]/25 shadow-[0_20px_50px_rgba(10,18,6,0.8)]"
-                    : "bg-[#0f1a0a]/75 hover:bg-[#1a2912]/60 border-white/10 hover:border-[#c9a84c]/25 cursor-pointer backdrop-blur-md"
+                    ? "bg-gray-50/90 border-[var(--color-brand-500)]/40 ring-1 ring-[#c9a84c]/25 shadow-[0_20px_50px_rgba(10,18,6,0.8)]"
+                    : "bg-white/75 hover:bg-gray-50/60 border-white/10 hover:border-[var(--color-brand-500)]/25 cursor-pointer backdrop-blur-md"
                 }`}
                 onClick={() => setActiveIndex(index)}
               >
@@ -88,8 +88,8 @@ export function ComparisonAccordion() {
                     <span
                       className={`text-xs md:text-sm font-mono px-3 py-1 rounded-full border transition-colors ${
                         isExpanded
-                          ? "bg-[#c9a84c]/15 text-[#c9a84c] border-[#c9a84c]/30"
-                          : "bg-white/5 text-[#d4c5ae]/60 border-white/10"
+                          ? "bg-[var(--color-brand-500)]/15 text-[var(--color-brand-500)] border-[var(--color-brand-500)]/30"
+                          : "bg-white/5 text-gray-600/60 border-white/10"
                       }`}
                     >
                       {project.number}
@@ -97,12 +97,12 @@ export function ComparisonAccordion() {
                     <div>
                       <h3
                         className={`text-lg md:text-2xl font-heading transition-colors ${
-                          isExpanded ? "text-[#f5f0e8]" : "text-[#d4c5ae]/80"
+                          isExpanded ? "text-[var(--color-neutral-900)]" : "text-gray-600/80"
                         }`}
                       >
                         {project.title}
                       </h3>
-                      <p className="text-xs md:text-sm text-[#d4c5ae]/60 font-light hidden sm:block">
+                      <p className="text-xs md:text-sm text-gray-600/60 font-light hidden sm:block">
                         {project.subtitle}
                       </p>
                     </div>
@@ -110,8 +110,8 @@ export function ComparisonAccordion() {
 
                   <div className="flex items-center gap-3">
                     {isExpanded && (
-                      <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-[#c9a84c] bg-[#c9a84c]/10 px-3 py-1 rounded-full border border-[#c9a84c]/25 tracking-wide">
-                        <Sparkles size={12} className="text-[#c9a84c]" /> Drag slider to compare
+                      <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-[var(--color-brand-500)] bg-[var(--color-brand-500)]/10 px-3 py-1 rounded-full border border-[var(--color-brand-500)]/25 tracking-wide">
+                        <Sparkles size={12} className="text-[var(--color-brand-500)]" /> Drag slider to compare
                       </span>
                     )}
                     <motion.div
@@ -119,8 +119,8 @@ export function ComparisonAccordion() {
                       transition={{ duration: 0.3 }}
                       className={`w-8 h-8 rounded-full flex items-center justify-center border transition-colors ${
                         isExpanded
-                          ? "bg-[#c9a84c]/15 border-[#c9a84c]/30 text-[#c9a84c]"
-                          : "bg-transparent border-white/10 text-[#d4c5ae]/60"
+                          ? "bg-[var(--color-brand-500)]/15 border-[var(--color-brand-500)]/30 text-[var(--color-brand-500)]"
+                          : "bg-transparent border-white/10 text-gray-600/60"
                       }`}
                     >
                       <ChevronDown size={16} />
@@ -139,7 +139,7 @@ export function ComparisonAccordion() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       className="px-4 pb-4 md:px-6 md:pb-6"
                     >
-                      <div className="w-full overflow-hidden rounded-xl md:rounded-2xl border border-[#c9a84c]/20">
+                      <div className="w-full overflow-hidden rounded-xl md:rounded-2xl border border-[var(--color-brand-500)]/20">
                         <ComparisonSlider
                           beforeImage={project.beforeImage}
                           afterImage={project.afterImage}

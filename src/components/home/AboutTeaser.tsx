@@ -7,7 +7,7 @@ import SectionHeading from "../ui/SectionHeading";
 
 export default function AboutTeaser() {
   return (
-    <section className="section-padding bg-[#0a1206] overflow-hidden">
+    <section className="section-padding bg-white overflow-hidden">
       <div className="container-wide">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -29,7 +29,7 @@ export default function AboutTeaser() {
               />
               
               {/* Decorative Gold Frame */}
-              <div className="absolute -inset-4 border border-[#c9a84c]/30 z-10 pointer-events-none hidden md:block" />
+              <div className="absolute -inset-4 border border-[var(--color-brand-500)]/30 z-10 pointer-events-none hidden md:block" />
             </motion.div>
           </div>
 
@@ -46,11 +46,11 @@ export default function AboutTeaser() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-[#d4c5ae] mb-6 text-lg">
+              <p className="text-gray-600 mb-6 text-lg">
                 At 360 Engineering and Consultancy, one of Bangladesh's premier interior design firms, we believe that true luxury lies in the delicate balance 
                 between bold architectural lines and the organic, calming presence of nature.
               </p>
-              <p className="text-[#9ba89e] mb-10 leading-relaxed">
+              <p className="text-gray-500 mb-10 leading-relaxed">
                 Founded on the principle that our environments deeply impact our well-being, 
                 our Dhaka-based studio specializes in creating bespoke interiors for residential and commercial spaces across the country. Using premium materials, contextual design, 
                 and masterful lighting, we transform ordinary spaces into extraordinary sanctuaries.

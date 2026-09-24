@@ -6,25 +6,18 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import { projects as allProjects } from "@/data/projects";
+export default function PortfolioShowcase({ initialProjects = [] }: { initialProjects?: any[] }) {
+  // Use up to 3 projects for the showcase
+  const projects = (initialProjects || []).slice(0, 3).map((p, i) => ({
+    ...p,
+    parallaxSpeed: [0.2, 0.1, 0.15][i],
+    year: p.year || (p.created_at ? new Date(p.created_at).getFullYear().toString() : new Date().getFullYear().toString()),
+  }));
 
-// Pick the first 3 projects from the real data for the showcase
-const projects = allProjects.slice(0, 3).map((p, i) => ({
-  ...p,
-  parallaxSpeed: [0.2, 0.1, 0.15][i],
-  year: p.overview?.location ? "2025" : "2024",
-}));
-
-
-export default function PortfolioShowcase() {
   const containerRef = useRef(null);
   
   return (
-    <section ref={containerRef} className="section-padding bg-[#0a1206] relative overflow-hidden">
-      {/* Background Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.03]">
-        <h2 className="text-[15vw] font-heading font-bold whitespace-nowrap text-white">PORTFOLIO</h2>
-      </div>
+    <section ref={containerRef} className="section-padding bg-white relative overflow-hidden">
 
       <div className="container-wide relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
@@ -33,9 +26,9 @@ export default function PortfolioShowcase() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-[#c9a84c] tracking-[0.3em] uppercase text-xs md:text-sm font-semibold mb-4 flex items-center gap-4"
+              className="text-[var(--color-brand-500)] tracking-[0.3em] uppercase text-xs md:text-sm font-semibold mb-4 flex items-center gap-4"
             >
-              <span className="w-8 h-[1px] bg-[#c9a84c]"></span>
+              <span className="w-8 h-[1px] bg-[var(--color-brand-500)]"></span>
               Selected Works
             </motion.p>
             <motion.h2 
@@ -43,9 +36,9 @@ export default function PortfolioShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-h2 text-white leading-tight"
+              className="text-h2 text-[var(--color-neutral-900)] leading-tight"
             >
-              Featured <span className="italic text-white/50 font-light">Projects</span>
+              Featured <span className="italic text-gray-500 font-light">Projects</span>
             </motion.h2>
           </div>
           
@@ -55,9 +48,9 @@ export default function PortfolioShowcase() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/portfolio" className="group relative inline-flex items-center gap-3 pb-2 border-b border-white/20 hover:border-[#c9a84c] active:border-[#c9a84c] transition-colors">
-              <span className="text-sm tracking-widest uppercase font-medium text-white/80 group-hover:text-white group-active:text-white transition-colors">View All</span>
-              <ArrowUpRight size={16} className="text-[#c9a84c] group-hover:translate-x-1 group-hover:-translate-y-1 group-active:translate-x-1 group-active:-translate-y-1 transition-transform" />
+            <Link href="/portfolio" className="group relative inline-flex items-center gap-3 pb-2 border-b border-gray-300 hover:border-[var(--color-brand-500)] active:border-[var(--color-brand-500)] transition-colors">
+              <span className="text-sm tracking-widest uppercase font-medium text-gray-600 group-hover:text-[var(--color-neutral-900)] group-active:text-[var(--color-neutral-900)] transition-colors">View All</span>
+              <ArrowUpRight size={16} className="text-[var(--color-brand-500)] group-hover:translate-x-1 group-hover:-translate-y-1 group-active:translate-x-1 group-active:-translate-y-1 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -72,7 +65,7 @@ export default function PortfolioShowcase() {
   );
 }
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0], index: number }) {
+function ProjectCard({ project, index }: { project: any, index: number }) {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -107,10 +100,10 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0], index:
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-4 text-white/50 text-sm tracking-widest uppercase mb-6"
+          className="flex items-center gap-4 text-gray-500 text-sm tracking-widest uppercase mb-6"
         >
           <span>{(index + 1).toString().padStart(2, '0')}</span>
-          <span className="w-6 h-[1px] bg-white/20" />
+          <span className="w-6 h-[1px] bg-gray-300" />
           <span>{project.year}</span>
         </motion.div>
         
@@ -119,7 +112,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0], index:
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-heading mb-4 text-white"
+          className="text-4xl md:text-5xl font-heading mb-4 text-[var(--color-neutral-900)]"
         >
           {project.title}
         </motion.h3>
@@ -129,7 +122,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0], index:
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#c9a84c] mb-10 tracking-widest text-sm uppercase font-semibold"
+          className="text-[var(--color-brand-500)] mb-10 tracking-widest text-sm uppercase font-semibold"
         >
           {project.category}
         </motion.p>
@@ -140,11 +133,11 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0], index:
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <Link href={`/portfolio/${project.slug}`} className="group inline-flex items-center gap-4 text-white/80 hover:text-[#c9a84c] active:text-[#c9a84c] transition-colors">
-            <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#c9a84c] group-active:border-[#c9a84c] flex items-center justify-center transition-colors">
+          <Link href={`/portfolio/${project.slug}`} className="group inline-flex items-center gap-4 text-gray-600 hover:text-[var(--color-brand-500)] active:text-[var(--color-brand-500)] transition-colors">
+            <div className="w-12 h-12 rounded-full border border-gray-300 group-hover:border-[var(--color-brand-500)] group-active:border-[var(--color-brand-500)] flex items-center justify-center transition-colors">
               <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-active:translate-x-0.5 group-active:-translate-y-0.5 transition-transform" />
             </div>
-            <span className="text-sm tracking-widest uppercase font-medium group-hover:text-[#c9a84c] group-active:text-[#c9a84c] transition-colors">Discover</span>
+            <span className="text-sm tracking-widest uppercase font-medium group-hover:text-[var(--color-brand-500)] group-active:text-[var(--color-brand-500)] transition-colors">Discover</span>
           </Link>
         </motion.div>
       </div>

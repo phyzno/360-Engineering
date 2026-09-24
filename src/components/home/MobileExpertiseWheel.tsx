@@ -149,7 +149,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
   return (
     <div className="w-full flex gap-3 items-stretch h-[500px] select-none relative">
       {/* Left Area: Dynamic Showcase Card */}
-      <div className="flex-1 relative rounded-2xl overflow-hidden border border-[#263c1a] bg-[#0e170c] shadow-2xl">
+      <div className="flex-1 relative rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-2xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentService.id}
@@ -170,17 +170,17 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
                 sizes="(max-width: 1024px) 80vw, 50vw"
                 quality={85}
               />
-              <div className="absolute inset-0 bg-[#081006]/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#081006] via-[#081006]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gray-50/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
             </div>
 
             {/* Top Pill Badge */}
             <div className="relative flex items-center justify-between z-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium tracking-wider uppercase bg-[#0b1408]/85 text-[#c9a84c] border border-[#c9a84c]/30 backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-medium tracking-wider uppercase bg-white/90 text-[var(--color-brand-500)] border border-[var(--color-brand-500)]/30 backdrop-blur-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-500)] animate-pulse" />
                 Expertise {currentService.id}
               </span>
-              <span className="text-[11px] tracking-widest text-[#9ba89e] uppercase font-mono">
+              <span className="text-[11px] tracking-widest text-gray-500 uppercase font-mono">
                 {activeIndex + 1} / {total}
               </span>
             </div>
@@ -191,7 +191,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: 0.08 }}
-                className="text-2xl font-heading text-[#f5f0e8] leading-tight"
+                className="text-2xl font-heading text-[var(--color-neutral-900)] leading-tight"
               >
                 {currentService.title}
               </motion.h3>
@@ -200,7 +200,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: 0.12 }}
-                className="text-xs text-[#9ba89e] leading-relaxed line-clamp-3"
+                className="text-xs text-gray-500 leading-relaxed line-clamp-3"
               >
                 {currentService.description}
               </motion.p>
@@ -213,7 +213,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
               >
                 <Link
                   href={currentService.link}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#c9a84c] text-[#081006] text-xs font-semibold tracking-wide hover:bg-[#dfba59] active:scale-95 transition-all duration-200 shadow-md shadow-[#c9a84c]/15"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[var(--color-brand-500)] text-white text-xs font-semibold tracking-wide hover:bg-[#dfba59] active:scale-95 transition-all duration-200 shadow-md shadow-[#c9a84c]/15"
                 >
                   <span>Explore Service</span>
                   <ArrowUpRight size={15} />
@@ -226,7 +226,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
 
       {/* Right Rail: Luxury Watch Bracelet Chain Track */}
       <div
-        className="w-[82px] relative flex flex-col justify-center items-center rounded-2xl bg-[#081006] border border-[#233818] overflow-hidden shadow-2xl select-none touch-none z-10"
+        className="w-[82px] relative flex flex-col justify-center items-center rounded-2xl bg-gray-50 border border-gray-200 overflow-hidden shadow-2xl select-none touch-none z-10"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -236,12 +236,12 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
         }}
       >
         {/* Watch Bezel Channel Rails (Left & Right Metallic Guide Grooves) */}
-        <div className="absolute left-[3px] inset-y-0 w-[1px] bg-gradient-to-b from-transparent via-[#3a5828]/40 to-transparent pointer-events-none z-20" />
-        <div className="absolute right-[3px] inset-y-0 w-[1px] bg-gradient-to-b from-transparent via-[#3a5828]/40 to-transparent pointer-events-none z-20" />
+        <div className="absolute left-[3px] inset-y-0 w-[1px] bg-gradient-to-b from-transparent via-gray-200 to-transparent pointer-events-none z-20" />
+        <div className="absolute right-[3px] inset-y-0 w-[1px] bg-gradient-to-b from-transparent via-gray-200 to-transparent pointer-events-none z-20" />
 
         {/* Subtle Edge Vignettes (Non-intrusive, so all 5 numbers remain 100% visible and sharp) */}
-        <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-b from-[#081006]/80 to-transparent z-20 pointer-events-none" />
-        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-[#081006]/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-b from-white/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-4 bg-gradient-to-t from-white/80 to-transparent z-20 pointer-events-none" />
 
         {/* Continuous 3D Moving Chain Track */}
         <div
@@ -290,37 +290,37 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
                 }}
               >
                 {/* Watch Bracelet Link Plate (Matches User Image Exactly) */}
-                <div className="w-full h-full rounded-[10px] relative flex items-center justify-between px-2 transition-colors duration-200 border border-[#c9a84c]/50 bg-gradient-to-b from-[#142211] to-[#0a1109] shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+                <div className="w-full h-full rounded-[10px] relative flex items-center justify-between px-2 transition-colors duration-200 border border-[var(--color-brand-500)]/50 bg-gradient-to-b from-[#142211] to-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                   {/* Left Pin (Dot + Line) */}
                   <div className="flex flex-col items-center">
-                    <div className="w-[3px] h-[3px] rounded-full bg-[#c9a84c] shadow-[0_0_4px_#c9a84c]" />
-                    <div className="w-[1px] h-2 bg-[#c9a84c]/40 mt-[3px]" />
+                    <div className="w-[3px] h-[3px] rounded-full bg-[var(--color-brand-500)] shadow-[0_0_4px_#c9a84c]" />
+                    <div className="w-[1px] h-2 bg-[var(--color-brand-500)]/40 mt-[3px]" />
                   </div>
 
                   {/* Center Content: Number & Underline */}
                   <div className="flex-1 flex flex-col items-center justify-center -mt-0.5">
-                    <span className="font-heading tracking-widest text-[#c9a84c] font-bold text-lg drop-shadow-[0_0_6px_rgba(201,168,76,0.5)]">
+                    <span className="font-heading tracking-widest text-[var(--color-brand-500)] font-bold text-lg drop-shadow-[0_0_6px_rgba(201,168,76,0.5)]">
                       {item.id}
                     </span>
-                    <div className="h-[2px] rounded-full w-5 bg-[#c9a84c] mt-0.5" />
+                    <div className="h-[2px] rounded-full w-5 bg-[var(--color-brand-500)] mt-0.5" />
                   </div>
 
                   {/* Right Pin (Dot + Line) */}
                   <div className="flex flex-col items-center">
-                    <div className="w-[3px] h-[3px] rounded-full bg-[#c9a84c] shadow-[0_0_4px_#c9a84c]" />
-                    <div className="w-[1px] h-2 bg-[#c9a84c]/40 mt-[3px]" />
+                    <div className="w-[3px] h-[3px] rounded-full bg-[var(--color-brand-500)] shadow-[0_0_4px_#c9a84c]" />
+                    <div className="w-[1px] h-2 bg-[var(--color-brand-500)]/40 mt-[3px]" />
                   </div>
                 </div>
 
                 {/* Micro Chain Connector Link Shadow between plates */}
-                <div className="w-6 h-[3px] mx-auto bg-[#040803] rounded-full opacity-70" />
+                <div className="w-6 h-[3px] mx-auto bg-gray-200 rounded-full opacity-70" />
               </div>
             );
           })}
         </div>
 
         {/* Tactile Roll Hint */}
-        <div className="absolute bottom-1 text-[8px] text-[#4a7238] tracking-widest uppercase font-mono z-30 pointer-events-none opacity-60">
+        <div className="absolute bottom-1 text-[8px] text-gray-400 tracking-widest uppercase font-mono z-30 pointer-events-none opacity-60">
           Roll
         </div>
       </div>

@@ -2,23 +2,24 @@
 @source "../";
 /* ============================================
    360 Engineering and Consultancy — DESIGN SYSTEM
-   Forest Luxury Color Palette
+   Brand Theme (Orange & Clean White)
    ============================================ */
 
 @theme {
-  /* 360 Engineering and Consultancy Color Palette (Mapped to existing variables for compatibility) */
-  --color-forest-950: #000000;
-  --color-forest-900: #0a0a0a;
+  /* Colors */
+  --color-brand-900: #8a3f08;
+  --color-brand-700: #b5540b;
+  --color-brand-500: #d96b11;
+  --color-brand-300: #f0954a;
+  --color-brand-100: #fadbc2;
 
-  --color-gold-700: #8a722e;
-  --color-gold-500: #c9a84c;
-  --color-gold-300: #e1cb86;
-
-  --color-cream-900: #666666;
-  --color-cream-700: #999999;
-  --color-cream-500: #cccccc;
-  --color-cream-300: #e6e6e6;
-  --color-cream-100: #ffffff;
+  --color-neutral-950: #111111;
+  --color-neutral-900: #1f1f1f;
+  --color-neutral-700: #4b5563;
+  --color-neutral-500: #6b7280;
+  --color-neutral-300: #e5e7eb;
+  --color-neutral-100: #f9fafb;
+  --color-white: #ffffff;
 
   /* Typography */
   --font-heading: "Cormorant Garamond", "Georgia", serif;
@@ -46,18 +47,32 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  scroll-behavior: auto;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-forest-900);
-  color: var(--color-cream-100);
+  background-color: var(--color-white);
+  color: var(--color-neutral-900);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: clip;
+}
+
+/* Alternating section backgrounds based on user request */
+main section:nth-of-type(even) {
+  --section-bg: #FFEAD2; /* even lighter orange for the 2nd section (Stats) */
+}
+
+main section:nth-of-type(odd) {
+  --section-bg: #FFF8F0; /* cream/white for the 3rd section (About) */
+}
+
+main section.bg-white,
+main section.bg-gray-50 {
+  background-color: var(--section-bg, #FFF8F0) !important;
 }
 
 /* ============================================
@@ -69,16 +84,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-forest-900);
+  background: var(--color-neutral-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold-700);
+  background: var(--color-brand-300);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-500);
+  background: var(--color-brand-500);
 }
 
 }
@@ -123,11 +138,18 @@ body {
 }
 
 /* ============================================
-   GOLD GRADIENT TEXT
+   BRAND GRADIENT TEXT
    ============================================ */
 
+.text-brand-gradient {
+  background: linear-gradient(135deg, var(--color-brand-300) 0%, var(--color-brand-500) 50%, var(--color-brand-700) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* Keep old class temporarily if any component still uses it before update */
 .text-gold-gradient {
-  background: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-500) 50%, var(--color-gold-300) 100%);
+  background: linear-gradient(135deg, var(--color-brand-300) 0%, var(--color-brand-500) 50%, var(--color-brand-700) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -142,8 +164,8 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: var(--color-gold-500);
-  color: var(--color-forest-950);
+  background: var(--color-brand-500);
+  color: var(--color-white);
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
@@ -161,7 +183,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--color-gold-300);
+  background: var(--color-brand-700);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-medium);
@@ -182,21 +204,21 @@ body {
   gap: 0.5rem;
   padding: 0.875rem 2rem;
   background: transparent;
-  color: var(--color-cream-100);
+  color: var(--color-neutral-900);
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid rgba(245, 240, 232, 0.3);
+  border: 1px solid var(--color-neutral-300);
   cursor: pointer;
   transition: all var(--transition-medium);
 }
 
 .btn-outline:hover {
-  border-color: var(--color-gold-500);
-  color: var(--color-gold-500);
+  border-color: var(--color-brand-500);
+  color: var(--color-brand-500);
 }
 
 /* ============================================
@@ -248,14 +270,21 @@ body {
 }
 
 /* ============================================
-   GOLD DIVIDER LINE
+   BRAND DIVIDER LINE
    ============================================ */
 
-.gold-line {
+.brand-line {
   display: block;
   width: 3rem;
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-gold-500), transparent);
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-brand-500), transparent);
+  margin-bottom: 1.5rem;
+}
+.gold-line { /* fallback for now */
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-brand-500), transparent);
   margin-bottom: 1.5rem;
 }
 
@@ -296,7 +325,7 @@ body {
   left: 0;
   width: 8px;
   height: 8px;
-  background: var(--color-gold-500);
+  background: var(--color-brand-500);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -308,8 +337,8 @@ body {
 .cursor-dot.hovering {
   width: 12px;
   height: 12px;
-  background: var(--color-gold-300);
-  box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
+  background: var(--color-brand-300);
+  box-shadow: 0 0 10px rgba(217, 107, 17, 0.5);
 }
 
 /* ============================================
@@ -332,10 +361,11 @@ body {
    ============================================ */
 
 .glass-card {
-  background: rgba(26, 41, 18, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(217, 107, 17, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* ============================================
@@ -358,9 +388,9 @@ body {
 .input-field {
   width: 100%;
   padding: 1rem 1.25rem;
-  background: rgba(26, 41, 18, 0.6);
-  border: 1px solid rgba(201, 168, 76, 0.15);
-  color: var(--color-cream-100);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-neutral-900);
   font-family: var(--font-body);
   font-size: 0.95rem;
   outline: none;
@@ -368,11 +398,11 @@ body {
 }
 
 .input-field::placeholder {
-  color: var(--color-cream-900);
+  color: var(--color-neutral-500);
 }
 
 .input-field:focus {
-  border-color: var(--color-gold-500);
+  border-color: var(--color-brand-500);
 }
 
 /* ============================================
@@ -387,7 +417,7 @@ body {
   width: 18px;
   height: 18px;
   border: 2px solid transparent;
-  border-top-color: var(--color-forest-950);
+  border-top-color: var(--color-brand-500);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

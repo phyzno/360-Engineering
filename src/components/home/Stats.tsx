@@ -53,13 +53,13 @@ function AnimatedCounter({ end, label, suffix = "", delay = 0 }: StatProps) {
       transition={{ duration: 0.8, delay: delay }}
       className="flex flex-col items-center text-center relative group"
     >
-      <div className="absolute inset-0 bg-[#c9a84c]/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700" />
-      <div className="font-heading text-6xl md:text-7xl text-[#f5f0e8] mb-4 flex items-center relative z-10">
+      <div className="absolute inset-0 bg-[var(--color-brand-500)]/5 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700" />
+      <div className="font-heading text-6xl md:text-7xl text-[var(--color-neutral-900)] mb-4 flex items-center relative z-10">
         {count}
-        <span className="text-[#c9a84c]">{suffix}</span>
+        <span className="text-[var(--color-brand-500)]">{suffix}</span>
       </div>
       <div className="w-12 h-[1px] bg-white/20 mb-6 relative z-10" />
-      <span className="text-[#f5f0e8]/60 uppercase tracking-[0.2em] text-xs font-semibold relative z-10">
+      <span className="text-[var(--color-neutral-900)]/60 uppercase tracking-[0.2em] text-xs font-semibold relative z-10">
         {label}
       </span>
     </motion.div>
@@ -68,13 +68,13 @@ function AnimatedCounter({ end, label, suffix = "", delay = 0 }: StatProps) {
 
 export default function Stats() {
   return (
-    <section className="relative section-padding bg-[#0a1206] overflow-hidden">
+    <section className="relative section-padding bg-white overflow-hidden">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 noise mix-blend-overlay opacity-20 pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/30 to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/30 to-transparent" />
       
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#c9a84c]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--color-brand-500)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-wide relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">

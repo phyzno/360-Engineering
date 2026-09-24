@@ -77,12 +77,9 @@ export default function RootLayout({
         <LenisProvider>
           <TouchHoverFix />
           <CustomCursor />
-          <Navbar />
           <AnimatePresence mode="wait">
             <main>{children}</main>
           </AnimatePresence>
-          <Footer />
-          <WhatsAppButton />
         </LenisProvider>
       </body>
     </html>

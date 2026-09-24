@@ -102,8 +102,8 @@ export default function CustomCursor() {
         
         const opacity = 1 - (p.life / p.maxLife);
         
-        // Match the gold theme color #c9a84c (201, 168, 76)
-        ctx.fillStyle = `rgba(201, 168, 76, ${opacity * 0.6})`;
+        // Match the orange theme color (255, 165, 0)
+        ctx.fillStyle = `rgba(255, 165, 0, ${opacity * 0.6})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();

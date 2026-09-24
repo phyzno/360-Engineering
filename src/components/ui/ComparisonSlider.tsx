@@ -56,7 +56,7 @@ export function ComparisonSlider({
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-square md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-xl md:rounded-2xl group bg-[#0a1206]"
+      className="relative w-full aspect-square md:aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-xl md:rounded-2xl group bg-white"
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0">
@@ -66,7 +66,7 @@ export function ComparisonSlider({
           fill
           className="object-cover"
         />
-        <div className="absolute top-3 right-3 md:top-6 md:right-6 bg-[#0a1206]/85 text-[#f5f0e8] px-2.5 py-1 md:px-5 md:py-2 rounded-full text-[10px] md:text-sm tracking-wider uppercase font-medium backdrop-blur-md pointer-events-none border border-[#c9a84c]/30 shadow-xl whitespace-nowrap z-10">
+        <div className="absolute top-3 right-3 md:top-6 md:right-6 bg-white/85 text-[var(--color-neutral-900)] px-2.5 py-1 md:px-5 md:py-2 rounded-full text-[10px] md:text-sm tracking-wider uppercase font-medium backdrop-blur-md pointer-events-none border border-[var(--color-brand-500)]/30 shadow-xl whitespace-nowrap z-10">
           <span className="sm:hidden">After</span>
           <span className="hidden sm:inline">{afterLabel}</span>
         </div>
@@ -83,7 +83,7 @@ export function ComparisonSlider({
           fill
           className="object-cover"
         />
-        <div className="absolute top-3 left-3 md:top-6 md:left-6 bg-[#0a1206]/85 text-[#f5f0e8] px-2.5 py-1 md:px-5 md:py-2 rounded-full text-[10px] md:text-sm tracking-wider uppercase font-medium backdrop-blur-md pointer-events-none border border-[#c9a84c]/30 shadow-xl whitespace-nowrap z-10">
+        <div className="absolute top-3 left-3 md:top-6 md:left-6 bg-white/85 text-[var(--color-neutral-900)] px-2.5 py-1 md:px-5 md:py-2 rounded-full text-[10px] md:text-sm tracking-wider uppercase font-medium backdrop-blur-md pointer-events-none border border-[var(--color-brand-500)]/30 shadow-xl whitespace-nowrap z-10">
           <span className="sm:hidden">Before</span>
           <span className="hidden sm:inline">{beforeLabel}</span>
         </div>
@@ -91,14 +91,14 @@ export function ComparisonSlider({
 
       {/* Drag Handle */}
       <motion.div
-        className="absolute top-0 bottom-0 w-[2px] bg-[#c9a84c] cursor-ew-resize z-30 flex items-center justify-center shadow-[0_0_12px_rgba(201,168,76,0.6)]"
+        className="absolute top-0 bottom-0 w-[2px] bg-[var(--color-brand-500)] cursor-ew-resize z-30 flex items-center justify-center shadow-[0_0_12px_rgba(201,168,76,0.6)]"
         style={{ x }}
         drag="x"
         dragConstraints={containerRef}
         dragElastic={0}
         dragMomentum={false}
       >
-        <div className="absolute w-11 h-11 md:w-12 md:h-12 bg-[#c9a84c] text-[#0a1206] rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-110">
+        <div className="absolute w-11 h-11 md:w-12 md:h-12 bg-[var(--color-brand-500)] text-black rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-110">
           <GripVertical size={22} className="opacity-90 stroke-[2.5]" />
         </div>
       </motion.div>

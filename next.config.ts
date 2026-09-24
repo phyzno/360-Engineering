@@ -7,13 +7,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
+        hostname: "**",
       },
       {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/**",
+        protocol: "http",
+        hostname: "**",
       },
     ],
     // Serve images in modern formats for best performance

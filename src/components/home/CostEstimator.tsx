@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { evaluate } from "mathjs";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { 
@@ -26,6 +27,18 @@ export default function CostEstimator() {
   const [leadData, setLeadData] = useState({ name: "", phone: "", email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [estimatedCost, setEstimatedCost] = useState({ min: 0, max: 0 });
+
+  const [settings, setSettings] = useState<any>(null);
+  
+  useEffect(() => {
+    fetch('/api/estimator-settings')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.error) setSettings(data);
+      })
+      .catch(err => console.error('Failed to load estimator settings:', err));
+  }, []);
+
 
   // 3D Tilt Setup
   const cardRef = useRef<HTMLDivElement>(null);
@@ -82,19 +95,30 @@ export default function CostEstimator() {
   };
 
   const calculateEstimate = () => {
-    if (!areaSize || typeof areaSize === "string") return;
+    if (!areaSize || typeof areaSize === 'string') return;
 
     let basePrice = 0;
-    // Base prices in BDT (Dummy logic)
-    if (propertyType === "Apartment") basePrice = 1500;
-    else if (propertyType === "Duplex") basePrice = 2500;
-    else if (propertyType === "Office") basePrice = 2000;
+    if (propertyType === 'Apartment') basePrice = settings?.property_apartment_base || 1500;
+    else if (propertyType === 'Duplex') basePrice = settings?.property_duplex_base || 2500;
+    else if (propertyType === 'Office') basePrice = settings?.property_office_base || 2000;
 
-    let multiplier = 1;
-    if (finishingType === "Premium") multiplier = 1.5;
-    else if (finishingType === "Ultra-Luxury") multiplier = 2.5;
+    let multiplier = settings?.finishing_standard_mult || 1.0;
+    if (finishingType === 'Premium') multiplier = settings?.finishing_premium_mult || 1.5;
+    else if (finishingType === 'Ultra-Luxury') multiplier = settings?.finishing_ultra_mult || 2.5;
 
-    const total = areaSize * basePrice * multiplier;
+    let total = 0;
+    try {
+      const formulaStr = settings?.custom_formula || 'Area * BasePrice * Multiplier';
+      total = evaluate(formulaStr, {
+        Area: areaSize,
+        BasePrice: basePrice,
+        Multiplier: multiplier
+      });
+    } catch (e) {
+      console.error('Invalid custom formula, falling back to default calculation', e);
+      total = areaSize * basePrice * multiplier;
+    }
+
     setEstimatedCost({
       min: Math.round(total * 0.9),
       max: Math.round(total * 1.1),
@@ -162,7 +186,7 @@ export default function CostEstimator() {
   };
 
   return (
-    <section id="estimator" className="section-padding bg-[var(--color-forest-900)] relative overflow-hidden perspective-[2000px]">
+    <section id="estimator" className="section-padding bg-white relative overflow-hidden perspective-[2000px]">
       {/* Decorative noise/ambience */}
       <div className="absolute inset-0 noise z-0"></div>
 
@@ -183,7 +207,7 @@ export default function CostEstimator() {
             rotateX,
             rotateY,
             transformStyle: "preserve-3d",
-            backgroundImage: "linear-gradient(to bottom right, rgba(20, 28, 15, 0.85), rgba(10, 15, 8, 0.95)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1600')",
+            backgroundImage: "linear-gradient(to bottom right, rgba(20, 28, 15, 0.65), rgba(10, 15, 8, 0.75)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1600')",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
@@ -195,7 +219,7 @@ export default function CostEstimator() {
           {/* Progress Bar */}
           <div className="bg-black/40 h-2 w-full shadow-[inset_0_1px_3px_rgba(0,0,0,0.8)] relative z-10" style={{ transform: "translateZ(1px)" }}>
             <motion.div 
-              className="h-full bg-[var(--color-gold-500)] shadow-[0_0_15px_var(--color-gold-500)]"
+              className="h-full bg-[var(--color-brand-500)] shadow-[0_0_15px_var(--color-brand-500)]"
               initial={{ width: "20%" }}
               animate={{ width: `${(step / 5) * 100}%` }}
               transition={{ duration: 0.5 }}
@@ -216,7 +240,7 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-8 drop-shadow-md">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[white] mb-8 drop-shadow-md">
                     What type of property are you designing?
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -232,8 +256,8 @@ export default function CostEstimator() {
                         onClick={() => handlePropertySelect(item.id as PropertyType)}
                         className={`p-6 rounded-2xl border transition-colors duration-300 flex flex-col items-center justify-center gap-4 relative overflow-hidden ${
                           propertyType === item.id 
-                            ? "border-[var(--color-gold-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-gold-500)]/20 to-[var(--color-gold-500)]/5 text-[var(--color-gold-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
-                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-gold-300)] hover:border-b-[var(--color-gold-300)] text-[var(--color-cream-100)] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
+                            ? "border-[var(--color-brand-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-brand-500)]/20 to-[var(--color-brand-500)]/5 text-[var(--color-brand-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
+                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-brand-300)] hover:border-b-[var(--color-brand-300)] text-[white] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
                         }`}
                       >
                         {/* Highlight line for 3D card edge */}
@@ -258,10 +282,10 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6 max-w-md mx-auto w-full"
                 >
-                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-2">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[white] mb-2">
                     What is the total area size?
                   </h3>
-                  <p className="text-center text-[var(--color-cream-500)] mb-8 text-sm">
+                  <p className="text-center text-[var(--color-neutral-300)] mb-8 text-sm">
                     Enter the space in square feet (Sq Ft).
                   </p>
                   
@@ -275,7 +299,7 @@ export default function CostEstimator() {
                         placeholder="e.g. 1500"
                         className="input-field rounded-2xl text-center text-2xl md:text-3xl font-heading font-semibold py-4 pr-16 md:pr-20 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-shadow hover:shadow-[0_4px_25px_rgba(201,168,76,0.15)] focus:shadow-[0_4px_25px_rgba(201,168,76,0.25)]"
                       />
-                      <span className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-[var(--color-cream-700)] font-medium text-sm md:text-base">
+                      <span className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-[var(--color-neutral-400)] font-medium text-sm md:text-base">
                         Sq Ft
                       </span>
                     </div>
@@ -285,7 +309,7 @@ export default function CostEstimator() {
                         <button
                           key={size}
                           onClick={() => setAreaSize(size)}
-                          className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-[rgba(201,168,76,0.3)] hover:border-[var(--color-gold-500)] hover:text-[var(--color-gold-500)] hover:shadow-[0_4px_15px_rgba(201,168,76,0.2)] text-xs md:text-sm font-medium transition-all text-[var(--color-cream-300)] shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
+                          className="px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-[rgba(201,168,76,0.3)] hover:border-[var(--color-brand-500)] hover:text-[var(--color-brand-500)] hover:shadow-[0_4px_15px_rgba(201,168,76,0.2)] text-xs md:text-sm font-medium transition-all text-[var(--color-neutral-300)] shadow-[0_2px_10px_rgba(0,0,0,0.2)]"
                         >
                           {size} Sq Ft
                         </button>
@@ -294,7 +318,7 @@ export default function CostEstimator() {
                   </div>
 
                   <div className="flex flex-col-reverse sm:flex-row justify-between pt-8 items-center gap-4 sm:gap-0">
-                    <button onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
+                    <button onClick={prevStep} className="flex items-center text-[var(--color-neutral-300)] hover:text-[var(--color-brand-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                       <ArrowLeft className="w-4 h-4 mr-2" /> Back
                     </button>
                     <button 
@@ -320,7 +344,7 @@ export default function CostEstimator() {
                   transition={{ type: "tween", duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <h3 className="text-2xl font-heading font-medium text-center text-[var(--color-cream-100)] mb-8 drop-shadow-md">
+                  <h3 className="text-2xl font-heading font-medium text-center text-[white] mb-8 drop-shadow-md">
                     Select your preferred finishing
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -336,19 +360,19 @@ export default function CostEstimator() {
                         onClick={() => handleFinishingSelect(item.id as FinishingType)}
                         className={`p-6 text-left rounded-2xl border transition-colors duration-300 flex flex-col gap-2 relative overflow-hidden ${
                           finishingType === item.id 
-                            ? "border-[var(--color-gold-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-gold-500)]/20 to-[var(--color-gold-500)]/5 text-[var(--color-gold-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
-                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-gold-300)] hover:border-b-[var(--color-gold-300)] text-[var(--color-cream-100)] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
+                            ? "border-[var(--color-brand-500)] border-b-[4px] bg-gradient-to-b from-[var(--color-brand-500)]/20 to-[var(--color-brand-500)]/5 text-[var(--color-brand-500)] shadow-[0_8px_20px_rgba(201,168,76,0.3)]" 
+                            : "border-[rgba(201,168,76,0.15)] border-b-[4px] border-b-[rgba(201,168,76,0.3)] bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-[var(--color-brand-300)] hover:border-b-[var(--color-brand-300)] text-[white] shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
                         }`}
                       >
                         {/* Highlight line for 3D card edge */}
                         <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/[0.05]"></div>
-                        <h4 className={`font-semibold text-lg tracking-wide drop-shadow-md ${finishingType === item.id ? "text-[var(--color-gold-500)]" : "text-[var(--color-cream-100)]"}`}>{item.label}</h4>
-                        <p className={`text-sm leading-relaxed ${finishingType === item.id ? "text-[var(--color-gold-300)]" : "text-[var(--color-cream-500)]"}`}>{item.desc}</p>
+                        <h4 className={`font-semibold text-lg tracking-wide drop-shadow-md ${finishingType === item.id ? "text-[var(--color-brand-500)]" : "text-[white]"}`}>{item.label}</h4>
+                        <p className={`text-sm leading-relaxed ${finishingType === item.id ? "text-[var(--color-brand-300)]" : "text-[var(--color-neutral-300)]"}`}>{item.desc}</p>
                       </motion.button>
                     ))}
                   </div>
                   <div className="flex flex-col sm:flex-row justify-start pt-6">
-                    <button onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
+                    <button onClick={prevStep} className="flex items-center text-[var(--color-neutral-300)] hover:text-[var(--color-brand-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                       <ArrowLeft className="w-4 h-4 mr-2" /> Back
                     </button>
                   </div>
@@ -368,18 +392,18 @@ export default function CostEstimator() {
                   className="max-w-md mx-auto w-full"
                 >
                   <div className="text-center mb-8">
-                    <Calculator className="w-12 h-12 text-[var(--color-gold-500)] mx-auto mb-4" />
-                    <h3 className="text-2xl font-heading font-medium text-[var(--color-cream-100)]">
+                    <Calculator className="w-12 h-12 text-[var(--color-brand-500)] mx-auto mb-4" />
+                    <h3 className="text-2xl font-heading font-medium text-[white]">
                       Your estimate is ready!
                     </h3>
-                    <p className="text-[var(--color-cream-500)] mt-2 text-sm">
+                    <p className="text-[var(--color-neutral-300)] mt-2 text-sm">
                       Enter your details to reveal the estimated cost instantly.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
+                      <label className="block text-sm font-medium text-[var(--color-neutral-300)] mb-2 tracking-wide uppercase">
                         Full Name
                       </label>
                       <input
@@ -392,7 +416,7 @@ export default function CostEstimator() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
+                      <label className="block text-sm font-medium text-[var(--color-neutral-300)] mb-2 tracking-wide uppercase">
                         Phone Number
                       </label>
                       <input
@@ -405,7 +429,7 @@ export default function CostEstimator() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-[var(--color-cream-300)] mb-2 tracking-wide uppercase">
+                      <label className="block text-sm font-medium text-[var(--color-neutral-300)] mb-2 tracking-wide uppercase">
                         Email Address
                       </label>
                       <input
@@ -425,7 +449,7 @@ export default function CostEstimator() {
                     )}
 
                     <div className="flex flex-col-reverse sm:flex-row justify-between items-center pt-6 gap-4 sm:gap-0">
-                      <button type="button" onClick={prevStep} className="flex items-center text-[var(--color-cream-500)] hover:text-[var(--color-gold-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
+                      <button type="button" onClick={prevStep} className="flex items-center text-[var(--color-neutral-300)] hover:text-[var(--color-brand-500)] transition-colors text-sm uppercase tracking-wider font-semibold w-full sm:w-auto justify-center sm:justify-start py-3 sm:py-0">
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </button>
                       <button 
@@ -460,26 +484,26 @@ export default function CostEstimator() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
-                    className="w-20 h-20 bg-[var(--color-gold-500)]/10 border border-[rgba(201,168,76,0.3)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(201,168,76,0.15)]"
+                    className="w-20 h-20 bg-[var(--color-brand-500)]/10 border border-[rgba(201,168,76,0.3)] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(201,168,76,0.15)]"
                   >
-                    <CheckCircle2 className="w-10 h-10 text-[var(--color-gold-500)]" />
+                    <CheckCircle2 className="w-10 h-10 text-[var(--color-brand-500)]" />
                   </motion.div>
 
-                  <h3 className="text-2xl font-heading font-medium text-[var(--color-cream-100)] mb-2">
+                  <h3 className="text-2xl font-heading font-medium text-[white] mb-2">
                     Estimated Cost Range
                   </h3>
-                  <p className="text-[var(--color-cream-500)] mb-8 text-sm">
+                  <p className="text-[var(--color-neutral-300)] mb-8 text-sm">
                     Based on your requirements ({areaSize} sq ft, {finishingType} {propertyType})
                   </p>
 
                   <div className="bg-black/20 border border-[rgba(201,168,76,0.15)] rounded-3xl p-8 mb-8 relative overflow-hidden">
                     {/* Decorative gold glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[var(--color-gold-500)]/10 blur-[50px] rounded-full pointer-events-none"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[var(--color-brand-500)]/10 blur-[50px] rounded-full pointer-events-none"></div>
                     
                     <p className="text-3xl md:text-5xl font-heading font-bold text-gold-gradient relative z-10">
-                      {formatCurrency(estimatedCost.min)} <span className="text-2xl text-[var(--color-cream-700)] font-medium mx-2">-</span> {formatCurrency(estimatedCost.max)}
+                      {formatCurrency(estimatedCost.min)} <span className="text-2xl text-[var(--color-neutral-400)] font-medium mx-2">-</span> {formatCurrency(estimatedCost.max)}
                     </p>
-                    <p className="text-xs text-[var(--color-cream-700)] mt-6 relative z-10 max-w-sm mx-auto">
+                    <p className="text-xs text-[var(--color-neutral-400)] mt-6 relative z-10 max-w-sm mx-auto">
                       *This is a rough estimate. Actual costs may vary based on site conditions, specific materials chosen, and custom design elements.
                     </p>
                   </div>
@@ -493,7 +517,7 @@ export default function CostEstimator() {
                         setFinishingType("");
                         setLeadData({name: "", phone: "", email: ""});
                       }}
-                      className="btn-outline rounded-full"
+                      className="btn-outline rounded-full text-[var(--color-neutral-300)] border-[rgba(255,255,255,0.3)] hover:text-[var(--color-brand-500)] hover:border-[var(--color-brand-500)]"
                     >
                       Start Over
                     </button>

@@ -1,37 +1,37 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const supabase = await createClient();
     
-    // Here you would normally save to a database (Prisma, Supabase, etc.)
-    // and/or send an email using Resend.
-    // For now, we will just log the data and return success.
-    
-    console.log("New Lead Received:", body);
+    // Construct a nice message combining the inputs
+    const estimateMessage = `
+--- New Lead from Cost Estimator ---
+Property Type: ${body.propertyType}
+Total Area: ${body.areaSize} Sq Ft
+Finishing Preference: ${body.finishingType}
+------------------------------------
+    `.trim();
 
-    /* 
-    Example of sending email using Resend (uncomment when API key is added):
-    import { Resend } from 'resend';
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'your-email@example.com',
-      subject: `New Lead from ${body.source}`,
-      html: `
-        <h2>New Lead Details</h2>
-        <p><strong>Name:</strong> ${body.name}</p>
-        <p><strong>Phone:</strong> ${body.phone}</p>
-        <p><strong>Email:</strong> ${body.email}</p>
-        <hr/>
-        <h3>Estimate Requirements</h3>
-        <p><strong>Property Type:</strong> ${body.propertyType}</p>
-        <p><strong>Area Size:</strong> ${body.areaSize} Sq Ft</p>
-        <p><strong>Finishing Type:</strong> ${body.finishingType}</p>
-      `
-    });
-    */
+    // Insert into Supabase leads table
+    const { data, error } = await supabase
+      .from('leads')
+      .insert([
+        {
+          name: body.name,
+          email: body.email,
+          phone: body.phone,
+          message: estimateMessage,
+          is_read: false
+        }
+      ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      throw error;
+    }
 
     return NextResponse.json({ success: true, message: "Lead captured successfully" }, { status: 200 });
   } catch (error) {

@@ -4,7 +4,9 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { projects, type Project } from "@/data/projects";
+
+// Accept Project type here since we're removing the static import
+export type Project = any; 
 
 const categories = ["All", "Residential", "Commercial", "Renovation"];
 
@@ -20,7 +22,7 @@ export function ProjectCard({ project }: { project: Project }) {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
       ref={ref}
-      className="group relative aspect-[4/5] overflow-hidden"
+      className="group relative aspect-[4/5] overflow-hidden rounded-xl"
     >
       <Link href={`/portfolio/${project.slug}`} className="block w-full h-full">
         <Image
@@ -33,7 +35,7 @@ export function ProjectCard({ project }: { project: Project }) {
           }`}
         />
         <div 
-          className={`absolute inset-0 bg-gradient-to-t from-[#0a1206]/90 via-[#0a1206]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
             isInView ? "max-lg:opacity-100" : ""
           }`} 
         />
@@ -42,10 +44,10 @@ export function ProjectCard({ project }: { project: Project }) {
             isInView ? "max-lg:translate-y-0 max-lg:opacity-100" : ""
           }`}
         >
-          <p className="text-[#c9a84c] text-sm uppercase tracking-widest font-semibold mb-2">
+          <p className="text-[#d96b11] text-sm uppercase tracking-widest font-semibold mb-2">
             {project.category} {project.subcategory ? `- ${project.subcategory}` : ""}
           </p>
-          <h3 className="font-heading text-2xl text-[#f5f0e8] mb-0">
+          <h3 className="font-heading text-2xl text-white mb-0">
             {project.title}
           </h3>
         </div>
@@ -54,12 +56,12 @@ export function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export default function PortfolioGallery() {
+export default function PortfolioGallery({ initialProjects }: { initialProjects: Project[] }) {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+    ? initialProjects 
+    : initialProjects.filter((p: any) => p.category === activeCategory);
 
   return (
     <>
@@ -71,8 +73,8 @@ export default function PortfolioGallery() {
             onClick={() => setActiveCategory(cat)}
             className={`px-6 py-2 rounded-full border text-sm font-medium tracking-wide transition-colors ${
               activeCategory === cat
-                ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a1206]"
-                : "border-[#243a19] text-[#9ba89e] hover:border-[#c9a84c] hover:text-[#c9a84c]"
+                ? "bg-[var(--color-brand-500)] border-[var(--color-brand-500)] text-black"
+                : "border-gray-200 text-gray-500 hover:border-[var(--color-brand-500)] hover:text-[var(--color-brand-500)]"
             }`}
           >
             {cat}

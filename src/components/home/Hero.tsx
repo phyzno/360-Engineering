@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#0a1206] text-[#f5f0e8]">
+    <section className="relative h-screen w-full overflow-hidden bg-black text-white">
       {/* Dynamic Background Video */}
       <div className="absolute inset-0 z-0 h-[120%] -top-[10%] w-full animate-fade-in delay-300">
         <video
@@ -16,17 +16,9 @@ export default function Hero() {
           <source src="https://www.pexels.com/download/video/7578547/" type="video/mp4" />
         </video>
         {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-[#0a1206]/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206] via-[#0a1206]/30 to-transparent opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a1206]/80 via-transparent to-[#0a1206]/80 opacity-60" />
-      </div>
-
-      {/* Floating Badge */}
-      <div 
-        className="absolute top-28 left-1/2 -translate-x-1/2 md:translate-x-0 md:top-32 md:left-16 z-20 glass-card px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-2 md:gap-3 border border-white/10 animate-fade-in-up delay-1500 w-max"
-      >
-        <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#c9a84c] animate-pulse" />
-        <span className="text-[10px] md:text-xs uppercase tracking-widest text-white/80">Award Winning Studio</span>
+        <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40 opacity-60" />
       </div>
 
       {/* Main Content */}
@@ -35,11 +27,11 @@ export default function Hero() {
       >
         <div className="max-w-7xl flex flex-col items-center md:items-start text-center md:text-left w-full">
           <p
-            className="text-[#c9a84c] tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs font-semibold mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-3 md:gap-4 animate-fade-in-left delay-800 w-full"
+            className="text-[var(--color-brand-500)] tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs font-semibold mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-3 md:gap-4 animate-fade-in-left delay-800 w-full"
           >
-            <span className="w-8 md:w-12 h-[1px] bg-[#c9a84c]"></span>
+            <span className="w-8 md:w-12 h-[1px] bg-[var(--color-brand-500)]"></span>
             <span>Redefining Spaces</span>
-            <span className="w-8 h-[1px] bg-[#c9a84c] md:hidden"></span>
+            <span className="w-8 h-[1px] bg-[var(--color-brand-500)] md:hidden"></span>
           </p>
           
           <div className="overflow-hidden py-2 mb-6 md:mb-10 w-full">
@@ -63,8 +55,8 @@ export default function Hero() {
             >
               <Link href="/portfolio" className="group relative overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3.5 sm:px-8 sm:py-4 flex items-center justify-center gap-3 transition-all hover:bg-white/20 w-auto">
                 <span className="relative z-10 text-[11px] sm:text-xs tracking-widest uppercase font-medium">Explore Portfolio</span>
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c9a84c] flex-shrink-0 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                  <ArrowRight size={14} className="text-[#0a1206]" />
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[var(--color-brand-500)] flex-shrink-0 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                  <ArrowRight size={14} className="text-black" />
                 </div>
               </Link>
             </div>

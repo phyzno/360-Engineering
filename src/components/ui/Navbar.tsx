@@ -66,18 +66,6 @@ const navLinks: NavItem[] = [
       },
     ]
   },
-  { 
-    href: "/products", 
-    label: "Products",
-    subItems: [
-      { href: "/products/curtains", label: "Curtains" },
-      { href: "/products/sofa", label: "Sofa" },
-      { href: "/products/tiles", label: "Tiles" },
-      { href: "/products/rugs", label: "Rugs & Carpets" },
-      { href: "/products/lighting", label: "Premium Lighting" },
-      { href: "/products/wallpaper", label: "Wallpapers" },
-    ]
-  },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/#estimator", label: "Estimate Cost" },
   { href: "/contact", label: "Contact" },
@@ -117,35 +105,26 @@ export default function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    setActiveDropdown(null);
-    setActiveSubDropdown(null);
-  }, [pathname]);
+  /* Removed sync setState in effect */
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "py-3 bg-[#0a1206]/30 backdrop-blur-xl border-b border-[#c9a84c]/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+          isScrolled ? "py-3 bg-white/95 backdrop-blur-xl border-b border-black/5 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
             : "py-4 bg-transparent"
         }`}
       >
         <div className="container-wide flex items-center justify-between">
           <Link 
             href="/" 
-            className="group relative z-50 flex flex-col items-center w-max" 
+            className="group relative z-50 flex flex-col w-max" 
             aria-label="360 Engineering and Consultancy"
           >
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95">
-                <Image src="/logo-360.png" alt="360 Engineering and Consultancy Logo" fill className="object-contain" sizes="48px" priority />
+              <div className="w-[120px] h-[60px] md:w-[160px] md:h-[80px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95 origin-left">
+                <Image src="/logo-new.png" alt="360 Engineering and Consultancy Logo" fill className={`object-contain object-left transition-all duration-300 ${isScrolled ? "brightness-0" : ""}`} sizes="(max-width: 768px) 120px, 160px" priority />
               </div>
-              <span className="font-heading text-3xl md:text-4xl font-bold leading-none tracking-wider text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors mt-1">360</span>
-            </div>
-            <div className="flex flex-col mt-1.5 items-center text-center text-[7.5px] md:text-[9.5px] font-semibold tracking-[0.25em] uppercase leading-tight text-[#c9a84c] group-hover:text-[#f5f0e8] transition-colors">
-              <span>Engineering</span>
-              <span>& Consultancy</span>
             </div>
           </Link>
 
@@ -170,7 +149,7 @@ export default function Navbar() {
                         }
                       }}
                       className={`text-sm tracking-widest uppercase transition-colors duration-300 relative flex items-center gap-1 ${
-                        isActive ? "text-[#c9a84c]" : "text-[#f5f0e8] hover:text-[#c9a84c]"
+                        isActive ? "text-[var(--color-brand-500)]" : (isScrolled ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
                       }`}
                     >
                       {link.label}
@@ -178,7 +157,7 @@ export default function Navbar() {
                       {isActive && (
                         <motion.div
                           layoutId="navbar-indicator"
-                          className="absolute -bottom-2 left-0 right-0 h-[1px] bg-[#c9a84c]"
+                          className="absolute -bottom-2 left-0 right-0 h-[1px] bg-[var(--color-brand-500)]"
                           transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
                       )}
@@ -186,7 +165,7 @@ export default function Navbar() {
                     
                     {/* First Level Dropdown */}
                     <div className={`absolute top-full left-0 mt-0 w-56 opacity-0 invisible group-hover/navItem:opacity-100 group-hover/navItem:visible transition-all duration-300 translate-y-2 group-hover/navItem:translate-y-0 z-50 pt-4 ${activeDropdown === link.label ? '!opacity-100 !visible !translate-y-0' : ''}`}>
-                      <div className="bg-[#1a2f15] border border-[#c9a84c]/40 shadow-[0_8px_30px_rgba(0,0,0,0.6)] rounded-md flex flex-col relative">
+                      <div className="bg-white border border-[var(--color-brand-500)]/40 shadow-[0_8px_30px_rgba(0,0,0,0.1)] rounded-md flex flex-col relative">
                         {subItems.map((sub, idx) => (
                           <div key={idx} className="relative group/subItem">
                             <Link
@@ -199,8 +178,8 @@ export default function Navbar() {
                                   }
                                 }
                               }}
-                              className={`px-5 py-4 text-sm tracking-widest uppercase text-[#f5f0e8] hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors flex items-center justify-between ${
-                                idx !== subItems.length - 1 ? "border-b border-[#c9a84c]/10" : ""
+                              className={`px-5 py-4 text-sm tracking-widest uppercase text-[var(--color-neutral-900)] hover:bg-[var(--color-brand-500)]/10 hover:text-[var(--color-brand-500)] transition-colors flex items-center justify-between ${
+                                idx !== subItems.length - 1 ? "border-b border-[var(--color-brand-500)]/10" : ""
                               } ${idx === 0 ? "rounded-t-md" : ""} ${idx === subItems.length - 1 ? "rounded-b-md" : ""}`}
                             >
                               {sub.label}
@@ -210,12 +189,12 @@ export default function Navbar() {
                             {/* Second Level Dropdown */}
                             {sub.subSubItems && (
                               <div className={`absolute top-0 left-full ml-0 w-64 opacity-0 invisible group-hover/subItem:opacity-100 group-hover/subItem:visible transition-all duration-300 -translate-x-2 group-hover/subItem:translate-x-0 z-50 pl-1 ${activeSubDropdown === sub.label ? '!opacity-100 !visible !translate-x-0' : ''}`}>
-                                <div className="bg-[#1a2f15] border border-[#c9a84c]/40 shadow-[0_8px_30px_rgba(0,0,0,0.6)] rounded-md overflow-hidden flex flex-col relative">
+                                <div className="bg-white border border-[var(--color-brand-500)]/40 shadow-[0_8px_30px_rgba(0,0,0,0.1)] rounded-md overflow-hidden flex flex-col relative">
                                   {sub.subSubItems.map((subSub, subIdx) => (
                                     <Link
                                       key={subIdx}
                                       href={subSub.href}
-                                      className="px-5 py-4 text-xs tracking-widest uppercase text-[#f5f0e8] hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors border-b border-[#c9a84c]/10 last:border-b-0"
+                                      className="px-5 py-4 text-xs tracking-widest uppercase text-[var(--color-neutral-900)] hover:bg-[var(--color-brand-500)]/10 hover:text-[var(--color-brand-500)] transition-colors border-b border-[var(--color-brand-500)]/10 last:border-b-0"
                                     >
                                       {subSub.label}
                                     </Link>
@@ -252,15 +231,15 @@ export default function Navbar() {
                   }}
                   className={`text-sm tracking-widest uppercase transition-colors duration-300 relative ${
                     isActive
-                      ? "text-[#c9a84c]"
-                      : "text-[#f5f0e8] hover:text-[#c9a84c]"
+                      ? "text-[var(--color-brand-500)]"
+                      : (isScrolled ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute -bottom-2 left-0 right-0 h-[1px] bg-[#c9a84c]"
+                      className="absolute -bottom-2 left-0 right-0 h-[1px] bg-[var(--color-brand-500)]"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -271,7 +250,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden relative z-50 p-2 text-[#f5f0e8] hover:text-[#c9a84c] transition-colors ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : ''}`}
+            className={`lg:hidden relative z-50 p-2 transition-colors ${isScrolled ? 'text-[var(--color-neutral-900)]' : 'text-white'} hover:text-[var(--color-brand-500)] ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -300,12 +279,12 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="w-full bg-[#0f1b0a] border-t border-[#c9a84c]/40 rounded-t-[2.5rem] flex flex-col items-center overflow-y-auto max-h-[70vh] mt-24 pt-4 pb-12 shadow-[0_-10px_40px_rgba(0,0,0,0.8)] relative"
+              className="w-full bg-white border-t border-[var(--color-brand-500)]/40 rounded-t-[2.5rem] flex flex-col items-center overflow-y-auto max-h-[70vh] mt-24 pt-4 pb-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative"
             >
-              <div className="w-12 h-1.5 bg-[#f5f0e8]/20 rounded-full mb-8 flex-shrink-0" />
+              <div className="w-12 h-1.5 bg-[var(--color-neutral-300)] rounded-full mb-8 flex-shrink-0" />
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-6 right-6 p-2 text-[#f5f0e8]/60 hover:text-[#c9a84c] transition-colors"
+                className="absolute top-6 right-6 p-2 text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)] transition-colors"
                 aria-label="Close Menu"
               >
                 <X size={24} />
@@ -342,8 +321,8 @@ export default function Navbar() {
                       }}
                       className={`font-heading text-3xl sm:text-4xl ${
                         pathname === link.href || pathname.startsWith(link.href + "/")
-                          ? "text-[#c9a84c]"
-                          : "text-[#f5f0e8]"
+                          ? "text-[var(--color-brand-500)]"
+                          : "text-[var(--color-neutral-900)]"
                       } transition-colors`}
                     >
                       {link.label}
@@ -351,7 +330,7 @@ export default function Navbar() {
                     {link.subItems && (
                       <button
                         onClick={() => setExpandedMobileMain(expandedMobileMain === link.label ? null : link.label)}
-                        className="p-1 text-[#f5f0e8]/80 hover:text-[#c9a84c]"
+                        className="p-1 text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)]"
                         aria-label={`Toggle ${link.label} menu`}
                       >
                         <ChevronDown size={28} className={`transition-transform duration-300 ${expandedMobileMain === link.label ? "rotate-180" : ""}`} />
@@ -376,14 +355,14 @@ export default function Navbar() {
                                 <Link
                                   href={sub.href}
                                   onClick={() => setIsMobileMenuOpen(false)}
-                                  className="text-sm tracking-widest uppercase text-[#f5f0e8]/80 hover:text-[#c9a84c] transition-colors"
+                                  className="text-sm tracking-widest uppercase text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)] transition-colors"
                                 >
                                   {sub.label}
                                 </Link>
                                 {sub.subSubItems && (
                                   <button
                                     onClick={() => setExpandedMobileMenu(expandedMobileMenu === sub.label ? null : sub.label)}
-                                    className="p-1 text-[#f5f0e8]/80 hover:text-[#c9a84c]"
+                                    className="p-1 text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)]"
                                     aria-label={`Toggle ${sub.label} sub-menu`}
                                   >
                                     <ChevronDown size={20} className={`transition-transform duration-300 ${expandedMobileMenu === sub.label ? "rotate-180" : ""}`} />
@@ -401,13 +380,13 @@ export default function Navbar() {
                                     transition={{ duration: 0.3 }}
                                     className="overflow-hidden w-full"
                                   >
-                                    <div className="flex flex-col items-center gap-3 mt-3 w-full border-l border-[#c9a84c]/20 pl-4 max-w-[250px] mx-auto">
+                                    <div className="flex flex-col items-center gap-3 mt-3 w-full border-l border-[var(--color-brand-500)]/20 pl-4 max-w-[250px] mx-auto">
                                       {sub.subSubItems.map((subSub, subIdx) => (
                                         <Link
                                           key={subIdx}
                                           href={subSub.href}
                                           onClick={() => setIsMobileMenuOpen(false)}
-                                          className="text-xs tracking-widest uppercase text-[#f5f0e8]/60 hover:text-[#c9a84c] transition-colors text-center"
+                                          className="text-xs tracking-widest uppercase text-[var(--color-neutral-500)] hover:text-[var(--color-brand-500)] transition-colors text-center"
                                         >
                                           {subSub.label}
                                         </Link>

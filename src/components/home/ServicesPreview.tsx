@@ -57,7 +57,7 @@ export default function ServicesPreview() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
-    <section className="section-padding bg-[#0f1a0a] border-t border-[#1a2912]">
+    <section className="section-padding bg-white border-t border-gray-200">
       <div className="container-wide">
         <SectionHeading 
           title="Our Expertise" 
@@ -85,19 +85,19 @@ export default function ServicesPreview() {
               >
                 <Link 
                   href={service.link}
-                  className={`block py-8 border-b border-[#243a19] transition-all duration-500 relative z-10 ${
+                  className={`block py-8 border-b border-gray-200 transition-all duration-500 relative z-10 ${
                     hoveredIndex === index ? "pl-8" : "pl-0"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-6">
                       <span className={`font-heading text-sm transition-colors duration-500 ${
-                        hoveredIndex === index ? "text-[#c9a84c]" : "text-[#9ba89e]"
+                        hoveredIndex === index ? "text-[var(--color-brand-500)]" : "text-gray-500"
                       }`}>
                         {service.id}
                       </span>
                       <h3 className={`text-2xl md:text-3xl font-heading transition-colors duration-500 ${
-                        hoveredIndex === index ? "text-[#c9a84c]" : "text-[#f5f0e8] group-hover:text-[#d4c5ae]"
+                        hoveredIndex === index ? "text-[var(--color-brand-500)]" : "text-[var(--color-neutral-900)] group-hover:text-gray-600"
                       }`}>
                         {service.title}
                       </h3>
@@ -106,8 +106,8 @@ export default function ServicesPreview() {
                       size={24} 
                       className={`transition-all duration-500 ${
                         hoveredIndex === index 
-                          ? "text-[#c9a84c] translate-x-0 opacity-100" 
-                          : "text-[#4a7c59] -translate-x-4 opacity-0 group-hover:opacity-50"
+                          ? "text-[var(--color-brand-500)] translate-x-0 opacity-100" 
+                          : "text-gray-400 -translate-x-4 opacity-0 group-hover:opacity-50"
                       }`} 
                     />
                   </div>
@@ -116,7 +116,7 @@ export default function ServicesPreview() {
                   <div className={`overflow-hidden transition-all duration-500 ${
                     hoveredIndex === index ? "max-h-32 mt-4" : "max-h-0"
                   }`}>
-                    <p className="text-[#9ba89e] ml-12 pr-4 max-w-md">
+                    <p className="text-gray-500 ml-12 pr-4 max-w-md">
                       {service.description}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ export default function ServicesPreview() {
                 
                 {/* Active Indicator Line */}
                 <div 
-                  className={`absolute left-0 top-0 bottom-0 w-[2px] bg-[#c9a84c] transition-all duration-500 origin-top ${
+                  className={`absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--color-brand-500)] transition-all duration-500 origin-top ${
                     hoveredIndex === index ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
                   }`} 
                 />
@@ -133,7 +133,7 @@ export default function ServicesPreview() {
           </div>
 
           {/* Right Side: Image Reveal */}
-          <div className="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden bg-[#1a2912] rounded-sm group">
+          <div className="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden bg-gray-50 rounded-sm group">
             {services.map((service, index) => (
               <motion.div
                 key={`img-${service.id}`}
@@ -154,8 +154,8 @@ export default function ServicesPreview() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   quality={85}
                 />
-                <div className="absolute inset-0 bg-[#0a1206]/20 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1206]/80 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-white/20 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-60" />
               </motion.div>
             ))}
             
@@ -165,9 +165,9 @@ export default function ServicesPreview() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-center gap-3 text-[#f5f0e8] uppercase tracking-widest text-sm font-semibold"
+                className="flex items-center gap-3 text-[var(--color-neutral-900)] uppercase tracking-widest text-sm font-semibold"
               >
-                <div className="w-8 h-[1px] bg-[#c9a84c]" />
+                <div className="w-8 h-[1px] bg-[var(--color-brand-500)]" />
                 Explore Service
               </motion.div>
             </div>
