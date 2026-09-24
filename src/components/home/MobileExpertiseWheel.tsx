@@ -290,7 +290,7 @@ export default function MobileExpertiseWheel({ services }: MobileExpertiseWheelP
                 }}
               >
                 {/* Watch Bracelet Link Plate (Matches User Image Exactly) */}
-                <div className="w-full h-full rounded-[10px] relative flex items-center justify-between px-2 transition-colors duration-200 border border-[var(--color-brand-500)]/50 bg-gradient-to-b from-[#142211] to-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+                <div className="w-full h-full rounded-[10px] relative flex items-center justify-between px-2 transition-colors duration-200 border border-[var(--color-brand-500)]/50 bg-gradient-to-b from-neutral-800 to-neutral-950 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                   {/* Left Pin (Dot + Line) */}
                   <div className="flex flex-col items-center">
                     <div className="w-[3px] h-[3px] rounded-full bg-[var(--color-brand-500)] shadow-[0_0_4px_#c9a84c]" />

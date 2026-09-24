@@ -2,6 +2,18 @@ import Image from "next/image";
 import PageTransition from "@/components/ui/PageTransition";
 import SectionHeading from "@/components/ui/SectionHeading";
 
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+);
+
+const TwitterIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+);
+
 export const metadata = {
   title: "About Us",
   description: "Learn about 360 Engineering and Consultancy, our philosophy, and the award-winning team behind our luxury design studio.",
@@ -70,17 +82,30 @@ export default function AboutPage() {
               {
                 name: "Eleanor Vance",
                 role: "Founder & Lead Designer",
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop",
+                socials: {
+                  linkedin: "#",
+                  twitter: "#",
+                  instagram: "#"
+                }
               },
               {
                 name: "Marcus Thorne",
                 role: "Senior Architect",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+                socials: {
+                  linkedin: "#",
+                  twitter: "#"
+                }
               },
               {
                 name: "Sophia Lin",
                 role: "Interior Stylist",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop"
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop",
+                socials: {
+                  linkedin: "#",
+                  instagram: "#"
+                }
               }
             ].map((member, i) => (
               <div key={i} className="group text-center">
@@ -92,6 +117,25 @@ export default function AboutPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-500" />
+                  
+                  {/* Social Icons Overlay (Visible on hover on desktop) */}
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                    {member.socials.linkedin && (
+                      <a href={member.socials.linkedin} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s LinkedIn`}>
+                        <LinkedinIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                    {member.socials.twitter && (
+                      <a href={member.socials.twitter} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s Twitter`}>
+                        <TwitterIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                    {member.socials.instagram && (
+                      <a href={member.socials.instagram} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s Instagram`}>
+                        <InstagramIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <h4 className="font-heading text-xl text-[var(--color-neutral-900)] mb-1">{member.name}</h4>
                 <p className="text-[var(--color-brand-500)] text-sm tracking-widest uppercase">{member.role}</p>

@@ -25,7 +25,7 @@ export default function SectionHeading({
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className={`tracking-[0.2em] uppercase text-sm font-semibold mb-4 block ${
-            isDark ? "text-[var(--color-brand-400)]" : "text-[var(--color-brand-700)]"
+            isDark ? "text-[var(--color-brand-300)]" : "text-[var(--color-brand-700)]"
           }`}
         >
           {subtitle}

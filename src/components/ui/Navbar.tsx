@@ -80,6 +80,8 @@ export default function Navbar() {
   const [expandedMobileMain, setExpandedMobileMain] = useState<string | null>(null);
   const pathname = usePathname();
 
+  const useDarkNavbar = isScrolled || pathname.startsWith("/portfolio") || pathname.startsWith("/about");
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -105,6 +107,18 @@ export default function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   /* Removed sync setState in effect */
 
   return (
@@ -123,7 +137,7 @@ export default function Navbar() {
           >
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-[120px] h-[60px] md:w-[160px] md:h-[80px] relative z-10 transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(201,168,76,0.4)] group-active:scale-95 origin-left">
-                <Image src="/logo-new.png" alt="360 Engineering and Consultancy Logo" fill className={`object-contain object-left transition-all duration-300 ${isScrolled ? "brightness-0" : ""}`} sizes="(max-width: 768px) 120px, 160px" priority />
+                <Image src="/logo-new.png" alt="360 Engineering and Consultancy Logo" fill className={`object-contain object-left transition-all duration-300 ${useDarkNavbar ? "brightness-0" : ""}`} sizes="(max-width: 768px) 120px, 160px" priority />
               </div>
             </div>
           </Link>
@@ -149,7 +163,7 @@ export default function Navbar() {
                         }
                       }}
                       className={`text-sm tracking-widest uppercase transition-colors duration-300 relative flex items-center gap-1 ${
-                        isActive ? "text-[var(--color-brand-500)]" : (isScrolled ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
+                        isActive ? "text-[var(--color-brand-500)]" : (useDarkNavbar ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
                       }`}
                     >
                       {link.label}
@@ -232,7 +246,7 @@ export default function Navbar() {
                   className={`text-sm tracking-widest uppercase transition-colors duration-300 relative ${
                     isActive
                       ? "text-[var(--color-brand-500)]"
-                      : (isScrolled ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
+                      : (useDarkNavbar ? "text-[var(--color-neutral-900)] hover:text-[var(--color-brand-500)]" : "text-white/90 hover:text-white")
                   }`}
                 >
                   {link.label}
@@ -250,7 +264,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden relative z-50 p-2 transition-colors ${isScrolled ? 'text-[var(--color-neutral-900)]' : 'text-white'} hover:text-[var(--color-brand-500)] ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : ''}`}
+            className={`lg:hidden relative z-50 p-2 transition-colors ${useDarkNavbar ? 'text-[var(--color-neutral-900)]' : 'text-white'} hover:text-[var(--color-brand-500)] ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -279,17 +293,26 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="w-full bg-white border-t border-[var(--color-brand-500)]/40 rounded-t-[2.5rem] flex flex-col items-center overflow-y-auto max-h-[70vh] mt-24 pt-4 pb-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative"
+              className="w-full bg-white border-t border-[var(--color-brand-500)]/40 rounded-t-[2.5rem] flex flex-col items-center max-h-[70vh] mt-24 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative overflow-hidden"
             >
-              <div className="w-12 h-1.5 bg-[var(--color-neutral-300)] rounded-full mb-8 flex-shrink-0" />
-              <button 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-6 right-6 p-2 text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)] transition-colors"
-                aria-label="Close Menu"
+              {/* Static Header Area */}
+              <div className="w-full flex-shrink-0 flex flex-col items-center pt-6 pb-4 relative z-10 bg-white">
+                <div className="w-12 h-1.5 bg-[var(--color-neutral-300)] rounded-full" />
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="absolute top-4 right-6 p-2 text-[var(--color-neutral-700)] hover:text-[var(--color-brand-500)] transition-colors"
+                  aria-label="Close Menu"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Scrollable Content */}
+              <div 
+                className="w-full flex-1 min-h-0 overflow-y-auto flex flex-col items-center pb-12 pt-2"
+                data-lenis-prevent="true"
               >
-                <X size={24} />
-              </button>
-              <nav className="flex flex-col items-center gap-6 w-full px-6">
+                <nav className="flex flex-col items-center gap-6 w-full px-6">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -404,6 +427,7 @@ export default function Navbar() {
                 </motion.div>
               ))}
             </nav>
+            </div>
             </motion.div>
           </motion.div>
         )}
