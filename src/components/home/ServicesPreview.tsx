@@ -11,44 +11,44 @@ import MobileExpertiseWheel from "./MobileExpertiseWheel";
 const services = [
   {
     id: "01",
-    title: "Residential Interior",
-    description: "Creating luxurious, comfortable, and personalized homes across Bangladesh that reflect your unique lifestyle.",
-    link: "/services/residential",
+    title: "Architectural Integration",
+    description: "Seamlessly blending interior spaces with structural architecture for cohesive, flowing environments.",
+    link: "/services#architecture",
     image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "02",
-    title: "Commercial & Office",
-    description: "Designing productive, brand-aligned workspaces and commercial environments for modern businesses in Dhaka and beyond.",
-    link: "/services/commercial",
+    title: "Biophilic Design",
+    description: "Integrating natural elements, light, and organic materials to create spaces that enhance well-being and connection to nature.",
+    link: "/services#biophilic",
     image: "https://images.unsplash.com/photo-1530153739137-cafe11da39aa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: "03",
-    title: "Turnkey Solutions",
-    description: "Comprehensive end-to-end interior design and execution services, ensuring a hassle-free experience from concept to handover.",
-    link: "/services",
+    title: "Smart Ecosystems",
+    description: "Discreetly embedding the latest home automation and technology to elevate modern luxury living.",
+    link: "/services#smart-home",
     image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200&auto=format&fit=crop"
   },
   {
     id: "04",
-    title: "Architectural Design",
-    description: "Innovative architectural planning and structural design tailored to Bangladesh's climate and urban landscape.",
-    link: "/services",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop"
+    title: "Custom Furniture",
+    description: "Designing and crafting bespoke furniture pieces that perfectly align with your space, offering unparalleled comfort and premium aesthetics.",
+    link: "/services#custom-furniture",
+    image: "https://images.unsplash.com/photo-1659976733536-dfa71f6015d7?q=80&w=645&auto=format&fit=crop"
   },
   {
     id: "05",
-    title: "Custom Furniture",
-    description: "Designing and crafting tailored cabinetry, premium joinery, and bespoke furniture of the highest caliber locally.",
-    link: "/services",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop"
+    title: "Custom Millwork",
+    description: "Designing and crafting tailored cabinetry, joinery, and architectural woodwork of the highest caliber.",
+    link: "/services#millwork",
+    image: "https://images.unsplash.com/photo-1613798399365-419496c18abc?q=80&w=1470&auto=format&fit=crop"
   },
   {
     id: "06",
-    title: "Renovation & Remodeling",
-    description: "Transforming existing spaces with modern aesthetics and functional upgrades to breathe new life into older properties.",
-    link: "/services/renovation",
+    title: "Atmosphere & Lighting",
+    description: "Sculpting spaces with natural and artificial light to create dynamic moods and highlight architectural details.",
+    link: "/services#lighting",
     image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=1200&auto=format&fit=crop"
   }
 ];

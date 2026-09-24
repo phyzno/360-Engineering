@@ -1,8 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, MailOpen, Trash2, Calendar } from 'lucide-react';
+import { Mail, MailOpen, Trash2, Calendar, X } from 'lucide-react';
 import { markAsRead, deleteLead } from './actions';
+
+const formatMessage = (msg: string) => {
+  if (!msg) return '';
+  return msg
+    .replace(/(---\s*New Lead from Cost Estimator\s*---)/gi, '$1\n')
+    .replace(/\s*-{10,}\s*$/g, '')
+    .trim();
+};
 
 export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
   const [leads, setLeads] = useState(initialLeads);
@@ -83,7 +91,7 @@ export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
                 </div>
                 <p className="text-xs text-gray-500 truncate mb-2">{lead.email}</p>
                 <p className={`text-xs truncate ${lead.is_read ? 'text-gray-400' : 'text-gray-700'}`}>
-                  {lead.message}
+                  {formatMessage(lead.message)}
                 </p>
               </button>
             ))
@@ -92,23 +100,27 @@ export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
       </div>
 
       {/* Message Reader */}
-      <div className="lg:col-span-2 bg-white border border-[#fadbc2] rounded-[2rem] shadow-sm flex flex-col h-[700px] overflow-hidden">
+      <div className={`
+        ${selectedLead ? 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm lg:static lg:z-auto lg:p-0 lg:bg-transparent lg:backdrop-blur-none lg:block' : 'hidden lg:block'}
+        lg:col-span-2
+      `}>
+        <div className="bg-white border border-[#fadbc2] rounded-[2rem] shadow-sm flex flex-col w-full h-[85vh] lg:h-[700px] overflow-hidden max-w-2xl mx-auto lg:max-w-none">
         {selectedLead ? (
           <>
-            <div className="p-6 md:p-8 border-b border-gray-100 bg-[#FFF8F0] flex justify-between items-start">
-              <div>
-                <h2 className="text-2xl font-heading font-medium text-gray-900 mb-2">{selectedLead.name}</h2>
-                <div className="flex items-center gap-4 text-sm text-gray-500 font-body">
-                  <a href={`mailto:${selectedLead.email}`} className="hover:text-[#d96b11] transition-colors">{selectedLead.email}</a>
+            <div className="p-6 md:p-8 border-b border-gray-100 bg-[#FFF8F0] flex justify-between items-start gap-4">
+              <div className="min-w-0">
+                <h2 className="text-xl md:text-2xl font-heading font-medium text-gray-900 mb-2 truncate">{selectedLead.name}</h2>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 font-body">
+                  <a href={`mailto:${selectedLead.email}`} className="hover:text-[#d96b11] transition-colors truncate">{selectedLead.email}</a>
                   {selectedLead.phone && (
                     <>
-                      <span>•</span>
+                      <span className="hidden sm:inline">•</span>
                       <a href={`tel:${selectedLead.phone}`} className="hover:text-[#d96b11] transition-colors">{selectedLead.phone}</a>
                     </>
                   )}
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 shrink-0">
                 <button
                   onClick={(e) => handleToggleRead(selectedLead.id, selectedLead.is_read, e)}
                   className="p-2.5 text-gray-400 hover:text-[#d96b11] hover:bg-[#fadbc2]/30 rounded-xl transition-colors"
@@ -123,6 +135,13 @@ export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>
+                <button
+                  onClick={() => setSelectedLead(null)}
+                  className="p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-200 rounded-xl transition-colors lg:hidden bg-gray-100"
+                  title="Close message"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
             </div>
             
@@ -132,7 +151,7 @@ export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
                 {new Date(selectedLead.created_at).toLocaleString()}
               </div>
               <div className="prose prose-sm max-w-none font-body text-gray-700 whitespace-pre-wrap leading-relaxed">
-                {selectedLead.message}
+                {formatMessage(selectedLead.message)}
               </div>
             </div>
           </>
@@ -142,6 +161,7 @@ export default function InboxClient({ initialLeads }: { initialLeads: any[] }) {
             <p className="font-body text-sm">Select a message to read.</p>
           </div>
         )}
+        </div>
       </div>
       
       {/* Delete Confirmation Modal */}

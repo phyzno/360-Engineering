@@ -28,16 +28,16 @@ export default function ServicesPage() {
       image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200&auto=format&fit=crop"
     },
     {
-      id: "styling",
-      title: "Premium Styling",
-      desc: "The true character of a space is revealed in its finishing touches. Our premium styling service curates exclusive art pieces, high-end textiles, and bespoke decor to give each room a refined, signature finish that reflects your sophisticated taste.",
-      image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop"
+      id: "custom-furniture",
+      title: "Custom Furniture",
+      desc: "True luxury is found in the details of bespoke creations. Our custom furniture service designs and crafts unique, premium pieces that perfectly align with your space, offering unparalleled comfort and a signature finish that reflects your sophisticated taste.",
+      image: "https://images.unsplash.com/photo-1659976733536-dfa71f6015d7?q=80&w=645&auto=format&fit=crop"
     },
     {
       id: "millwork",
       title: "Custom Millwork",
       desc: "Our master craftsmen design and build tailored cabinetry, joinery, and architectural woodwork of the highest caliber. From custom walk-in closets to statement libraries, our millwork adds unparalleled value and bespoke elegance to your property.",
-      image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1613798399365-419496c18abc?q=80&w=1470&auto=format&fit=crop"
     },
     {
       id: "lighting",

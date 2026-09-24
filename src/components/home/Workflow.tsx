@@ -44,13 +44,13 @@ const cardVariants: Variants = {
     opacity: 0.3, 
     y: 50, 
     scale: 0.95,
-    filter: "brightness(0.4) sepia(50%) hue-rotate(-30deg)" // Makes it dark and slightly brownish/gold when inactive
+    filter: "brightness(0.6) grayscale(30%)" // Makes it slightly muted when inactive
   },
   visible: { 
     opacity: 1, 
     y: 0, 
     scale: 1, 
-    filter: "brightness(1) sepia(0%) hue-rotate(0deg)",
+    filter: "brightness(1) grayscale(0%)",
     transition: { 
       duration: 0.8, 
       ease: [0.16, 1, 0.3, 1], // Custom smooth ease
@@ -168,13 +168,13 @@ export default function Workflow() {
           
           {/* Animated Thick Line (The "Light") (Mobile Only) */}
           <motion.div 
-            className="absolute left-8 top-0 bottom-0 w-[3px] bg-[var(--color-brand-500)] origin-top -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(201,168,76,0.6)] md:hidden"
+            className="absolute left-8 top-0 bottom-0 w-[3px] bg-[var(--color-brand-500)] origin-top -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(217,107,17,0.6)] md:hidden"
             style={{ scaleY: smoothProgress }}
           />
 
           {/* Traveling Glowing Orb (Mobile Only) */}
           <motion.div 
-            className="absolute left-8 w-3 h-3 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_5px_rgba(201,168,76,0.8)] md:hidden"
+            className="absolute left-8 w-3 h-3 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_5px_rgba(217,107,17,0.8)] md:hidden"
             style={{ top: orbPosition }}
           />
 
@@ -188,7 +188,7 @@ export default function Workflow() {
               <path 
                 d={pathData} 
                 fill="none" 
-                stroke="rgba(201,168,76,0.2)" 
+                stroke="rgba(217,107,17,0.2)" 
                 strokeWidth="2" 
               />
               
@@ -196,10 +196,10 @@ export default function Workflow() {
               <motion.path 
                 d={pathData} 
                 fill="none" 
-                stroke="#c9a84c" 
+                stroke="var(--color-brand-500)" 
                 strokeWidth="3"
                 style={{ pathLength: smoothProgress }}
-                className="drop-shadow-[0_0_15px_rgba(201,168,76,0.6)]"
+                className="drop-shadow-[0_0_15px_rgba(217,107,17,0.6)]"
               />
             </svg>
           )}
@@ -215,7 +215,7 @@ export default function Workflow() {
                 >
                   
                   {/* Timeline Node (Circle on the line) */}
-                  <div className="absolute top-1/2 left-8 md:left-1/2 w-6 h-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-[2px] border-[var(--color-brand-500)] bg-white z-30 flex items-center justify-center shadow-[0_0_10px_rgba(201,168,76,0.3)]">
+                  <div className="absolute top-1/2 left-8 md:left-1/2 w-6 h-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-[2px] border-[var(--color-brand-500)] bg-white z-30 flex items-center justify-center shadow-[0_0_10px_rgba(217,107,17,0.3)]">
                     {/* Pulsating Ring */}
                     <motion.div 
                       className="absolute w-full h-full rounded-full border border-[var(--color-brand-500)]"
@@ -241,7 +241,7 @@ export default function Workflow() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: false, amount: 0.2 }}
-                      className="bg-gradient-to-br from-[#ffffff] to-[#f5f0e8] p-8 md:p-10 rounded-[24px] shadow-[0_20px_50px_rgba(201,168,76,0.9)] transition-all duration-500 relative group hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(255,140,0,0.4)] cursor-default"
+                      className="bg-gradient-to-br from-[#ffffff] to-[#f5f0e8] p-8 md:p-10 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,1)] transition-all duration-500 relative group hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.9)] cursor-default"
                     >
                       {/* Beautiful Decorative Frame */}
                       <div className="absolute inset-3 border border-gray-300/40 rounded-[16px] pointer-events-none transition-colors duration-500 group-hover:border-[var(--color-brand-500)]/40">
@@ -253,18 +253,18 @@ export default function Workflow() {
                       </div>
 
                       {/* Number Watermark (Parallax on hover) */}
-                      <div className={`absolute top-4 ${isEven ? 'right-6' : 'left-6'} font-heading text-6xl md:text-8xl font-bold text-black/5 z-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-[var(--color-brand-500)]/10 group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-3`}>
+                      <div className={`absolute top-4 ${isEven ? 'right-6' : 'left-6'} font-heading text-6xl md:text-8xl font-bold text-black z-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-[var(--color-brand-500)] group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-3`}>
                         {step.number}
                       </div>
                       
                       <div className="relative z-10">
                         {/* Premium Icon Header */}
-                        <motion.div variants={textVariants} className={`flex items-center gap-4 mb-6 ${isEven ? 'justify-end' : 'justify-start'}`}>
-                          {isEven && <div className="w-12 h-[1px] bg-[#d4c5ae]" />}
-                          <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[var(--color-brand-500)]/10 transition-colors duration-500">
+                        <motion.div variants={textVariants} className={`flex items-center gap-4 mb-6 ${isEven ? 'justify-start' : 'justify-end'}`}>
+                          {!isEven && <div className="w-12 h-[1px] bg-[var(--color-brand-300)]" />}
+                          <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-[var(--color-brand-500)]/10 transition-colors duration-500">
                             <step.icon className="w-5 h-5 text-[var(--color-brand-500)]" strokeWidth={1.5} />
                           </div>
-                          {!isEven && <div className="w-12 h-[1px] bg-[#d4c5ae]" />}
+                          {isEven && <div className="w-12 h-[1px] bg-[var(--color-brand-300)]" />}
                         </motion.div>
 
                         <motion.h3 variants={textVariants} className="font-heading text-xl md:text-2xl font-bold text-black uppercase tracking-[0.08em] mb-4">
