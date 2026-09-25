@@ -1,6 +1,8 @@
 import { createAdminClient } from '@/utils/supabase/admin';
 import ProjectsClient from './ProjectsClient';
 
+import { Suspense } from 'react';
+
 export default async function ProjectsPage() {
   const supabase = await createAdminClient();
   
@@ -21,7 +23,9 @@ export default async function ProjectsPage() {
         <p className="text-gray-500 font-body">Add, edit, or remove portfolio projects and choose which to feature.</p>
       </div>
 
-      <ProjectsClient initialProjects={projects || []} />
+      <Suspense fallback={<div>Loading projects...</div>}>
+        <ProjectsClient initialProjects={projects || []} />
+      </Suspense>
     </div>
   );
 }

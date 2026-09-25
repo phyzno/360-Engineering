@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { PlusCircle, Search, Edit2, Trash2, Star, X, Upload, ChevronDown } from 'lucide-react';
 import { deleteProject, toggleFeatured, saveProject } from './actions';
 import Image from 'next/image';
@@ -17,6 +18,18 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: a
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
   const [isSubcategoryDropdownOpen, setIsSubcategoryDropdownOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const editId = searchParams.get('edit');
+    if (editId) {
+      const projectToEdit = projects.find(p => String(p.id) === editId);
+      if (projectToEdit) {
+        handleOpenModal(projectToEdit);
+      }
+    }
+  }, [searchParams, projects]);
 
   // Form State
   const [formData, setFormData] = useState({

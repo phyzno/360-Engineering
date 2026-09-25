@@ -39,7 +39,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:sticky top-0 left-0 h-screen z-50 transform ${
+        className={`fixed md:sticky top-0 left-0 h-[100dvh] z-50 transform ${
           isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         } flex flex-col w-[260px] md:w-56 lg:w-72 bg-white border-r border-[#fadbc2] transition-transform duration-300 ease-in-out shadow-[4px_0_24px_rgba(0,0,0,0.02)] shrink-0`}
       >
@@ -78,10 +78,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           })}
         </nav>
 
-        <div className="p-3 lg:p-4 border-t border-[#fadbc2]">
+        <div className="p-3 lg:p-4 border-t border-[#fadbc2] shrink-0">
           <button
             onClick={() => logout()}
-            className="flex items-center gap-3 lg:gap-4 w-full px-4 lg:px-5 py-3 lg:py-3.5 rounded-xl lg:rounded-2xl text-sm lg:text-base text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium"
+            className="flex items-center gap-3 lg:gap-4 w-full px-4 lg:px-5 py-3 lg:py-3.5 rounded-xl lg:rounded-2xl text-sm lg:text-base text-gray-500 hover:bg-red-50 hover:text-red-600 active:bg-red-100 active:text-red-700 transition-all duration-200 font-medium"
           >
             <LogOut className="w-5 h-5 text-gray-400 shrink-0" />
             <span className="truncate">Sign Out</span>

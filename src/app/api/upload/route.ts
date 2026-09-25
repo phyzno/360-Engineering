@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
-import { existsSync, mkdirSync } from 'fs';
+import { createAdminClient } from '@/utils/supabase/admin';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,24 +10,33 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'No file uploaded' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     const filename = `${uniqueSuffix}-${file.name.replace(/\s+/g, '-')}`;
     
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
+    // Create Supabase client using Service Role (admin) to bypass upload restrictions
+    const supabase = await createAdminClient();
     
-    if (!existsSync(uploadDir)) {
-      mkdirSync(uploadDir, { recursive: true });
+    const bytes = await file.arrayBuffer();
+    
+    // Upload file to Supabase Storage
+    const { error } = await supabase.storage
+      .from('uploads')
+      .upload(filename, bytes, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (error) {
+      console.error('Supabase upload error:', error);
+      return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
-    
-    const path = join(uploadDir, filename);
-    await writeFile(path, buffer);
-    
-    const fileUrl = `/uploads/${filename}`;
-    
-    return NextResponse.json({ success: true, url: fileUrl });
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+      .from('uploads')
+      .getPublicUrl(filename);
+      
+    return NextResponse.json({ success: true, url: publicUrl });
   } catch (error: any) {
     console.error('Error uploading file:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
