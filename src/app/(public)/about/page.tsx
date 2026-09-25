@@ -118,20 +118,20 @@ export default function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-white/20 group-hover:bg-transparent transition-colors duration-500" />
                   
-                  {/* Social Icons Overlay (Visible on hover on desktop) */}
-                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                  {/* Social Icons Overlay (Always visible on mobile/tablet, hover on desktop) */}
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-100 translate-y-0 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 lg:translate-y-4 lg:group-hover:translate-y-0">
                     {member.socials.linkedin && (
-                      <a href={member.socials.linkedin} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s LinkedIn`}>
+                      <a href={member.socials.linkedin} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300 shadow-sm" aria-label={`${member.name}'s LinkedIn`}>
                         <LinkedinIcon className="w-4 h-4" />
                       </a>
                     )}
                     {member.socials.twitter && (
-                      <a href={member.socials.twitter} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s Twitter`}>
+                      <a href={member.socials.twitter} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300 shadow-sm" aria-label={`${member.name}'s Twitter`}>
                         <TwitterIcon className="w-4 h-4" />
                       </a>
                     )}
                     {member.socials.instagram && (
-                      <a href={member.socials.instagram} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300" aria-label={`${member.name}'s Instagram`}>
+                      <a href={member.socials.instagram} className="bg-white/90 hover:bg-[var(--color-brand-500)] text-[var(--color-neutral-900)] hover:text-white p-2 rounded-full transition-colors duration-300 shadow-sm" aria-label={`${member.name}'s Instagram`}>
                         <InstagramIcon className="w-4 h-4" />
                       </a>
                     )}

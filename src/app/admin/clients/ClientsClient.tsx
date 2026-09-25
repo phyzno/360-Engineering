@@ -13,6 +13,7 @@ interface ServiceOption {
 export default function ClientsClient({ initialClients, availableServices }: { initialClients: any[], availableServices: ServiceOption[] }) {
   const [clients, setClients] = useState(initialClients);
   const [search, setSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isServiceDropdownOpen, setIsServiceDropdownOpen] = useState(false);
   const [editingClient, setEditingClient] = useState<any>(null);
@@ -55,10 +56,25 @@ export default function ClientsClient({ initialClients, availableServices }: { i
     }
   };
 
-  const filteredClients = clients.filter(c => 
-    c.name.toLowerCase().includes(search.toLowerCase()) || 
-    c.service_id.toLowerCase().includes(search.toLowerCase())
-  );
+  const uniqueCategories = ['All', ...Array.from(new Set(
+    clients.map(c => {
+      const service = availableServices.find(s => s.id === c.service_id);
+      return service ? (service.category.charAt(0).toUpperCase() + service.category.slice(1)) : 'Other';
+    })
+  ))];
+
+  const filteredClients = clients.filter(c => {
+    const matchesSearch = c.name.toLowerCase().includes(search.toLowerCase()) || c.service_id.toLowerCase().includes(search.toLowerCase());
+    
+    let matchesCategory = true;
+    if (selectedCategory !== 'All') {
+      const service = availableServices.find(s => s.id === c.service_id);
+      const cat = service ? (service.category.charAt(0).toUpperCase() + service.category.slice(1)) : 'Other';
+      matchesCategory = cat === selectedCategory;
+    }
+
+    return matchesSearch && matchesCategory;
+  });
 
   const handleOpenModal = (client: any = null) => {
     setError('');
@@ -151,6 +167,23 @@ export default function ClientsClient({ initialClients, availableServices }: { i
         </button>
       </div>
 
+      {/* Category Filters */}
+      <div className="flex flex-wrap gap-2">
+        {uniqueCategories.map((cat) => (
+          <button
+            key={cat as string}
+            onClick={() => setSelectedCategory(cat as string)}
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+              selectedCategory === cat
+                ? 'bg-[#d96b11] text-white'
+                : 'bg-white text-gray-600 border border-[#fadbc2] hover:bg-[#FFF8F0]'
+            }`}
+          >
+            {cat as string}
+          </button>
+        ))}
+      </div>
+
       {/* Clients List Container */}
       <div className="bg-transparent md:bg-white md:border md:border-[#fadbc2] md:rounded-[2rem] md:shadow-sm overflow-hidden">
         
@@ -208,7 +241,7 @@ export default function ClientsClient({ initialClients, availableServices }: { i
         </div>
 
         {/* Desktop View: Table */}
-        <div className="hidden md:block overflow-x-auto" data-lenis-prevent="true">
+        <div className="hidden md:block w-full">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-[#FFF8F0] border-b border-[#fadbc2]">

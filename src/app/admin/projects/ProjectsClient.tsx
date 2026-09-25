@@ -284,7 +284,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: a
         </div>
 
         {/* Desktop View: Table */}
-        <div className="hidden md:block overflow-x-auto" data-lenis-prevent="true">
+        <div className="hidden md:block w-full">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-[#FFF8F0] border-b border-[#fadbc2]">
