@@ -221,7 +221,7 @@ export default function ProjectsClient({ initialProjects }: { initialProjects: a
       </div>
 
       {/* Category Filters */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap justify-center md:justify-start gap-2">
         {uniqueCategories.map((cat) => (
           <button
             key={cat as string}
